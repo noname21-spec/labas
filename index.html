@@ -329,6 +329,11 @@ nav a.on svg{animation:hop .45s cubic-bezier(.2,.9,.3,1.6)}
 .sgrid .wide{grid-column:1/-1}
 .sgrid input,.sgrid select,.ofields input{width:100%;font-weight:400}
 @media(min-width:760px){.sgrid{grid-template-columns:2fr 1fr 1fr 1fr 1fr}.sgrid .wide{grid-column:auto}#s-xl:not([hidden]){grid-column:1/-1;order:-1}}
+input[type=date],input[type=time],input[type=month]{-webkit-appearance:none;appearance:none;min-width:0;max-width:100%;display:block;text-align:left;line-height:1.3}
+input[type=date]::-webkit-date-and-time-value,input[type=time]::-webkit-date-and-time-value,input[type=month]::-webkit-date-and-time-value{text-align:left;margin:0;min-width:0}
+input[type=date]::-webkit-calendar-picker-indicator,input[type=time]::-webkit-calendar-picker-indicator{margin-left:auto}
+.sgrid label,.ofields label{min-width:0}
+.due input{display:inline-block}
 .empty{border:2px dashed var(--edge);border-radius:18px;padding:18px;text-align:center;color:var(--mute);margin:12px 0 0}
 .note{color:var(--mute);font-size:14px;margin:18px 0 0}
 #lb{position:fixed;inset:0;background:rgba(10,6,2,.88);display:none;place-items:center;z-index:30;padding:20px;border:0;width:100%;cursor:zoom-out}
