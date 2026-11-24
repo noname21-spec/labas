@@ -406,6 +406,41 @@ input[type=date]::-webkit-calendar-picker-indicator,input[type=time]::-webkit-ca
 .shake{animation:shake .4s}
 @keyframes shake{20%,60%{transform:translateX(-8px)}40%,80%{transform:translateX(8px)}}
 .pinset{margin:10px 0 0}
+.hacts{display:flex;gap:8px;align-self:start;position:relative;z-index:4}
+.hacts .gear{position:relative}
+@media(max-width:600px){.hacts{grid-area:g;justify-self:end}.hacts .gear{width:42px;height:42px}}
+.phdone{padding:12px 16px}
+.phdone summary{display:flex;align-items:center;gap:12px;cursor:pointer;list-style:none}
+.phdone summary::-webkit-details-marker{display:none}
+.phdone summary b{display:block;font-family:Shrikhand,serif;font-weight:400;font-size:20px}
+.phdone summary small{display:block;color:var(--mute);font-size:14px}
+.phdone[open] summary{margin-bottom:10px}
+.okb{width:36px;height:36px;flex:none;border-radius:50%;background:var(--green);color:var(--bg);display:grid;place-items:center;font-weight:800;border:2.5px solid var(--ink)}
+#fab{position:fixed;z-index:11;right:max(16px,calc(50% - 290px + 6px));bottom:calc(92px + env(safe-area-inset-bottom,0px));width:60px;height:60px;border-radius:50%;border:2.5px solid var(--ink);background:var(--pink);color:#22140a;box-shadow:4px 4px 0 var(--ink);display:grid;place-items:center;cursor:pointer;transition:transform .2s}
+#fab svg{width:28px;height:28px}
+#fab:active{transform:translate(3px,3px);box-shadow:none}
+body[data-view=impostazioni] #fab{display:none}
+body #toast{bottom:calc(164px + env(safe-area-inset-bottom,0px))}
+#quick{position:fixed;inset:0;z-index:60;background:rgba(20,12,4,.45);display:grid;align-items:end;justify-items:center;padding:0 10px calc(10px + env(safe-area-inset-bottom,0px));opacity:0;transition:opacity .25s}
+#quick[hidden]{display:none}
+#quick.on{opacity:1}
+.qsheet{width:min(100%,560px);transform:translateY(40px);transition:transform .3s cubic-bezier(.2,.9,.3,1.2);max-height:88vh;overflow:auto}
+#quick.on .qsheet{transform:none}
+.qsheet .seg button[data-qt]{min-width:86px}
+.qamt{display:flex;align-items:center;gap:8px;margin-top:14px;border-bottom:3px solid var(--ink);padding-bottom:4px}
+.qamt input{border:0;background:none;font-family:Shrikhand,serif;font-size:56px;line-height:1.1;padding:0;width:100%;min-height:0;color:var(--ink)}
+.qamt span{font-family:Shrikhand,serif;font-size:40px}
+.qform textarea{min-height:120px;margin-top:14px}
+#srch{position:fixed;inset:0;z-index:70;background:var(--bg);overflow:auto;padding:max(14px,env(safe-area-inset-top,0px)) 16px 40px}
+#srch[hidden]{display:none}
+.ssheet{max-width:720px;margin:0 auto}
+.sbar{display:flex;gap:10px;position:sticky;top:0;background:var(--bg);padding:6px 0 10px;z-index:2}
+.sbar input{flex:1;font-size:18px;border:2.5px solid var(--ink)}
+.sres{display:block;width:100%;text-align:left;border:0;border-top:1.5px solid var(--line);background:none;padding:10px 4px;cursor:pointer}
+.sres b{display:block;font-weight:800}
+.sres small{display:block;color:var(--mute);font-size:14px}
+.hit{animation:hit 1.6s ease-out;border-radius:14px}
+@keyframes hit{0%,40%{box-shadow:0 0 0 4px var(--yel);background:color-mix(in srgb,var(--yel) 35%,transparent)}100%{box-shadow:0 0 0 0 transparent}}
 .empty{border:2px dashed var(--edge);border-radius:18px;padding:18px;text-align:center;color:var(--mute);margin:12px 0 0}
 .note{color:var(--mute);font-size:14px;margin:18px 0 0}
 #lb{position:fixed;inset:0;background:rgba(10,6,2,.88);display:none;place-items:center;z-index:30;padding:20px;border:0;width:100%;cursor:zoom-out}
@@ -460,7 +495,7 @@ nav svg{width:22px;height:22px}
       </svg>
       <div class="count"><b id="cd">0</b><span id="cdl"></span></div>
     </div>
-<a class="gear" href="#impostazioni" id="gear" aria-label="Impostazioni"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 0 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 0 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 0 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 0 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></a>
+<div class="hacts"><button class="gear" type="button" id="srchBtn" aria-label="Cerca"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg></button><a class="gear" href="#impostazioni" id="gear" aria-label="Impostazioni"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 0 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 0 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 0 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 0 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></a></div>
   </div>
   <svg class="wave" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true"><g class="wv"><path d="M0 8 Q150 -8 300 8 T600 8 T900 8 T1200 8 T1500 8 T1800 8 V60 H0Z" fill="#ff4f9a"/><path d="M0 20 Q150 4 300 20 T600 20 T900 20 T1200 20 T1500 20 T1800 20 V60 H0Z" fill="#ff7a1a"/><path d="M0 32 Q150 16 300 32 T600 32 T900 32 T1200 32 T1500 32 T1800 32 V60 H0Z" fill="var(--green)"/><path d="M0 44 Q150 28 300 44 T600 44 T900 44 T1200 44 T1500 44 T1800 44 V60 H0Z" fill="var(--bg)"/></g></svg>
 </header>
@@ -699,13 +734,19 @@ Matteo De Vincenti</pre>
         <h3>Calendario</h3>
         <p class="sub">Crea un file da aprire con il Calendario del telefono: gli avvisi del calendario arrivano sempre, anche dove le notifiche dell'app non funzionano.</p>
         <div class="chipset" style="margin-top:12px"><label for="ics-l"><input type="checkbox" id="ics-l" checked>Lezioni ogni settimana</label><label for="ics-d"><input type="checkbox" id="ics-d" checked>Scadenze</label><label for="ics-e"><input type="checkbox" id="ics-e" checked>Esami</label></div>
-        <div class="btns"><button class="btn" type="button" id="icsBtn">Esporta nel calendario</button></div>
+        <p class="lbl">In abbonamento (consigliato)</p>
+        <div id="calBox"></div>
+        <p class="lbl">Oppure con un file</p>
+        <div class="btns"><button class="btn alt" type="button" id="icsBtn">Scarica il file .ics</button></div>
         <p class="sub">Se cambi l'orario, esportalo di nuovo: prima cancella dal Calendario gli eventi «Labas» vecchi, per non averli doppi.</p>
       </section>
       <section class="card set" id="s-promemoria">
         <h3>Promemoria</h3>
         <p class="sub" id="notifHint">Ti avviso prima di ogni scadenza della checklist.</p>
         <div class="btns"><button class="btn yel" type="button" id="notif">Attiva promemoria</button><button class="btn alt" type="button" id="testNotif" hidden>Prova una notifica</button></div>
+        <p class="lbl">Anche ad app chiusa</p>
+        <p class="sub" id="pushTxt"></p>
+        <div class="btns"><button class="btn" type="button" id="pushBtn">Attiva</button><button class="btn alt" type="button" id="pushTest" hidden>Invia una prova</button></div>
         <p class="lbl">Quando avvisarti</p>
         <div class="chipset" id="leads"></div>
       </section>
@@ -752,6 +793,28 @@ Matteo De Vincenti</pre>
 </main>
 
 <button id="lb" type="button" aria-label="Chiudi immagine"><img id="lbImg" alt=""></button>
+<button id="fab" type="button" aria-label="Aggiungi spesa o diario"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+<div id="quick" hidden>
+  <div class="qsheet card" role="dialog" aria-modal="true" aria-label="Aggiunta rapida">
+    <div class="ph-h"><span class="seg"><button type="button" data-qt="spesa">Spesa</button><button type="button" data-qt="diario">Diario</button></span><button class="x" type="button" id="qX" aria-label="Chiudi">×</button></div>
+    <form id="q-spesa" class="qform">
+      <label for="q-v" class="qamt"><input id="q-v" type="text" inputmode="decimal" placeholder="0,00" autocomplete="off"><span>€</span></label>
+      <div class="sgrid" style="margin:12px 0"><label for="q-c">Categoria<select id="q-c"></select></label><label for="q-n">Cosa<input id="q-n" placeholder="Es. Spesa da Iki"></label></div>
+      <button class="btn">Registra la spesa</button>
+    </form>
+    <form id="q-diario" class="qform" hidden>
+      <textarea id="q-t" placeholder="Com'è andata oggi?" aria-label="Testo"></textarea>
+      <div class="sgrid" style="margin:12px 0"><label for="q-p">Dove<input id="q-p" list="plist" placeholder="Es. Užupis"></label><label for="q-f">Foto<input id="q-f" type="file" accept="image/*"></label></div>
+      <button class="btn">Salva nel diario</button>
+    </form>
+  </div>
+</div>
+<div id="srch" hidden>
+  <div class="ssheet" role="dialog" aria-modal="true" aria-label="Cerca">
+    <div class="sbar"><input id="srch-q" type="search" placeholder="Cerca in Labas" aria-label="Cerca" autocomplete="off"><button class="btn alt" type="button" id="srchX">Chiudi</button></div>
+    <div id="srch-r"></div>
+  </div>
+</div>
 <div id="toast" role="status"><span id="tmsg"></span><button type="button" id="tundo">Annulla</button></div>
 
 <nav aria-label="Sezioni">
