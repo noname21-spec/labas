@@ -334,6 +334,78 @@ input[type=date]::-webkit-date-and-time-value,input[type=time]::-webkit-date-and
 input[type=date]::-webkit-calendar-picker-indicator,input[type=time]::-webkit-calendar-picker-indicator{margin-left:auto}
 .sgrid label,.ofields label{min-width:0}
 .due input{display:inline-block}
+.today{margin-bottom:22px}
+.tw>div b,.tw>div span{display:block}
+.tw>div span{font-size:14px;font-weight:600}
+.pinbox{padding:4px 0 6px}
+.pinbox b{display:block}
+.pinbox small{display:block;color:var(--mute);font-size:14px}
+.tgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.tcell{background:var(--soft);border-radius:18px;padding:12px 14px;display:flex;flex-direction:column;justify-content:center;min-height:96px}
+.tcell small{font-size:13px;color:var(--mute);font-weight:600}
+.tcell b{font-family:Shrikhand,serif;font-weight:400;font-size:clamp(28px,5vw,40px);line-height:1.05;white-space:nowrap}
+.tcell span{font-size:14px;font-weight:600}
+.tw{flex-direction:row;align-items:center;gap:10px}
+.wico{width:46px;height:46px;flex:none}
+.wico svg{width:100%;height:100%}
+.tnext{display:grid;gap:0;margin-top:10px}
+.tn{display:grid;grid-template-columns:7.2em minmax(0,1fr);gap:10px;padding:9px 0;border-top:1.5px solid var(--line)}
+.tn:first-child{border-top:0}
+.tn small{color:var(--mute);font-weight:800;font-size:14px}
+.tn span small{display:block;font-weight:400}
+@media(max-width:600px){.tgrid{grid-template-columns:1fr 1fr}.tgrid .tw{grid-column:1/-1;order:-1;min-height:0}}
+.exd{display:flex;align-items:center;gap:8px;font-weight:800;font-size:14px;grid-column:1/-1}
+.exd input{flex:1;max-width:190px}
+.exr{display:grid;grid-template-columns:76px minmax(0,1fr);gap:12px;align-items:center;padding:10px 0;border-top:1.5px solid var(--line)}
+.exr:first-child{border-top:0}
+.exr b.n{font-family:Shrikhand,serif;font-weight:400;font-size:34px;line-height:1;text-align:center;color:var(--pink)}
+.exr.done b.n{color:var(--green)}
+.exr small{display:block;color:var(--mute);font-size:14px}
+.rrow{display:grid;grid-template-columns:16px minmax(0,1fr) auto 44px;gap:10px;align-items:center;padding:6px 0;border-top:1.5px solid var(--line)}
+.rrow:first-child{border-top:0}
+.rrow small{display:block;color:var(--mute);font-size:14px}
+.rrow b{white-space:nowrap;font-variant-numeric:tabular-nums}
+.sgrid .bl{align-self:end}
+.mchart{display:flex;align-items:flex-end;gap:8px;height:190px;margin-top:12px;position:relative;padding-top:18px}
+.mcol{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;gap:4px;border:0;background:none;padding:0;cursor:pointer;min-width:0}
+.mcol i{display:block;width:100%;max-width:46px;border:2px solid var(--ink);border-bottom:0;border-radius:12px 12px 0 0;background:var(--pink);transition:height .5s cubic-bezier(.2,.9,.3,1.2)}
+.mcol.over i{background:var(--red)}
+.mcol.sel i{box-shadow:inset 0 0 0 3px var(--yel)}
+.mcol span{font-size:13px;font-weight:800}
+.mcol em{font-style:normal;font-size:13px;color:var(--mute);white-space:nowrap}
+.mline{position:absolute;left:0;right:0;border-top:2.5px dashed var(--green);pointer-events:none}
+.mline span{position:absolute;right:0;top:-22px;font-size:13px;font-weight:800;color:var(--green);background:var(--card);padding:0 4px}
+.mapbox{height:340px;border-radius:18px;overflow:hidden;border:2.5px solid var(--ink);margin:12px 0 8px;background:var(--soft);position:relative;z-index:0}
+.lpin{width:30px;height:30px}
+.leaflet-popup-content{font:15px/1.4 "DM Sans",sans-serif;margin:10px 14px}
+.leaflet-popup-content b{display:block}
+.ltsrow{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:6px;align-items:center;padding:9px 0;border-top:1.5px solid var(--line)}
+.ltsrow:first-child{border-top:0}
+.ltsrow b{display:block;font-size:17px}
+.ltsrow small{display:block;color:var(--mute);font-size:14px}
+.setnav button{flex:none;border:2px solid var(--edge);border-radius:999px;padding:6px 14px;font-weight:800;background:none;cursor:pointer;min-height:40px}
+.setnav button.on{background:var(--pink);border-color:var(--ink);color:#22140a}
+.wr textarea{min-height:220px;font-size:17px;line-height:1.55;margin-top:6px}
+.wrp{background:var(--soft);border-radius:16px;padding:12px 14px;margin:6px 0 12px}
+.wrbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;margin:10px 0}
+.wrclock{font-family:Shrikhand,serif;font-size:34px;line-height:1;font-variant-numeric:tabular-nums;min-width:3.2em}
+.wrclock.end{color:var(--red)}
+#wr-count.ok{color:var(--green)}
+#wr-count.lo{color:var(--orange)}
+#wr-count.hi{color:var(--red)}
+.seg button[data-m].on{background:var(--pink);color:#22140a}
+.wrow{border-top:1.5px solid var(--line);padding:8px 0}
+.wrow summary{cursor:pointer;font-weight:800;min-height:32px}
+.wrow summary small{font-weight:400;color:var(--mute);margin-left:6px}
+.wrow p{white-space:pre-wrap;margin:8px 0}
+.etools{display:flex;gap:8px;flex-wrap:wrap}
+.pinlock{text-align:center;border:2px dashed var(--edge);border-radius:18px;padding:18px;margin-top:12px}
+.pinlock b{display:block;font-family:Shrikhand,serif;font-weight:400;font-size:24px}
+.pinrow{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+.pinrow input{width:150px;text-align:center;letter-spacing:.4em;font-size:22px}
+.shake{animation:shake .4s}
+@keyframes shake{20%,60%{transform:translateX(-8px)}40%,80%{transform:translateX(8px)}}
+.pinset{margin:10px 0 0}
 .empty{border:2px dashed var(--edge);border-radius:18px;padding:18px;text-align:center;color:var(--mute);margin:12px 0 0}
 .note{color:var(--mute);font-size:14px;margin:18px 0 0}
 #lb{position:fixed;inset:0;background:rgba(10,6,2,.88);display:none;place-items:center;z-index:30;padding:20px;border:0;width:100%;cursor:zoom-out}
@@ -395,6 +467,14 @@ nav svg{width:22px;height:22px}
 
 <main class="wrap" id="main">
   <section class="view" id="v-oggi">
+    <section class="card today" id="today">
+      <div class="tgrid">
+        <div class="tcell"><small>A Vilnius sono le</small><b id="vClock">--:--</b><span id="vDate"></span></div>
+        <div class="tcell tw"><span class="wico" id="wIcon"></span><div><b id="wTemp">--°</b><span id="wDesc">Meteo in arrivo…</span></div></div>
+        <div class="tcell"><small>Tramonto</small><b id="wSun">--:--</b><span id="wDay"></span></div>
+      </div>
+      <div class="tnext" id="tNext"></div>
+    </section>
     <div class="vh">
       <div><h2>Checklist</h2><p class="sub">Dalla firma del Learning Agreement al rientro a Bologna.</p></div>
       <div class="settings"><label for="dep">Partenza <input type="date" id="dep"></label><label for="ret">Rientro <input type="date" id="ret"></label></div>
@@ -433,6 +513,25 @@ nav svg{width:22px;height:22px}
         <div id="logRows" style="margin-top:10px"></div>
       </div>
     </div>
+    <div class="grid2 mt">
+      <div class="card">
+        <h3>Spese fisse</h3>
+        <p class="sub">Durante l'Erasmus si registrano da sole ogni mese, nel giorno che scegli.</p>
+        <div id="recRows" style="margin-top:8px"></div>
+        <form class="sgrid" id="rform" style="margin-bottom:0">
+          <label class="wide" for="r-n">Nome<input id="r-n" placeholder="Es. Palestra"></label>
+          <label for="r-c">Categoria<select id="r-c"></select></label>
+          <label for="r-v">Importo €<input id="r-v" type="number" min="0" step="0.01" inputmode="decimal"></label>
+          <label for="r-d">Giorno del mese<input id="r-d" type="number" min="1" max="28" value="1" inputmode="numeric"></label>
+          <label class="bl"><span>&nbsp;</span><button class="btn">Aggiungi</button></label>
+        </form>
+      </div>
+      <div class="card">
+        <h3>Mese per mese</h3>
+        <p class="sub" id="chartTxt"></p>
+        <div class="mchart" id="mchart"></div>
+      </div>
+    </div>
   </section>
 
   <section class="view" id="v-studio">
@@ -451,6 +550,7 @@ nav svg{width:22px;height:22px}
         <form class="addrow" id="cform"><input id="ac-n" placeholder="Nuovo corso" aria-label="Nome corso"><input id="ac-e" class="n" type="number" min="0" max="30" placeholder="ECTS" aria-label="ECTS"><button class="btn">Aggiungi</button></form>
       </div>
     </div>
+    <section class="card mt"><h3>Esami</h3><p class="sub">Aggiungi la data dell'esame in ogni corso: qui vedi quanto manca, e ti avviso come per le scadenze.</p><div id="exams"></div></section>
     <p class="note">In Lituania i voti vanno da 1 a 10 e si supera con 5. I trentesimi sono una stima lineare (5 = 18, 10 = 30): la conversione ufficiale la decide il tuo corso di studio a Bologna.</p>
     <div class="vh mt"><div><h2>Orario</h2><p class="sub">La tua settimana all'EHU.</p></div></div>
     <div class="week" id="week"></div>
@@ -473,6 +573,22 @@ nav svg{width:22px;height:22px}
     <section class="card flash">
       <button class="fc" type="button" id="fc"></button>
       <div class="fnav"><span class="cnt" id="fcCount"></span><span class="btns" style="margin:0"><button class="btn alt" type="button" id="fcAgain">Ancora</button><button class="btn" type="button" id="fcKnow">La so</button></span></div>
+    </section>
+    <div class="vh mt"><div><h2>Lituano per situazioni</h2><p class="sub" id="ltsHint">Pronuncia approssimativa, scritta all'italiana.</p></div></div>
+    <section class="card">
+      <div class="scroll setnav" id="ltsTabs" style="margin:0 0 6px"></div>
+      <div id="ltsList"></div>
+    </section>
+    <div class="vh mt"><div><h2>Scrittura B2</h2><p class="sub">Tracce in stile esame, con timer e conteggio parole.</p></div></div>
+    <section class="card wr">
+      <label class="srow" for="wr-p" style="border:0"><span>Traccia</span><select id="wr-p"></select></label>
+      <p class="wrp" id="wr-txt"></p>
+      <div class="wrbar"><span class="wrclock" id="wr-clock">30:00</span><span class="seg" data-wmin><button type="button" data-m="20">20′</button><button type="button" data-m="30">30′</button><button type="button" data-m="40">40′</button></span><button class="btn alt" type="button" id="wr-go">Avvia</button><button class="btn alt" type="button" id="wr-reset">Azzera</button></div>
+      <textarea id="wr-t" rows="10" placeholder="Write here…" aria-label="Testo" spellcheck="false" autocapitalize="sentences"></textarea>
+      <div class="wrbar"><b id="wr-count">0 parole</b><span class="btns" style="margin:0"><button class="btn alt" type="button" id="wr-copy">Copia</button><button class="btn" type="button" id="wr-save">Salva</button></span></div>
+      <details class="det"><summary>Cosa si guarda in uno scritto B2</summary><ul><li>Hai risposto a tutti i punti della traccia, con il registro giusto (formale o informale).</li><li>Paragrafi chiari, con apertura e chiusura, e connettivi vari: however, moreover, as a result, on the other hand.</li><li>Lessico e strutture vari: condizionali, passivi, relative.</li><li>Pochi errori che non ostacolano la comprensione.</li></ul><p class="sub">La lunghezza richiesta cambia da parte a parte: controllala sulle indicazioni ufficiali LanguageCert.</p></details>
+      <p class="lbl">I tuoi scritti</p>
+      <div id="wr-list"></div>
     </section>
     <div class="vh mt"><div><h2>Inglese accademico</h2><p class="sub">Frasi pronte per lezioni, esami ed email.</p></div></div>
     <div class="cols" id="engGroups"></div>
@@ -497,14 +613,20 @@ Matteo De Vincenti</pre>
   <section class="view" id="v-vilnius">
     <div class="vh"><div><h2>Il tuo Erasmus in numeri</h2></div><button class="btn alt" type="button" id="copyNums">Copia riepilogo</button></div>
     <div class="card"><div class="nums" id="nums" style="margin-top:0"></div></div>
+    <section class="card mt">
+      <div class="ph-h"><h3>Mappa</h3><span class="legend" style="margin:0"><span><i class="dot" style="background:#ff4f9a"></i>Da vedere</span><span><i class="dot" style="background:#46d394"></i>Visto</span><span><i class="dot" style="background:#ff7a1a"></i>Diario</span></span></div>
+      <div class="mapbox" id="map"><p class="sub" style="padding:16px">La mappa si carica quando sei online.</p></div>
+      <p class="sub">Mappa © OpenStreetMap. Le pagine di diario compaiono se aggiungi la posizione o scegli uno dei posti.</p>
+    </section>
     <div class="grid2 mt">
       <section class="card">
-        <h3>Diario</h3>
+        <div class="ph-h"><h3>Diario</h3><button class="btn alt" type="button" id="pdfBtn">Diario in PDF</button></div>
         <form class="dform" id="dform">
           <input id="d-d" type="date" aria-label="Data">
           <input id="d-p" list="plist" placeholder="Dove eri?" aria-label="Luogo">
           <textarea id="d-t" placeholder="Com'è andata oggi?" aria-label="Testo"></textarea>
           <label class="file full" for="d-f">Foto <input id="d-f" type="file" accept="image/*"></label>
+          <button class="btn alt full" type="button" id="geoBtn">Aggiungi la mia posizione</button>
           <button class="btn full">Salva nel diario</button>
           <datalist id="plist"></datalist>
         </form>
@@ -540,7 +662,7 @@ Matteo De Vincenti</pre>
   </section>
   <section class="view" id="v-impostazioni">
     <div class="vh"><div><h2>Impostazioni</h2><p class="sub">Profilo, account, contatti, documenti, promemoria, aspetto e dati.</p></div></div>
-    <div class="scroll setnav" aria-label="Sezioni delle impostazioni"><a href="#s-profilo" data-jump="s-profilo">Profilo</a><a href="#s-account" data-jump="s-account">Account</a><a href="#s-contatti" data-jump="s-contatti">Contatti</a><a href="#s-documenti" data-jump="s-documenti">Documenti</a><a href="#s-promemoria" data-jump="s-promemoria">Promemoria</a><a href="#s-aspetto" data-jump="s-aspetto">Aspetto</a><a href="#s-ripasso" data-jump="s-ripasso">Ripasso</a><a href="#s-dati" data-jump="s-dati">Dati</a><a href="#s-app" data-jump="s-app">App</a></div>
+    <div class="scroll setnav" aria-label="Sezioni delle impostazioni"><a href="#s-profilo" data-jump="s-profilo">Profilo</a><a href="#s-account" data-jump="s-account">Account</a><a href="#s-contatti" data-jump="s-contatti">Contatti</a><a href="#s-documenti" data-jump="s-documenti">Documenti</a><a href="#s-calendario" data-jump="s-calendario">Calendario</a><a href="#s-promemoria" data-jump="s-promemoria">Promemoria</a><a href="#s-aspetto" data-jump="s-aspetto">Aspetto</a><a href="#s-ripasso" data-jump="s-ripasso">Ripasso</a><a href="#s-dati" data-jump="s-dati">Dati</a><a href="#s-app" data-jump="s-app">App</a></div>
     <div class="cols">
       <section class="card set" id="s-profilo">
         <h3>Profilo</h3>
@@ -568,9 +690,17 @@ Matteo De Vincenti</pre>
       </section>
       <section class="card set" id="s-documenti">
         <h3>Documenti</h3>
+        <div id="pinBox"></div>
         <div id="docs"></div>
         <form class="addrow" id="docform"><input id="doc-n" placeholder="Nome del documento" aria-label="Nome del documento"><label class="btn alt fileb" for="doc-f"><span id="doc-fl">Scegli file</span><input id="doc-f" type="file" accept="image/*,application/pdf"></label><button class="btn">Salva</button></form>
         <p class="sub" id="docHint"></p>
+      </section>
+      <section class="card set" id="s-calendario">
+        <h3>Calendario</h3>
+        <p class="sub">Crea un file da aprire con il Calendario del telefono: gli avvisi del calendario arrivano sempre, anche dove le notifiche dell'app non funzionano.</p>
+        <div class="chipset" style="margin-top:12px"><label for="ics-l"><input type="checkbox" id="ics-l" checked>Lezioni ogni settimana</label><label for="ics-d"><input type="checkbox" id="ics-d" checked>Scadenze</label><label for="ics-e"><input type="checkbox" id="ics-e" checked>Esami</label></div>
+        <div class="btns"><button class="btn" type="button" id="icsBtn">Esporta nel calendario</button></div>
+        <p class="sub">Se cambi l'orario, esportalo di nuovo: prima cancella dal Calendario gli eventi «Labas» vecchi, per non averli doppi.</p>
       </section>
       <section class="card set" id="s-promemoria">
         <h3>Promemoria</h3>
