@@ -1,5 +1,5 @@
 /* Labas: app offline e promemoria delle scadenze */
-const C='labas-v1';
+const C='labas-v2';
 const F=['./','index.html','app.js','manifest.webmanifest','icon-96.png','icon-192.png','icon-512.png','icon-maskable-512.png','apple-touch-icon.png','lib/supabase.js','lib/shrikhand-latin.woff2','lib/shrikhand-latin-ext.woff2','lib/dmsans-latin.woff2','lib/dmsans-latin-ext.woff2'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(C).then(c=>c.addAll(F.map(u=>new Request(u,{cache:'reload'})))).catch(()=>{}));self.skipWaiting()});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(n=>/^labas-/.test(n)&&n!==C).map(n=>caches.delete(n)))).then(()=>self.clients.claim()))});
@@ -19,9 +19,10 @@ function op(d,mode,fn){return new Promise((ok,ko)=>{const t=d.transaction('meta'
 async function check(){
  if(self.Notification&&Notification.permission!=='granted')return;
  const d=await db(),due=(await op(d,'readonly',s=>s.get('due')))||[],sent=(await op(d,'readonly',s=>s.get('sent')))||[];
+ const cfg=(await op(d,'readonly',s=>s.get('cfg')))||{},leads=(Array.isArray(cfg.leads)?cfg.leads:[3,1,0]).map(Number).sort((x,y)=>x-y);
  const t=new Date();t.setHours(0,0,0,0);const out=[];
  for(const x of due){const dd=new Date(x.d+'T00:00:00');if(isNaN(dd))continue;const n=Math.round((dd-t)/864e5);
-  const lvl=n<0?'late':n===0?'0':n===1?'1':n>=2&&n<=3?'3':null;if(!lvl)continue;
+  const bk=leads.find(L=>L>=n),lvl=n<0?(leads.length?'late':null):bk===undefined?null:String(bk);if(!lvl)continue;
   const key=x.id+'|'+x.d+'|'+lvl;if(sent.includes(key))continue;
   const title=n<0?'Scadenza passata':n===0?'Scade oggi':n===1?'Scade domani':`Scade tra ${n} giorni`;
   await self.registration.showNotification(title,{body:x.t,tag:'labas-'+x.id,icon:'icon-192.png',badge:'icon-96.png',data:{url:'./#oggi'}});

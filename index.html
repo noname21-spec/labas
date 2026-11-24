@@ -39,7 +39,7 @@ button,input,select,textarea{font:inherit;color:inherit}
 .wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,4vw,env(safe-area-inset-left,0px));padding-right:max(16px,4vw,env(safe-area-inset-right,0px))}
 .hero{background:var(--hero);position:relative;overflow:hidden;padding-top:max(14px,env(safe-area-inset-top,0px))}
 #bgfl{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
-.hgrid{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:center;padding-block:18px 6px}
+.hgrid{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:16px;align-items:center;padding-block:18px 6px}
 h1{font-size:clamp(36px,7vw,64px)}
 .lead{margin:10px 0 16px;font-weight:600;max-width:34ch}
 .cline{display:none;font-weight:800;margin-top:4px}
@@ -228,6 +228,100 @@ pre.tpl{white-space:pre-wrap;font:15px/1.55 "DM Sans",sans-serif;background:var(
 .dn{display:flex;align-items:center;justify-content:space-between;gap:4px;padding:2px 2px 2px 10px;font-weight:800;font-size:14px}
 .dn span{overflow-wrap:anywhere}
 .miss{display:none}
+.gear{position:relative;z-index:4;align-self:start;width:46px;height:46px;border-radius:50%;border:2.5px solid var(--ink);background:var(--card);color:var(--ink);display:grid;place-items:center;box-shadow:3px 3px 0 var(--ink)}
+.gear svg{width:24px;height:24px}
+.gear.on{background:var(--pink);color:#22140a}
+.setnav{display:flex;gap:8px;margin:-4px 0 18px;padding-bottom:4px}
+.setnav a{flex:none;border:2px solid var(--edge);border-radius:999px;padding:6px 14px;font-weight:800;color:var(--ink);text-decoration:none;white-space:nowrap}
+.set{scroll-margin-top:16px}
+.srow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:center;padding:11px 0;border-top:1.5px solid var(--line)}
+.set h3+.srow{border-top:0}
+.srow>span:first-child{font-weight:800}
+.srow small{display:block;color:var(--mute);font-size:14px;font-weight:400}
+.srow input:not([type=checkbox]),.srow select{width:min(200px,44vw)}
+.seg{display:inline-flex;border:2px solid var(--ink);border-radius:999px;overflow:hidden}
+.seg button{border:0;background:none;padding:8px 12px;min-height:42px;font-weight:800;cursor:pointer;color:var(--ink)}
+.seg button.on{background:var(--pink);color:#22140a}
+.sw{appearance:none;-webkit-appearance:none;width:54px;height:32px;min-height:0;padding:0;border-radius:99px;background:var(--soft);border:2px solid var(--ink);position:relative;cursor:pointer;flex:none}
+.sw::after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:var(--ink);transition:left .2s}
+.sw:checked{background:var(--green)}
+.sw:checked::after{left:25px;background:var(--bg)}
+.chipset{display:flex;flex-wrap:wrap;gap:8px}
+.chipset label{display:inline-flex;gap:8px;align-items:center;border:2px solid var(--edge);border-radius:999px;padding:6px 14px;font-weight:600;cursor:pointer;min-height:42px}
+.chipset input{min-height:0;width:18px;height:18px;accent-color:var(--pink)}
+.btn.danger{background:var(--red);color:#fff}
+.det{border-top:1.5px solid var(--line);padding:10px 0}
+.det summary{font-weight:800;cursor:pointer;min-height:32px}
+.det p,.det ul{margin:8px 0 0}
+:root.big{zoom:1.12}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}}
+@keyframes pop{from{opacity:0;transform:translateY(20px) scale(.95)}}
+.view.on{animation:rise .4s cubic-bezier(.2,.8,.2,1)}
+.view.enter :is(.card,.day,.wk article,.num,.pc){animation:pop .5s cubic-bezier(.2,.9,.3,1.25) backwards;animation-delay:calc(var(--i,0)*50ms)}
+.wv{animation:wv 16s linear infinite}
+@keyframes wv{to{transform:translateX(-600px)}}
+.task.just .tick span{animation:tick .55s cubic-bezier(.2,.9,.3,1.6)}
+@keyframes tick{0%{transform:scale(.4)}60%{transform:scale(1.25)}100%{transform:scale(1)}}
+#ring.anim .arc{animation:draw 1s cubic-bezier(.3,.8,.3,1) backwards}
+@keyframes draw{from{stroke-dasharray:0 440}}
+.flash{perspective:900px}
+.fc.flipping{animation:flipy .42s ease-in-out}
+@keyframes flipy{50%{transform:rotateY(90deg) scale(.96)}}
+.fc.outR{animation:outR .5s ease-in-out}
+.fc.outL{animation:outL .5s ease-in-out}
+@keyframes outR{50%{transform:translateX(70%) rotate(12deg);opacity:0}51%{transform:translateX(-30%) rotate(-6deg);opacity:0}100%{transform:none;opacity:1}}
+@keyframes outL{50%{transform:translateX(-70%) rotate(-12deg);opacity:0}51%{transform:translateX(30%) rotate(6deg);opacity:0}100%{transform:none;opacity:1}}
+.bst{position:fixed;left:0;top:0;width:22px;height:22px;margin:-11px 0 0 -11px;pointer-events:none;z-index:120;animation:bst .8s cubic-bezier(.15,.7,.3,1) forwards}
+@keyframes bst{from{transform:translate(var(--x0),var(--y0)) scale(.3)}to{transform:translate(var(--x1),var(--y1)) scale(1) rotate(var(--r));opacity:0}}
+#toast.on{animation:toastIn .35s cubic-bezier(.2,.9,.3,1.3)}
+@keyframes toastIn{from{transform:translate(-50%,40px);opacity:0}}
+nav a.on svg{animation:hop .45s cubic-bezier(.2,.9,.3,1.6)}
+@keyframes hop{40%{transform:translateY(-5px) scale(1.18)}}
+.gear svg{transition:transform .5s cubic-bezier(.2,.9,.3,1.3)}
+.gear.on svg{transform:rotate(90deg)}
+.gear:active,.chip:active{transform:translate(3px,3px);box-shadow:none}
+#splash{position:fixed;inset:0;z-index:200;background:#ffc21a;display:grid;place-content:center;justify-items:center;gap:4px;transition:opacity .4s,transform .45s;cursor:pointer;overflow:hidden}
+#splash.out{opacity:0;transform:scale(1.18);pointer-events:none}
+.sp-daisy{width:min(58vw,240px);height:auto;overflow:visible}
+.sp-g{transform-box:view-box;transform-origin:100px 100px;animation:spin 9s linear .8s infinite}
+.sp-p{transform-box:view-box;transform-origin:100px 100px;animation:spP .55s cubic-bezier(.2,.9,.3,1.45) backwards;animation-delay:var(--d)}
+@keyframes spP{from{transform:scale(0) rotate(-50deg)}}
+.sp-c{transform-box:view-box;transform-origin:100px 100px;animation:spC .5s cubic-bezier(.2,.9,.3,1.6) .1s backwards}
+@keyframes spC{from{transform:scale(0)}}
+.sp-face{animation:spF .3s .6s backwards}
+@keyframes spF{from{opacity:0}}
+.sp-t{font-family:Shrikhand,serif;font-weight:400;font-size:clamp(48px,13vw,76px);line-height:1.1;color:#22140a;animation:spT .55s cubic-bezier(.2,.9,.3,1.35) .55s backwards}
+@keyframes spT{from{opacity:0;transform:translateY(30px) scale(.9)}}
+.sp-wave{position:absolute;left:0;right:0;bottom:0;width:100%;height:90px;animation:spW .7s cubic-bezier(.2,.8,.2,1) .2s backwards}
+@keyframes spW{from{transform:translateY(100%)}}
+#onb{position:fixed;inset:0;z-index:150;background:var(--hero);overflow:auto;padding:max(20px,env(safe-area-inset-top,0px)) 16px max(20px,env(safe-area-inset-bottom,0px));display:grid;place-items:center}
+#onb[hidden]{display:none}
+.onb-in{width:min(100%,540px);display:grid;gap:18px}
+.onb-art{width:min(44vw,190px);justify-self:center}
+#onbDaisy{width:100%;height:auto;overflow:visible;transition:transform .7s cubic-bezier(.2,.9,.3,1.3)}
+.onb-card{min-height:260px}
+.onb-card p{margin:10px 0 0;font-size:17px}
+.step{display:none}
+.step.on{display:block;animation:rise .4s cubic-bezier(.2,.8,.2,1)}
+.ofields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:14px}
+.ofields label{display:grid;gap:4px;font-weight:800;font-size:14px}
+.ofields label:first-child,.ofields label:nth-child(2){grid-column:1/-1}
+.ogrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px}
+.ogrid div{border:2.5px solid var(--ink);border-radius:18px;padding:10px 12px;color:#22140a;box-shadow:3px 3px 0 var(--ink);font-size:14px;font-weight:600;animation:pop .45s cubic-bezier(.2,.9,.3,1.3) backwards}
+.ogrid div:nth-child(4n+1){background:var(--pink)}
+.ogrid div:nth-child(4n+2){background:var(--orange)}
+.ogrid div:nth-child(4n+3){background:#fff3d1}
+.ogrid div:nth-child(4n){background:#46d394}
+.ogrid div:nth-child(2){animation-delay:.06s}.ogrid div:nth-child(3){animation-delay:.12s}.ogrid div:nth-child(4){animation-delay:.18s}.ogrid div:nth-child(5){animation-delay:.24s}.ogrid div:nth-child(6){animation-delay:.3s}
+.ogrid b{display:block;font-family:Shrikhand,serif;font-weight:400;font-size:20px}
+.onb-nav{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.dots{display:flex;gap:6px}
+.dots i{width:10px;height:10px;border-radius:99px;background:color-mix(in srgb,var(--ink) 28%,transparent);transition:width .3s}
+.dots i.on{width:28px;background:var(--ink)}
+.linkb{border:0;background:none;font-weight:800;color:var(--ink);min-height:44px;cursor:pointer;text-decoration:underline;padding:0 6px}
+@media(max-width:400px){.ofields{grid-template-columns:1fr}.ogrid{grid-template-columns:1fr 1fr}}
+:root.calm *,:root.calm *::before,:root.calm *::after{animation:none!important;transition:none!important}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
 .empty{border:2px dashed var(--edge);border-radius:18px;padding:18px;text-align:center;color:var(--mute);margin:12px 0 0}
 .note{color:var(--mute);font-size:14px;margin:18px 0 0}
 #lb{position:fixed;inset:0;background:rgba(10,6,2,.88);display:none;place-items:center;z-index:30;padding:20px;border:0;width:100%;cursor:zoom-out}
@@ -240,16 +334,36 @@ nav{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(12px + env(sa
 nav a{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;padding:5px 2px;border-radius:999px;text-decoration:none;color:var(--ink);font-weight:800;font-size:13px;min-height:54px}
 nav a.on{background:var(--pink);color:#22140a}
 nav svg{width:22px;height:22px}
-@media(max-width:600px){.daisy{width:150px}.lead{font-size:15px}.ringbox{grid-template-columns:1fr;justify-items:center;text-align:center}.legend{justify-content:center}.brow{grid-template-columns:16px minmax(0,1fr) 104px 44px}.cmp{grid-template-columns:6em minmax(0,1fr) auto}.dform{grid-template-columns:1fr}nav a{font-size:12px}}
-@media(max-width:400px){.hero:not(.compact) .hgrid{grid-template-columns:1fr}.hero:not(.compact) .daisy{position:absolute;right:-30px;top:-6px;width:130px}.hero:not(.compact) .hgrid>div:first-child{padding-right:96px}}
+@media(max-width:600px){.lead{font-size:15px}.ringbox{grid-template-columns:1fr;justify-items:center;text-align:center}.legend{justify-content:center}.brow{grid-template-columns:16px minmax(0,1fr) 104px 44px}.cmp{grid-template-columns:6em minmax(0,1fr) auto}.dform{grid-template-columns:1fr}nav a{font-size:12px}}
+@media(max-width:600px){.hgrid{grid-template-columns:minmax(0,1fr) 118px;grid-template-areas:"t g" "x d" "l d" "c c";column-gap:12px;row-gap:0}.htxt{display:contents}#hello{grid-area:t;align-self:center}.cline{display:block;grid-area:x;align-self:end;margin:6px 0 0}.lead{grid-area:l;align-self:start;margin:4px 0 8px}.hero .count span{display:none}.hero:not(.compact) .count b{font-size:38px}.chips{grid-area:c;margin:6px 0 4px}.hero:not(.compact) .daisy{grid-area:d;width:118px}.gear{grid-area:g;justify-self:end}.hero.compact .hgrid{grid-template-columns:minmax(0,1fr) auto auto;grid-template-areas:"t d g" "x d g"}.hero.compact .daisy{grid-area:d;width:78px}.hero.compact .cline{margin:2px 0 0}}
 </style>
 </head>
 <body>
+<div id="splash" aria-hidden="true">
+  <svg class="sp-daisy" viewBox="0 0 200 200"><g class="sp-g"><g id="spPetals"></g><g class="sp-c"><circle cx="100" cy="100" r="58" fill="#ffc21a" stroke="#22140a" stroke-width="3.5"/><circle cx="100" cy="100" r="50" fill="none" stroke="#22140a" stroke-width="2" stroke-dasharray="2 7" stroke-linecap="round"/></g><g class="sp-face"><path d="M80 104 q20 20 40 0" fill="none" stroke="#22140a" stroke-width="5" stroke-linecap="round"/><circle cx="85" cy="88" r="5.5" fill="#22140a"/><circle cx="115" cy="88" r="5.5" fill="#22140a"/></g></g></svg>
+  <b class="sp-t">Labas</b>
+  <svg class="sp-wave" viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0 10 Q150 -6 300 10 T600 10 T900 10 T1200 10 V60 H0Z" fill="#ff4f9a"/><path d="M0 26 Q150 10 300 26 T600 26 T900 26 T1200 26 V60 H0Z" fill="#ff7a1a"/><path d="M0 42 Q150 26 300 42 T600 42 T900 42 T1200 42 V60 H0Z" fill="#0f6b45"/></svg>
+</div>
+<div id="onb" role="dialog" aria-modal="true" aria-labelledby="onbT" hidden>
+  <div class="onb-in">
+    <div class="onb-art"><svg viewBox="0 0 200 200" id="onbDaisy"><g id="onbPetals"></g><circle cx="100" cy="100" r="58" fill="#ffc21a" stroke="#22140a" stroke-width="3.5"/><circle cx="100" cy="100" r="50" fill="none" stroke="#22140a" stroke-width="2" stroke-dasharray="2 7" stroke-linecap="round"/><path d="M80 104 q20 20 40 0" fill="none" stroke="#22140a" stroke-width="5" stroke-linecap="round"/><circle cx="85" cy="88" r="5.5" fill="#22140a"/><circle cx="115" cy="88" r="5.5" fill="#22140a"/></svg></div>
+    <div class="card onb-card">
+      <div class="step"><h2 id="onbT">Labas!</h2><p>In lituano vuol dire «ciao». Labas ti accompagna nell'Erasmus a Vilnius, dalla firma del Learning Agreement fino al rientro a Bologna.</p></div>
+      <div class="step"><h2>Partiamo da te</h2>
+        <div class="ofields"><label for="o-name">Come ti chiami?<input id="o-name" autocomplete="given-name"></label><label for="o-uni">Università ospitante<input id="o-uni"></label><label for="o-dep">Partenza<input type="date" id="o-dep"></label><label for="o-ret">Rientro<input type="date" id="o-ret"></label></div></div>
+      <div class="step"><h2>Tutto in un posto</h2>
+        <div class="ogrid"><div><b>Oggi</b>Checklist, scadenze e valigia</div><div><b>Soldi</b>Budget e spese reali</div><div><b>Studio</b>Corsi, voti e orario</div><div><b>Lingue</b>Ripasso di inglese e lituano</div><div><b>Vilnius</b>Diario, posti e weekend</div><div><b>Impostazioni</b>Contatti, documenti e dati</div></div></div>
+      <div class="step"><h2>Sempre con te</h2><p>Accedi con Google per ritrovare tutto su ogni dispositivo, e attiva i promemoria per non perdere le scadenze. Puoi farlo anche dopo, dalle Impostazioni.</p>
+        <div class="btns"><button class="btn" type="button" id="o-login">Accedi con Google</button><button class="btn yel" type="button" id="o-notif">Attiva promemoria</button></div></div>
+    </div>
+    <div class="onb-nav"><button class="linkb" type="button" id="obSkip">Salta</button><span class="dots" id="obDots"></span><span class="btns" style="margin:0"><button class="btn alt" type="button" id="obBack" hidden>Indietro</button><button class="btn" type="button" id="obNext">Avanti</button></span></div>
+  </div>
+</div>
 <header class="hero" id="hero">
   <svg id="bgfl" aria-hidden="true"></svg>
   <div class="wrap hgrid">
-    <div>
-      <h1>Labas, Matteo!</h1>
+    <div class="htxt">
+      <h1 id="hello">Labas, Matteo!</h1>
       <p class="cline" id="cline"></p>
       <p class="lead" id="lead"></p>
       <div class="chips" id="chips"></div>
@@ -262,13 +376,9 @@ nav svg{width:22px;height:22px}
       </svg>
       <div class="count"><b id="cd">0</b><span id="cdl"></span></div>
     </div>
+<a class="gear" href="#impostazioni" id="gear" aria-label="Impostazioni"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 0 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 0 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 0 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 0 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></a>
   </div>
-  <svg class="wave" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true">
-    <path d="M0 8 Q150 -8 300 8 T600 8 T900 8 T1200 8 V60 H0Z" fill="#ff4f9a"/>
-    <path d="M0 20 Q150 4 300 20 T600 20 T900 20 T1200 20 V60 H0Z" fill="#ff7a1a"/>
-    <path d="M0 32 Q150 16 300 32 T600 32 T900 32 T1200 32 V60 H0Z" fill="var(--green)"/>
-    <path d="M0 44 Q150 28 300 44 T600 44 T900 44 T1200 44 V60 H0Z" fill="var(--bg)"/>
-  </svg>
+  <svg class="wave" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true"><g class="wv"><path d="M0 8 Q150 -8 300 8 T600 8 T900 8 T1200 8 T1500 8 T1800 8 V60 H0Z" fill="#ff4f9a"/><path d="M0 20 Q150 4 300 20 T600 20 T900 20 T1200 20 T1500 20 T1800 20 V60 H0Z" fill="#ff7a1a"/><path d="M0 32 Q150 16 300 32 T600 32 T900 32 T1200 32 T1500 32 T1800 32 V60 H0Z" fill="var(--green)"/><path d="M0 44 Q150 28 300 44 T600 44 T900 44 T1200 44 T1500 44 T1800 44 V60 H0Z" fill="var(--bg)"/></g></svg>
 </header>
 
 <main class="wrap" id="main">
@@ -279,48 +389,6 @@ nav svg{width:22px;height:22px}
     </div>
     <div class="cols" id="phases"></div>
 
-    <div class="vh mt"><div><h2>Contatti e documenti</h2><p class="sub">Chi chiamare e cosa mostrare, sempre a portata di mano.</p></div></div>
-    <div class="grid2">
-      <section class="card">
-        <h3>Contatti</h3>
-        <div id="contacts"></div>
-        <div class="presets" id="presets"></div>
-        <form class="addrow" id="ctform"><input id="ct-n" placeholder="Nome" aria-label="Nome"><input id="ct-r" list="rlist" placeholder="Ruolo" aria-label="Ruolo"><input id="ct-e" type="email" placeholder="Email" aria-label="Email"><input id="ct-p" type="tel" placeholder="Telefono" aria-label="Telefono"><button class="btn">Aggiungi</button><datalist id="rlist"></datalist></form>
-      </section>
-      <section class="card">
-        <h3>Documenti</h3>
-        <div id="docs"></div>
-        <form class="addrow" id="docform"><input id="doc-n" placeholder="Nome del documento" aria-label="Nome del documento"><label class="btn alt fileb" for="doc-f"><span id="doc-fl">Scegli file</span><input id="doc-f" type="file" accept="image/*,application/pdf"></label><button class="btn">Salva</button></form>
-        <p class="sub" id="docHint"></p>
-      </section>
-    </div>
-
-    <div class="vh mt"><div><h2>I tuoi dati</h2></div></div>
-    <div class="grid2">
-    <section class="card">
-      <h3>Account e promemoria</h3>
-      <p style="margin:10px 0 0"><span class="sync" id="sync">Salvato su questo telefono</span></p>
-      <p class="sub" id="acct">Accedi con Google per ritrovare diario, spese e documenti su tutti i tuoi dispositivi.</p>
-      <div class="btns">
-        <button class="btn" type="button" id="login">Accedi con Google</button>
-        <button class="btn alt" type="button" id="logout" hidden>Esci</button>
-        <button class="btn yel" type="button" id="notif">Attiva promemoria</button>
-        <button class="btn alt" type="button" id="install" hidden>Installa l'app</button>
-      </div>
-      <p class="sub" id="notifHint">Ti avviso 3 giorni prima, il giorno prima e il giorno stesso di ogni scadenza.</p>
-    </section>
-    <section class="card">
-      <h3>Copie ed esempi</h3>
-      <p class="sub">Voci, date e cifre di partenza sono esempi. «Svuota esempi» toglie date, cifre, spese, corsi e orari; diario, contatti e documenti restano.</p>
-      <div class="btns">
-        <button class="btn yel" type="button" id="dlBtn">Scarica backup</button>
-        <label class="btn alt fileb" for="imp">Ripristina da backup<input id="imp" type="file" accept=".json,application/json"></label>
-        <button class="btn alt" type="button" id="clear">Svuota esempi</button>
-        <button class="btn alt" type="button" id="reset">Ripristina esempi</button>
-      </div>
-      <p class="sub">Il backup contiene anche foto e documenti. Puoi ripristinare anche un backup della versione precedente di Labas.</p>
-    </section>
-    </div>
   </section>
 
   <section class="view" id="v-soldi">
@@ -359,7 +427,7 @@ nav svg{width:22px;height:22px}
     <div class="vh"><div><h2>Studio</h2><p class="sub">Learning Agreement, magistrale 6701, secondo anno.</p></div></div>
     <div class="grid2">
       <div class="card ringbox">
-        <div class="ring"><svg viewBox="0 0 180 180" id="ring"></svg><div><b id="ectsN">0</b><span>di 30 ECTS</span></div></div>
+        <div class="ring"><svg viewBox="0 0 180 180" id="ring"></svg><div><b id="ectsN">0</b><span id="ectsGoal">di 30 ECTS</span></div></div>
         <div>
           <h3 id="ectsH"></h3>
           <p class="sub" id="ectsT"></p>
@@ -450,6 +518,87 @@ Matteo De Vincenti</pre>
         <div class="fact"><b>Sotto zero</b>spesso a febbraio</div>
         <div class="fact"><b>112</b>numero di emergenza</div>
       </div>
+    </div>
+  </section>
+  <section class="view" id="v-impostazioni">
+    <div class="vh"><div><h2>Impostazioni</h2><p class="sub">Profilo, account, contatti, documenti, promemoria, aspetto e dati.</p></div></div>
+    <div class="scroll setnav" aria-label="Sezioni delle impostazioni"><a href="#s-profilo" data-jump="s-profilo">Profilo</a><a href="#s-account" data-jump="s-account">Account</a><a href="#s-contatti" data-jump="s-contatti">Contatti</a><a href="#s-documenti" data-jump="s-documenti">Documenti</a><a href="#s-promemoria" data-jump="s-promemoria">Promemoria</a><a href="#s-aspetto" data-jump="s-aspetto">Aspetto</a><a href="#s-ripasso" data-jump="s-ripasso">Ripasso</a><a href="#s-dati" data-jump="s-dati">Dati</a><a href="#s-app" data-jump="s-app">App</a></div>
+    <div class="cols">
+      <section class="card set" id="s-profilo">
+        <h3>Profilo</h3>
+        <label class="srow" for="set-name"><span>Nome<small>Per il saluto in alto</small></span><input id="set-name" data-set="name" autocomplete="given-name"></label>
+        <label class="srow" for="set-uni"><span>Università ospitante</span><input id="set-uni" data-set="uni"></label>
+        <label class="srow" for="dep2"><span>Partenza</span><input type="date" id="dep2" data-date="dep"></label>
+        <label class="srow" for="ret2"><span>Rientro</span><input type="date" id="ret2" data-date="ret"></label>
+        <label class="srow" for="set-goal"><span>Obiettivo ECTS<small>Crediti del semestre nel Learning Agreement</small></span><input type="number" id="set-goal" data-set="goal" min="1" max="60" inputmode="numeric"></label>
+      </section>
+      <section class="card set" id="s-account">
+        <h3>Account</h3>
+        <p style="margin:10px 0 0"><span class="sync" id="sync">Salvato su questo telefono</span></p>
+        <p class="sub" id="acct">Accedi con Google per ritrovare diario, spese e documenti su tutti i tuoi dispositivi.</p>
+        <div class="btns">
+          <button class="btn" type="button" id="login">Accedi con Google</button>
+          <button class="btn alt" type="button" id="syncNow" hidden>Sincronizza ora</button>
+          <button class="btn alt" type="button" id="logout" hidden>Esci</button>
+        </div>
+      </section>
+      <section class="card set" id="s-contatti">
+        <h3>Contatti</h3>
+        <div id="contacts"></div>
+        <div class="presets" id="presets"></div>
+        <form class="addrow" id="ctform"><input id="ct-n" placeholder="Nome" aria-label="Nome"><input id="ct-r" list="rlist" placeholder="Ruolo" aria-label="Ruolo"><input id="ct-e" type="email" placeholder="Email" aria-label="Email"><input id="ct-p" type="tel" placeholder="Telefono" aria-label="Telefono"><button class="btn">Aggiungi</button><datalist id="rlist"></datalist></form>
+      </section>
+      <section class="card set" id="s-documenti">
+        <h3>Documenti</h3>
+        <div id="docs"></div>
+        <form class="addrow" id="docform"><input id="doc-n" placeholder="Nome del documento" aria-label="Nome del documento"><label class="btn alt fileb" for="doc-f"><span id="doc-fl">Scegli file</span><input id="doc-f" type="file" accept="image/*,application/pdf"></label><button class="btn">Salva</button></form>
+        <p class="sub" id="docHint"></p>
+      </section>
+      <section class="card set" id="s-promemoria">
+        <h3>Promemoria</h3>
+        <p class="sub" id="notifHint">Ti avviso prima di ogni scadenza della checklist.</p>
+        <div class="btns"><button class="btn yel" type="button" id="notif">Attiva promemoria</button><button class="btn alt" type="button" id="testNotif" hidden>Prova una notifica</button></div>
+        <p class="lbl">Quando avvisarti</p>
+        <div class="chipset" id="leads"></div>
+      </section>
+      <section class="card set" id="s-aspetto">
+        <h3>Aspetto</h3>
+        <div class="srow"><span>Tema</span><span class="seg" data-seg="theme"><button type="button" data-v="auto">Auto</button><button type="button" data-v="light">Chiaro</button><button type="button" data-v="dark">Scuro</button></span></div>
+        <div class="srow"><span>Testo</span><span class="seg" data-seg="text"><button type="button" data-v="n">Normale</button><button type="button" data-v="l">Grande</button></span></div>
+        <label class="srow" for="set-motion"><span>Animazioni<small>La margherita che gira e le transizioni</small></span><input type="checkbox" role="switch" class="sw" id="set-motion" data-flag="motion"></label>
+        <label class="srow" for="set-intro"><span>Intro all'avvio<small>La margherita che sboccia quando apri l'app</small></span><input type="checkbox" role="switch" class="sw" id="set-intro" data-flag="intro"></label>
+        <label class="srow" for="set-start"><span>Sezione iniziale</span><select id="set-start" data-set="start"><option value="oggi">Oggi</option><option value="soldi">Soldi</option><option value="studio">Studio</option><option value="inglese">Lingue</option><option value="vilnius">Vilnius</option></select></label>
+      </section>
+      <section class="card set" id="s-ripasso">
+        <h3>Ripasso</h3>
+        <label class="srow" for="set-en"><span>Frasi in inglese</span><input type="checkbox" role="switch" class="sw" id="set-en" data-flag="en"></label>
+        <label class="srow" for="set-lt"><span>Parole in lituano</span><input type="checkbox" role="switch" class="sw" id="set-lt" data-flag="lt"></label>
+        <div class="srow"><span>Progressi<small id="learnN"></small></span><button class="btn alt" type="button" id="resetDeck">Azzera</button></div>
+      </section>
+      <section class="card set" id="s-dati">
+        <h3>Dati</h3>
+        <p class="sub" id="storage"></p>
+        <div class="btns">
+          <button class="btn yel" type="button" id="dlBtn">Scarica backup</button>
+          <label class="btn alt fileb" for="imp">Ripristina da backup<input id="imp" type="file" accept=".json,application/json"></label>
+        </div>
+        <p class="sub">Il backup contiene anche foto e documenti. Puoi ripristinare anche un backup della versione precedente di Labas.</p>
+        <p class="lbl">Esempi</p>
+        <p class="sub">«Svuota esempi» toglie date, cifre, spese, corsi e orari; diario, contatti e documenti restano.</p>
+        <div class="btns"><button class="btn alt" type="button" id="clear">Svuota esempi</button><button class="btn alt" type="button" id="reset">Ripristina esempi</button></div>
+        <p class="lbl">Zona pericolosa</p>
+        <div class="btns"><button class="btn alt" type="button" id="wipeLocal">Cancella da questo telefono</button><button class="btn alt" type="button" id="wipeCloud" hidden>Elimina i dati dell'account</button></div>
+        <p class="sub">Senza annulla: scarica prima un backup.</p>
+      </section>
+      <section class="card set" id="s-app">
+        <h3>App</h3>
+        <div class="srow"><span>Versione<small id="verTxt"></small></span><button class="btn alt" type="button" id="checkUpd">Aggiorna</button></div>
+        <div class="srow"><span>Introduzione<small>Le schermate di benvenuto del primo avvio</small></span><button class="btn alt" type="button" id="replayIntro">Rivedi</button></div>
+        <div class="srow" id="installRow" hidden><span>Installa Labas<small>Icona sulla schermata Home e uso offline</small></span><button class="btn" type="button" id="install">Installa</button></div>
+        <details class="det"><summary>Novità</summary><ul><li>Impostazioni con profilo, contatti, documenti, promemoria, tema e dati.</li><li>App installabile che funziona offline, con accesso Google e sincronizzazione.</li><li>Promemoria delle scadenze anche ad app chiusa, dove il telefono lo consente.</li></ul></details>
+        <details class="det"><summary>Privacy</summary><p>I dati restano sul tuo telefono. Se accedi con Google, una copia va nel tuo spazio privato su Supabase (server in Irlanda), leggibile solo dal tuo account. Google serve solo per l'accesso. Niente pubblicità, niente tracciamento.</p></details>
+        <details class="det"><summary>Licenze</summary><p>Supabase JS 2.100.0 (MIT). Caratteri Shrikhand e DM Sans (SIL Open Font License 1.1).</p></details>
+      </section>
     </div>
   </section>
 </main>
