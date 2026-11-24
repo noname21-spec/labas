@@ -23,7 +23,7 @@ const ENG=[
 ];
 const HOUSE='Miniappartamento: contratto, caparra e consegna delle chiavi';
 const BAGT=[['valigia','Giaccone imbottito per temperature sotto zero','',0],['valigia','Berretto, sciarpa e guanti','',0],['valigia','Scarponcini impermeabili con suola antiscivolo','',0],['valigia','Intimo termico e calze di lana','',0],['valigia','Adattatore per prese tipo F (le spine italiane grandi non entrano)','',0],['valigia','Crema idratante e burrocacao','',0],['valigia','Documenti e Learning Agreement nel bagaglio a mano','',0],['valigia','Pesare la valigia prima di partire','2027-01-31',0]];
-const VER='1.2.0';
+const VER='1.2.1';
 const SETD=()=>({name:'Matteo',uni:'European Humanities University',goal:30,theme:'auto',text:'n',motion:true,intro:true,start:'oggi',leads:[3,1,0],en:true,lt:true,onb:false});
 const mkTask=([ph,t,due,d])=>({id:uid(),ph,t,due,done:!!d});
 const DEF=()=>{
@@ -400,6 +400,8 @@ document.addEventListener('visibilitychange',()=>{if(document.visibilityState===
 try{if(window.supabase&&window.supabase.createClient)SB=window.supabase.createClient(SB_URL,SB_KEY,{auth:{flowType:'pkce',detectSessionInUrl:true,persistSession:true,autoRefreshToken:true,storageKey:'labas-auth'}})}catch(e){SB=null}
 if(SB){SB.auth.onAuthStateChange((ev,session)=>{const u=session&&session.user||null;if((u&&u.id)!==(USER&&USER.id)){USER=u;setTimeout(()=>{acctUI();docs();if(USER){pull();drain()}},0)}else if(u)USER=u;
  if(/[?&]code=/.test(location.search))history.replaceState(null,'',location.pathname+location.hash)})}
-if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').then(()=>remind()).catch(()=>{});
+if('serviceWorker' in navigator){const had=!!navigator.serviceWorker.controller;let reloaded=false;
+ navigator.serviceWorker.addEventListener('controllerchange',()=>{if(had&&!reloaded){reloaded=true;location.reload()}});
+ navigator.serviceWorker.register('sw.js',{updateViaCache:'none'}).then(r=>{remind();r.update().catch(()=>{});document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')r.update().catch(()=>{})})}).catch(()=>{})}
 petals();all();route();acctUI();notifUI();migrateLegacy();remind();intro();
 }
