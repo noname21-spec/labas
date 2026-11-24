@@ -287,7 +287,7 @@ nav a.on svg{animation:hop .45s cubic-bezier(.2,.9,.3,1.6)}
 .gear svg{transition:transform .5s cubic-bezier(.2,.9,.3,1.3)}
 .gear.on svg{transform:rotate(90deg)}
 .gear:active,.chip:active{transform:translate(3px,3px);box-shadow:none}
-#splash{position:fixed;inset:0;z-index:200;background:var(--yel);display:grid;place-content:center;justify-items:center;gap:4px;transition:opacity .4s,transform .45s;cursor:pointer;overflow:hidden}
+#splash{position:fixed;inset:0;z-index:200;background:var(--heroS);display:grid;place-content:center;justify-items:center;gap:4px;transition:opacity .4s,transform .45s;cursor:pointer;overflow:hidden}
 #splash.out{opacity:0;transform:scale(1.18);pointer-events:none}
 .sp-daisy{width:min(58vw,240px);height:auto;overflow:visible}
 .sp-g{transform-box:view-box;transform-origin:100px 100px;animation:spin 9s linear .8s infinite}
@@ -566,7 +566,10 @@ h2,.lbl,.tcell b,.way span,.num b,.itop>b,.ring b,.wrclock,.up b,.exr b.n,.fact 
 #toast{border-radius:20px;line-height:1.3;width:max-content;max-width:min(calc(100% - 24px),460px);font-size:15px}
 #toast span{padding:6px 0}
 /* ===== anni '70: stili, poster, raggi, lava, Polaroid, Corben ===== */
-:root{--inkL:#22140a;--cardL:#fffaf0;--softL:#ffe7a3;--bgL:#fff3d1;--mint:#46d394}
+:root{--inkL:#22140a;--cardL:#fffaf0;--softL:#ffe7a3;--bgL:#fff3d1;--mint:#46d394;--heroS:#ffc21a}
+:root[data-style=sunset]{--heroS:#e8a317}
+:root[data-style=psy]{--heroS:#b46bff}
+:root{--hero:light-dark(var(--heroS),#000)}
 :root[data-style=sunset]{--pink:#d9541e;--orange:#e8a317;--yel:#f2c14e;--mint:#a9c34c;--green:light-dark(#5f7a22,#a9c34c);--red:light-dark(#b3261e,#ff7a6b);--bgL:#f6e7c8;--cardL:#fcf3e0;--softL:#efd6a2;--inkL:#3a2212}
 :root[data-style=psy]{--pink:#ff2fa8;--orange:#ff8a00;--yel:#ffe600;--mint:#00e0b0;--green:light-dark(#00876c,#00e0b0);--bgL:#fbefff;--cardL:#fffaff;--softL:#f0d9ff;--inkL:#2a0f3a}
 :root{--bg:light-dark(var(--bgL),#000);--ink:light-dark(var(--inkL),#fff2dc)}
@@ -607,6 +610,59 @@ body{--rayc:light-dark(color-mix(in srgb,#fff 50%,transparent),color-mix(in srgb
 .stylepick button.on{border:2.5px solid var(--ink);box-shadow:3px 3px 0 var(--sh)}
 .stylepick span{display:flex;gap:3px}
 .stylepick i{width:16px;height:16px;border-radius:50%;border:1.5px solid #22140a}
+/* ===== 2.0 ===== */
+.tband{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:12px;align-items:center;background:var(--soft);border:1px solid var(--line);border-radius:18px;padding:10px 14px}
+.tb-w{display:flex;align-items:center;gap:6px}
+.tb-w .wico{width:42px;height:42px}
+.tb-w b{font-family:Corben,serif;font-size:30px;line-height:1;color:var(--acc)}
+.tb-m span{display:block;font-weight:700;font-size:15px;line-height:1.25}
+.tb-m small,.tb-s small{display:block;font-size:13px;color:var(--mute)}
+.tb-m small b{color:var(--ink)}
+.tb-s{text-align:right}
+.tb-s b{font-family:Corben,serif;font-size:20px;color:var(--acc)}
+.tnext{margin-top:6px}
+.sky{position:absolute;inset:0;pointer-events:none;z-index:0;opacity:0;transition:opacity 1.2s,background 1.2s}
+.hero.tod-dawn .sky{opacity:1;background:linear-gradient(180deg,rgba(255,170,200,.55),transparent 75%)}
+.hero.tod-dusk .sky{opacity:1;background:linear-gradient(180deg,rgba(255,96,64,.5),rgba(255,79,154,.25) 45%,transparent 80%)}
+.hero.tod-night .sky{opacity:1;background:linear-gradient(180deg,rgba(18,14,60,.72),rgba(18,14,60,.25) 70%,transparent)}
+.hero.tod-night #hello{color:#fff2dc}
+.hero.tod-night .cline,.hero.tod-night .lead{color:#fff2dc}
+.wxfx{position:absolute;inset:0;pointer-events:none;z-index:1;overflow:hidden}
+.wxfx i{position:absolute;top:-12px;left:var(--x);animation:fall var(--t) linear var(--d) infinite}
+.wxfx.snow i{width:var(--s);height:var(--s);border-radius:50%;background:#fff;box-shadow:0 0 0 1.5px rgba(34,20,10,.25)}
+.wxfx.rain i{width:2px;height:16px;border-radius:2px;background:rgba(40,120,200,.75);transform:rotate(12deg)}
+@keyframes fall{to{transform:translate(var(--dx,0),calc(var(--h,320px) + 24px))}}
+.wxfx.rain i{animation-name:rainfall}
+@keyframes rainfall{to{transform:translate(-30px,calc(var(--h,320px) + 24px)) rotate(12deg)}}
+.hero.wx-sun .rays{opacity:1}
+.hero.wx-cloud .rays{opacity:.45}
+.hero.wx-rain .rays,.hero.wx-snow .rays{opacity:.25}
+.rays{transition:opacity 1s}
+.hero.compact .wxfx i:nth-child(n+12){display:none}
+.tick span{transition:transform .2s}
+.task.done .tick span{background:none!important;border:0;width:34px;height:34px}
+.task.done .tick span svg{width:34px;height:34px;overflow:visible}
+.task.just .tick span svg{animation:bloom .6s cubic-bezier(.3,1.6,.5,1)}
+@keyframes bloom{from{transform:scale(.2) rotate(-90deg)}}
+.mini i,.trk i,.stackbar i{background-image:repeating-linear-gradient(-45deg,rgba(255,255,255,.32) 0 6px,transparent 6px 12px);background-size:34px 34px;animation:stripes 1.6s linear infinite}
+.mini i{background-color:transparent;background-image:repeating-linear-gradient(-45deg,var(--pink) 0 8px,var(--orange) 8px 16px,var(--yel) 16px 24px,var(--mint) 24px 32px);background-size:45.25px 45.25px}
+@keyframes stripes{to{background-position:34px 0}}
+nav{display:grid!important;grid-template-columns:1.5fr 1.5fr 70px 1fr 1fr 1fr;align-items:center;border:3px solid transparent!important;background:linear-gradient(var(--card),var(--card)) padding-box,linear-gradient(90deg,var(--pink) 0 25%,var(--orange) 25% 50%,var(--yel) 50% 75%,var(--mint) 75%) border-box!important;overflow:visible}
+.navplus{justify-self:center;width:62px;height:62px;margin-top:-30px;border-radius:50%;border:3px solid var(--ink);background:var(--sec);color:#22140a;display:grid;place-items:center;box-shadow:3px 3px 0 var(--sh),0 0 18px var(--glow);cursor:pointer;transition:transform .2s}
+.navplus svg{width:28px;height:28px}
+.navplus:active{transform:translate(2px,2px) scale(.94)}
+#fab{display:none!important}
+body #toast{bottom:calc(98px + env(safe-area-inset-bottom,0px))}
+.setnav a,.setnav button{border-radius:12px!important;border:2px solid var(--edge);transition:background .25s,border-color .25s,transform .2s}
+.setnav a.on{background:var(--sec);border-color:var(--ink);color:#22140a;transform:translateY(-1px);box-shadow:2px 2px 0 var(--sh)}
+input,select,textarea{border-radius:16px;transition:border-color .2s,box-shadow .2s}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--sec);box-shadow:0 0 0 3px color-mix(in srgb,var(--sec) 35%,transparent)}
+.fl{position:relative;display:flex;flex:1 1 150px;min-width:0}
+.fl.n{flex:0 1 110px}
+.fl>input,.fl>select{width:100%;flex:1}
+.fl>span{position:absolute;left:12px;top:-9px;font-size:12px;font-weight:800;line-height:1.2;background:var(--card);padding:0 6px;border-radius:6px;color:var(--mute);opacity:0;transform:translateY(6px);transition:opacity .2s,transform .2s;pointer-events:none;white-space:nowrap;max-width:calc(100% - 20px);overflow:hidden;text-overflow:ellipsis}
+.fl:focus-within>span,.fl.has>span{opacity:1;transform:none}
+.fl:focus-within>span{color:var(--acc)}
 .empty{border:2px dashed var(--edge);border-radius:18px;padding:18px;text-align:center;color:var(--mute);margin:12px 0 0}
 .note{color:var(--mute);font-size:14px;margin:18px 0 0}
 #lb{position:fixed;inset:0;background:rgba(10,6,2,.88);display:none;place-items:center;z-index:30;padding:20px;border:0;width:100%;cursor:zoom-out}
@@ -627,7 +683,7 @@ nav svg{width:22px;height:22px}
 <div id="splash" aria-hidden="true">
   <svg class="sp-daisy" viewBox="0 0 200 200"><g class="sp-g"><g id="spPetals"></g><g class="sp-c"><circle cx="100" cy="100" r="58" style="fill:var(--yel)" stroke="#22140a" stroke-width="3.5"/><circle cx="100" cy="100" r="50" fill="none" stroke="#22140a" stroke-width="2" stroke-dasharray="2 7" stroke-linecap="round"/></g><g class="sp-face"><path d="M80 104 q20 20 40 0" fill="none" stroke="#22140a" stroke-width="5" stroke-linecap="round"/><circle cx="85" cy="88" r="5.5" fill="#22140a"/><circle cx="115" cy="88" r="5.5" fill="#22140a"/></g></g></svg>
   <b class="sp-t">Labas</b>
-  <svg class="sp-wave" viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0 10 Q150 -6 300 10 T600 10 T900 10 T1200 10 V60 H0Z" style="fill:var(--pink)"/><path d="M0 26 Q150 10 300 26 T600 26 T900 26 T1200 26 V60 H0Z" style="fill:var(--orange)"/><path d="M0 42 Q150 26 300 42 T600 42 T900 42 T1200 42 V60 H0Z" fill="#0f6b45"/></svg>
+  <svg class="sp-wave" viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0 10 Q150 -6 300 10 T600 10 T900 10 T1200 10 V60 H0Z" style="fill:var(--pink)"/><path d="M0 26 Q150 10 300 26 T600 26 T900 26 T1200 26 V60 H0Z" style="fill:var(--orange)"/><path d="M0 42 Q150 26 300 42 T600 42 T900 42 T1200 42 V60 H0Z" style="fill:var(--mint)"/></svg>
 </div>
 <div id="onb" role="dialog" aria-modal="true" aria-labelledby="onbT" hidden>
   <div class="onb-in">
@@ -646,6 +702,7 @@ nav svg{width:22px;height:22px}
 </div>
 <header class="hero" id="hero">
   <svg id="bgfl" aria-hidden="true"></svg>
+  <div class="sky" aria-hidden="true"></div><div class="wxfx" id="wxfx" aria-hidden="true"></div>
   <div class="lava" aria-hidden="true"><i style="--s:74px;--l:6%;--c:var(--pink);--t:19s;--dl:-3s"></i><i style="--s:112px;--l:38%;--c:var(--orange);--t:24s;--dl:-11s"></i><i style="--s:56px;--l:74%;--c:var(--mint);--t:17s;--dl:-6s"></i><i style="--s:88px;--l:58%;--c:var(--pink);--t:27s;--dl:-18s"></i><i style="--s:62px;--l:22%;--c:var(--yel);--t:21s;--dl:-14s"></i></div>
   <div class="wrap hgrid">
     <div class="htxt">
@@ -670,10 +727,10 @@ nav svg{width:22px;height:22px}
 <main class="wrap" id="main">
   <section class="view" id="v-oggi">
     <section class="card hi today" id="today">
-      <div class="tgrid">
-        <div class="tcell"><small>A Vilnius sono le</small><b id="vClock">--:--</b><span id="vDate"></span></div>
-        <div class="tcell tw"><span class="wico" id="wIcon"></span><div><b id="wTemp"><i class="skel" style="width:2.4em;height:.8em"></i></b><span id="wDesc"><i class="skel" style="width:9em"></i></span></div></div>
-        <div class="tcell"><small>Tramonto</small><b id="wSun"><i class="skel" style="width:2.6em;height:.8em"></i></b><span id="wDay"></span></div>
+      <div class="tband">
+        <div class="tb-w"><span class="wico" id="wIcon"></span><b id="wTemp"><i class="skel" style="width:1.6em;height:.8em"></i></b></div>
+        <div class="tb-m"><span id="wDesc"><i class="skel" style="width:8em"></i></span><small>A Vilnius sono le <b id="vClock">--:--</b><span id="vDate" hidden></span></small></div>
+        <div class="tb-s"><small>tramonto</small><b id="wSun"><i class="skel" style="width:2.4em;height:.8em"></i></b><span id="wDay" hidden></span></div>
       </div>
       <div class="tnext" id="tNext"></div>
     </section>
@@ -994,6 +1051,7 @@ Matteo De Vincenti</pre>
 <nav aria-label="Sezioni">
   <a href="#oggi" id="n-oggi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="3"/><path d="M12 9a3 3 0 1 1 0-6 3 3 0 0 1 0 6M12 15a3 3 0 1 1 0 6 3 3 0 0 1 0-6M9 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0M15 12a3 3 0 1 1 6 0 3 3 0 0 1-6 0"/></svg>Oggi</a>
   <a href="#soldi" id="n-soldi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5a4 4 0 1 0 0 7M7 11h6M7 13.5h6"/></svg>Soldi</a>
+  <button type="button" id="navPlus" class="navplus" aria-label="Aggiungi spesa o diario"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
   <a href="#studio" id="n-studio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M4 5.5C7 4 9.5 4 12 6c2.5-2 5-2 8-.5V19c-3-1.5-5.5-1.5-8 .5-2.5-2-5-2-8-.5z"/><path d="M12 6v13.5"/></svg>Studio</a>
   <a href="#inglese" id="n-inglese"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M4 5h16v11H10l-4 3.5V16H4z"/><path d="M8 9.5h8M8 12.5h5" stroke-linecap="round"/></svg>Lingue</a>
   <a href="#vilnius" id="n-vilnius"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Vilnius</a>
