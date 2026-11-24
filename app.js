@@ -23,7 +23,7 @@ const ENG=[
 ];
 const HOUSE='Miniappartamento: contratto, caparra e consegna delle chiavi';
 const BAGT=[['valigia','Giaccone imbottito per temperature sotto zero','',0],['valigia','Berretto, sciarpa e guanti','',0],['valigia','Scarponcini impermeabili con suola antiscivolo','',0],['valigia','Intimo termico e calze di lana','',0],['valigia','Adattatore per prese tipo F (le spine italiane grandi non entrano)','',0],['valigia','Crema idratante e burrocacao','',0],['valigia','Documenti e Learning Agreement nel bagaglio a mano','',0],['valigia','Pesare la valigia prima di partire','2027-01-31',0]];
-const VER='1.4.0';
+const VER='1.5.0';
 const SETD=()=>({name:'Matteo',uni:'European Humanities University',goal:30,theme:'auto',text:'n',motion:true,intro:true,start:'oggi',leads:[3,1,0],en:true,lt:true,onb:false,pin:null,push:false,cal:null});
 const mkTask=([ph,t,due,d])=>({id:uid(),ph,t,due,done:!!d});
 const DEF=()=>{
@@ -118,7 +118,7 @@ function hero(){
  $('#cd').textContent=big;$('#cdl').textContent=lab;$('#cline').textContent=line;$('#daisy').setAttribute('aria-label',line||lab);
  const done=S.tasks.filter(x=>x.done).length,bal=sum(S.inc)-sum(S.exp),ects=S.courses.reduce((t,c)=>t+(+c.e||0),0);
  $('#chips').innerHTML=`<a class="chip" href="#oggi">Checklist ${done}/${S.tasks.length}</a><a class="chip" href="#soldi">${bal>=0?'+':'−'}${eur(Math.round(Math.abs(bal)))} al mese</a><a class="chip" href="#studio">${ects}/${G()} ECTS</a>`;
- nums();if($('#tNext'))todayCard();
+ nums();petalProg();if($('#tNext'))todayCard();
 }
 function upcoming(){
  const L=S.tasks.filter(t=>!t.done&&t.due&&ddiff(t.due)!==null).sort((x,y)=>x.due<y.due?-1:1).slice(0,4);
@@ -228,8 +228,8 @@ function diary(){
 let numTxt='';
 function nums(){
  const z=stay(),days=z.st==='during'?z.k:z.st==='after'?z.tot:0,pl=albumSet().size,ects=S.courses.filter(c=>c.s).reduce((t,c)=>t+(+c.e||0),0),ph=S.learned.length+S.lt.length;
- const N=[[z.st==='before'?z.a:days,z.st==='before'?'giorni alla partenza':'giorni a Vilnius'],[S.diary.length,'pagine di diario'],[pl,'posti nell\'album'],[ects,'ECTS superati'],[ph,'frasi imparate'],[eur(Math.round(sum(S.log))),'spese registrate']];
- $('#nums').innerHTML=N.map(([v,l])=>`<div class="num"><b>${esc(v)}</b>${l}</div>`).join('');
+ const N=[[z.st==='before'?z.a:days,z.st==='before'?'giorni alla partenza':'giorni a Vilnius'],[S.diary.length,'pagine di diario'],[pl,'posti nell\'album'],[ects,'ECTS superati'],[ph,'frasi imparate'],[Math.round(sum(S.log)),'spese registrate','eur']];
+ $('#nums').innerHTML=N.map(([v,l,f])=>`<div class="num"><b data-n="${+v||0}" data-f="${f||''}">${esc(f==='eur'?eur(v):v)}</b>${l}</div>`).join('');
  numTxt=`Il mio Erasmus a Vilnius in numeri: ${days} giorni a Vilnius, ${S.diary.length} pagine di diario, ${pl} posti visitati, ${ects} ECTS superati, ${ph} frasi imparate tra inglese e lituano.`;
 }
 function all(){$('#dep').value=S.dep;$('#ret').value=S.ret;settingsUI();$('#d-d').value=iso(new Date());$('#l-d').value=iso(new Date());tasks();budget();courses();sched();english();buildDeck();diary();contacts();docs();hero();extrasAll()}
@@ -238,14 +238,23 @@ const snapDel=(fn,f)=>{const p=JSON.stringify(S);fn();if(f)dropFile(f);toast('El
 const VIEWS=['oggi','soldi','studio','inglese','vilnius','impostazioni'];let curV='';
 function route(){const h=location.hash.slice(1),v=VIEWS.includes(h)?h:(VIEWS.includes(S.set.start)?S.set.start:'oggi');
  VIEWS.forEach(x=>{$('#v-'+x).classList.toggle('on',x===v);const n=document.getElementById('n-'+x);if(n)n.classList.toggle('on',x===v)});$('#gear').classList.toggle('on',v==='impostazioni');document.body.dataset.view=v;
- if(v!==curV){curV=v;const vw=$('#v-'+v);vw.classList.add('enter');setTimeout(()=>vw.classList.remove('enter'),1100);let i=0;$('#v-'+v).querySelectorAll('.card,.day,.wk article,.pc,.num').forEach(el=>el.style.setProperty('--i',Math.min(i++,12)));if(v==='studio'){const rg=$('#ring');rg.classList.add('anim');setTimeout(()=>rg.classList.remove('anim'),1100)}if(v==='impostazioni')storageInfo();if(v==='vilnius')setTimeout(initMap,80);if(v==='oggi'){weather();todayCard()}}
+ if(v!==curV){const prevV=curV;curV=v;setTimeout(themeMeta,0);if(prevV){const dz=$('#daisy');if(dz){dz.classList.remove('whirl');void dz.offsetWidth;dz.classList.add('whirl');setTimeout(()=>dz.classList.remove('whirl'),750)}}
+ if(v==='soldi'){const B=sum(S.inc)-sum(S.exp);countTo($('#bal'),B,x=>(x>=0?'+':'−')+eur(Math.round(Math.abs(x))))}
+ if(v==='studio'){const P=S.courses.reduce((t,c)=>t+(+c.e||0),0);countTo($('#ectsN'),P,x=>String(Math.round(x)))}
+ if(v==='vilnius')setTimeout(()=>document.querySelectorAll('#nums b[data-n]').forEach(b=>{const n=+b.dataset.n;countTo(b,n,x=>b.dataset.f==='eur'?eur(Math.round(x)):String(Math.round(x)),900)}),120);const vw=$('#v-'+v);vw.classList.add('enter');setTimeout(()=>vw.classList.remove('enter'),1100);let i=0;$('#v-'+v).querySelectorAll('.card,.day,.wk article,.pc,.num').forEach(el=>el.style.setProperty('--i',Math.min(i++,12)));if(v==='studio'){const rg=$('#ring');rg.classList.add('anim');setTimeout(()=>rg.classList.remove('anim'),1100)}if(v==='impostazioni')storageInfo();if(v==='vilnius')setTimeout(initMap,80);if(v==='oggi'){weather();todayCard()}}
  $('#hero').classList.toggle('compact',v!=='oggi');
  const top=$('#main').offsetTop-12;if(window.scrollY>top)window.scrollTo(0,0);}
-function petals(){let o='';for(let i=0;i<14;i++)o+=`<ellipse cx="100" cy="40" rx="17" ry="38" fill="${i%2?'#ff7a1a':'#ff4f9a'}" stroke="#22140a" stroke-width="3.5" transform="rotate(${(i*360/14).toFixed(2)} 100 100)"/>`;$('#petals').innerHTML=o}
+function petals(){let o='';for(let i=0;i<14;i++)o+=`<ellipse class="pt" cx="100" cy="40" rx="17" ry="38" style="fill:var(--poff)" stroke="#22140a" stroke-width="3.5" transform="rotate(${(i*360/14).toFixed(2)} 100 100)"/>`;$('#petals').innerHTML=o}
+function petalProg(){const L=S.tasks,dn=L.filter(x=>x.done).length,k=stay().st==='after'?14:Math.round(14*(L.length?dn/L.length:0));
+ document.querySelectorAll('#petals .pt').forEach((e,i)=>{e.style.fill=i<k?(i%2?'#ff7a1a':'#ff4f9a'):'var(--poff)'});const d=$('#daisy');if(d)d.title=`La margherita sboccia con la checklist: ${k} petali su 14`}
+const isDark=()=>S.set.theme==='dark'||(S.set.theme!=='light'&&matchMedia('(prefers-color-scheme: dark)').matches);
+function themeMeta(){const m=document.querySelector('meta[name=theme-color]');if(!m)return;m.setAttribute('content',isDark()?'#000000':(getComputedStyle(document.body).getPropertyValue('--sec').trim()||'#ffc21a'))}
+function countTo(el,to,f,dur){if(!el||calm()||!isFinite(to))return;const t0=performance.now(),D=dur||750;const step=n=>{const k=Math.min(1,(n-t0)/D),e=1-(1-k)**3;el.textContent=f(to*e);if(k<1)requestAnimationFrame(step);else el.textContent=f(to)};requestAnimationFrame(step)}
 const bg=$('#bgfl');
 function flowers(){const W=bg.clientWidth,H=bg.clientHeight;if(!W)return;let r=11;const rnd=()=>(r=r*16807%2147483647)/2147483647;const hb=bg.getBoundingClientRect(),tr=Math.max(...['#hello','#lead','#chips'].map(q=>{const e=$(q);return e&&e.offsetParent?e.getBoundingClientRect().right-hb.left:0}))+14,x0=Math.min(Math.max(tr,W*.5),W-60)/W;
  const cols=['#ff4f9a','#ff7a1a','#fff3d1','#46d394'];let o='';
  for(let i=0;i<12;i++){const x=W*(x0+rnd()*(1.04-x0)),y=H*(.12+rnd()*.85),k=.4+rnd()*.6;o+=`<use href="#fl" transform="translate(${x.toFixed(1)} ${y.toFixed(1)}) scale(${k.toFixed(2)}) rotate(${Math.round(rnd()*72)})" style="color:${cols[i%4]}"/>`}
+ if(isDark()){let st='';for(let i=0;i<26;i++){const sx=W*rnd(),sy=H*rnd()*.9,sr=.6+rnd()*1.6;st+=`<circle cx="${sx.toFixed(1)}" cy="${sy.toFixed(1)}" r="${sr.toFixed(1)}" fill="#fff2dc" opacity="${(.35+rnd()*.6).toFixed(2)}"/>`}o=st+o}
  bg.innerHTML=`<defs><g id="fl">${[0,72,144,216,288].map(a=>`<circle cx="0" cy="-22" r="16" fill="currentColor" stroke="#22140a" stroke-width="3" transform="rotate(${a})"/>`).join('')}<circle r="12" fill="#ffc21a" stroke="#22140a" stroke-width="3"/></g></defs>${o}`}
 const ro=new ResizeObserver(flowers);ro.observe(bg);
 async function copyText(t){try{await navigator.clipboard.writeText(t);toast('Copiato')}catch(e){toast('Copia non riuscita: tieni premuto sul testo per selezionarlo')}}
@@ -361,7 +370,7 @@ const LEADS=[[7,'7 giorni prima'],[3,'3 giorni prima'],[1,'il giorno prima'],[0,
 function leadsText(){const L=LEADS.filter(([n])=>S.set.leads.includes(n)).map(x=>x[1]);if(!L.length)return'Nessun momento scelto: seleziona almeno un avviso qui sotto.';return`Ti avviso ${L.length>1?L.slice(0,-1).join(', ')+' e '+L[L.length-1]:L[0]} di ogni scadenza della checklist.`}
 function applySettings(){const r=document.documentElement,st=S.set;if(st.theme==='auto')delete r.dataset.theme;else r.dataset.theme=st.theme;r.classList.toggle('big',st.text==='l');r.classList.toggle('calm',st.motion===false);
  $('#hello').textContent=st.name&&st.name.trim()?`Labas, ${st.name.trim()}!`:'Labas!';
- const dark=st.theme==='dark'||(st.theme==='auto'&&matchMedia('(prefers-color-scheme: dark)').matches),m=document.querySelector('meta[name=theme-color]');if(m)m.setAttribute('content',dark?'#142b4a':'#ffc21a')}
+ const dark=st.theme==='dark'||(st.theme==='auto'&&matchMedia('(prefers-color-scheme: dark)').matches);themeMeta();flowers()}
 function settingsUI(){const st=S.set;
  $('#set-name').value=st.name||'';$('#set-uni').value=st.uni||'';$('#dep2').value=S.dep;$('#ret2').value=S.ret;$('#set-goal').value=st.goal;$('#set-start').value=st.start;
  $('#set-motion').checked=st.motion!==false;$('#set-intro').checked=st.intro!==false;$('#set-en').checked=st.en!==false;$('#set-lt').checked=st.lt!==false;
