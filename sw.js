@@ -1,5 +1,5 @@
 /* Labas: app offline e promemoria delle scadenze */
-const C='labas-v10';
+const C='labas-v11';
 const F=['./','index.html','app.js','manifest.webmanifest','icon-96.png','icon-192.png','icon-512.png','icon-maskable-512.png','apple-touch-icon.png','lib/supabase.js','lib/shrikhand-latin.woff2','lib/shrikhand-latin-ext.woff2','lib/dmsans-latin.woff2','lib/dmsans-latin-ext.woff2','lib/leaflet.js','lib/leaflet.css','lib/jspdf.umd.min.js','lib/images/marker-icon.png','lib/images/layers.png'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(C).then(c=>c.addAll(F.map(u=>new Request(u,{cache:'reload'})))).catch(()=>{}));self.skipWaiting()});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(n=>/^labas-/.test(n)&&n!==C).map(n=>caches.delete(n)))).then(()=>self.clients.claim()))});

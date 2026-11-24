@@ -495,6 +495,47 @@ nav a.on{background:var(--sec)!important}
 .mhome.uni{background:#ff7eb3}
 .mhome svg{width:18px;height:18px}
 @media(max-width:400px){.ways{grid-template-columns:1fr}}
+.card{border:1.5px solid var(--edge);box-shadow:none}
+.card.hi{border:2.5px solid var(--ink);box-shadow:4px 4px 0 var(--sh)}
+h3{font-family:"DM Sans",system-ui,sans-serif;font-weight:800;font-size:19px;letter-spacing:0;line-height:1.25}
+.phdone summary b,.wk h4{font-family:"DM Sans",system-ui,sans-serif;font-weight:800;font-size:18px}
+.setnav.sticky{position:sticky;top:0;z-index:6;background:var(--bg);margin:-6px -4px 14px;padding:10px 4px 10px}
+.setnav a{background:var(--card)}
+.anc{scroll-margin-top:70px}
+.addd{border:1.5px dashed var(--edge);background:none;border-radius:99px;padding:3px 12px;min-height:30px;font-size:14px;font-weight:700;color:var(--mute);cursor:pointer;margin-top:3px}
+.addd:hover{color:var(--ink);border-color:var(--ink)}
+.skel{display:inline-block;width:100%;height:1em;border-radius:8px;vertical-align:middle;background:linear-gradient(90deg,color-mix(in srgb,var(--ink) 9%,transparent) 25%,color-mix(in srgb,var(--ink) 18%,transparent) 50%,color-mix(in srgb,var(--ink) 9%,transparent) 75%);background-size:300% 100%;animation:shimmer 1.3s linear infinite}
+@keyframes shimmer{from{background-position:100% 0}to{background-position:-100% 0}}
+.skbox{border:1.5px solid var(--line);border-radius:16px;padding:12px;margin-top:10px;display:grid;gap:8px}
+.set>h3{display:flex;align-items:center;gap:10px}
+.set>h3::before{content:"";flex:none;width:34px;height:34px;border-radius:10px;border:2px solid var(--ink);background:var(--icb,#ffc21a) var(--ic) center/20px no-repeat}
+#s-profilo{--icb:#ff7eb3;--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2322140a' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='8' r='4'/%3E%3Cpath d='M4 21a8 8 0 0 1 16 0'/%3E%3C/svg%3E")}
+#s-account{--icb:#7cc6f2;--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2322140a' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 18h10a4 4 0 0 0 0-8 6 6 0 0 0-11.5 1.5A3.3 3.3 0 0 0 7 18z'/%3E%3C/svg%3E")}
+#s-contatti{--icb:#4fd69a;--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2322140a' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2'/%3E%3C/svg%3E")}
+#s-documenti{--icb:#ff9a3c;--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2322140a' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 3h7l5 5v13H7z'/%3E%3Cpath d='M14 3v5h5M10 13h6M10 17h6'/%3E%3C/svg%3E")}
+#s-calendario{--icb:#ff6b84;--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2322140a' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='4' y='5' width='16' height='15' rx='3'/%3E%3Cpath d='M4 10h16M9 3v4M15 3v4'/%3E%3C/svg%3E")}
+#s-promemoria{--icb:#ffc21a;--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2322140a' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 16V11a6 6 0 0 1 12 0v5l2 2H4z'/%3E%3Cpath d='M10 21h4'/%3E%3C/svg%3E")}
+#s-aspetto{--icb:#c4b2ff;--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2322140a' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='4'/%3E%3Cpath d='M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4'/%3E%3C/svg%3E")}
+#s-ripasso{--icb:#ff9a3c;--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2322140a' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='6' width='14' height='12' rx='2'/%3E%3Cpath d='M7 3h12a2 2 0 0 1 2 2v11'/%3E%3C/svg%3E")}
+#s-dati{--icb:#4fd69a;--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2322140a' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cellipse cx='12' cy='6' rx='7' ry='3'/%3E%3Cpath d='M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6'/%3E%3C/svg%3E")}
+#s-app{--icb:#ffc21a;--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2322140a' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='7' y='2' width='10' height='20' rx='3'/%3E%3Cpath d='M11 18h2'/%3E%3C/svg%3E")}
+.btn:not(.alt):not(.yel):not(.danger){background:var(--sec)}
+.seg button.on,.setnav button.on{background:var(--sec)!important}
+nav a.on svg{fill:rgba(255,250,240,.75)}
+nav a svg{transition:transform .25s}
+nav a:active svg{transform:scale(.85)}
+:root:not(.dk) .leaflet-tile-pane{filter:sepia(.32) saturate(1.25) hue-rotate(-10deg) brightness(1.03)}
+:root.dk .leaflet-tile-pane{filter:invert(1) hue-rotate(180deg) brightness(.82) contrast(.92) saturate(.55)}
+:root.dk .leaflet-container{background:#000}
+.rline{display:flex;align-items:center;gap:3px;margin:10px 0 4px;height:26px}
+.rseg{position:relative;height:8px;border-radius:99px;min-width:22px}
+.rseg.w{height:0;border-top:3px dotted var(--mute);border-radius:0}
+.rseg.t{height:12px;background:var(--sec);border:2px solid var(--ink)}
+.rseg.t b{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:var(--ink);color:var(--bg);font-size:12px;font-weight:800;border-radius:99px;padding:1px 7px;white-space:nowrap}
+.rdot{width:12px;height:12px;flex:none;border-radius:50%;background:var(--card);border:2.5px solid var(--ink)}
+.rdot.end{background:var(--ink)}
+.rtimes{display:flex;justify-content:space-between;font-size:13px;color:var(--mute);font-weight:700}
+.rtxt{font-size:14px;margin-top:4px}
 .empty{border:2px dashed var(--edge);border-radius:18px;padding:18px;text-align:center;color:var(--mute);margin:12px 0 0}
 .note{color:var(--mute);font-size:14px;margin:18px 0 0}
 #lb{position:fixed;inset:0;background:rgba(10,6,2,.88);display:none;place-items:center;z-index:30;padding:20px;border:0;width:100%;cursor:zoom-out}
@@ -520,7 +561,7 @@ nav svg{width:22px;height:22px}
 <div id="onb" role="dialog" aria-modal="true" aria-labelledby="onbT" hidden>
   <div class="onb-in">
     <div class="onb-art"><svg viewBox="0 0 200 200" id="onbDaisy"><g id="onbPetals"></g><circle cx="100" cy="100" r="58" fill="#ffc21a" stroke="#22140a" stroke-width="3.5"/><circle cx="100" cy="100" r="50" fill="none" stroke="#22140a" stroke-width="2" stroke-dasharray="2 7" stroke-linecap="round"/><path d="M80 104 q20 20 40 0" fill="none" stroke="#22140a" stroke-width="5" stroke-linecap="round"/><circle cx="85" cy="88" r="5.5" fill="#22140a"/><circle cx="115" cy="88" r="5.5" fill="#22140a"/></svg></div>
-    <div class="card onb-card">
+    <div class="card hi onb-card">
       <div class="step"><h2 id="onbT">Labas!</h2><p>In lituano vuol dire «ciao». Labas ti accompagna nell'Erasmus a Vilnius, dalla firma del Learning Agreement fino al rientro a Bologna.</p></div>
       <div class="step"><h2>Partiamo da te</h2>
         <div class="ofields"><label for="o-name">Come ti chiami?<input id="o-name" autocomplete="given-name"></label><label for="o-uni">Università ospitante<input id="o-uni"></label><label for="o-dep">Partenza<input type="date" id="o-dep"></label><label for="o-ret">Rientro<input type="date" id="o-ret"></label></div></div>
@@ -556,11 +597,11 @@ nav svg{width:22px;height:22px}
 
 <main class="wrap" id="main">
   <section class="view" id="v-oggi">
-    <section class="card today" id="today">
+    <section class="card hi today" id="today">
       <div class="tgrid">
         <div class="tcell"><small>A Vilnius sono le</small><b id="vClock">--:--</b><span id="vDate"></span></div>
-        <div class="tcell tw"><span class="wico" id="wIcon"></span><div><b id="wTemp">--°</b><span id="wDesc">Meteo in arrivo…</span></div></div>
-        <div class="tcell"><small>Tramonto</small><b id="wSun">--:--</b><span id="wDay"></span></div>
+        <div class="tcell tw"><span class="wico" id="wIcon"></span><div><b id="wTemp"><i class="skel" style="width:2.4em;height:.8em"></i></b><span id="wDesc"><i class="skel" style="width:9em"></i></span></div></div>
+        <div class="tcell"><small>Tramonto</small><b id="wSun"><i class="skel" style="width:2.6em;height:.8em"></i></b><span id="wDay"></span></div>
       </div>
       <div class="tnext" id="tNext"></div>
     </section>
@@ -575,7 +616,7 @@ nav svg{width:22px;height:22px}
   <section class="view" id="v-soldi">
     <div class="vh"><div><h2>Soldi</h2><p class="sub">Il budget che prevedi e quello che spendi davvero.</p></div></div>
     <div class="grid2">
-      <div class="card">
+      <div class="card hi">
         <div class="big" id="bal"></div>
         <p class="bt" id="balTxt"></p>
         <div class="stackbar" id="bar" role="img" aria-label="Ripartizione delle uscite previste"></div>
@@ -626,7 +667,7 @@ nav svg{width:22px;height:22px}
   <section class="view" id="v-studio">
     <div class="vh"><div><h2>Studio</h2><p class="sub">Learning Agreement, magistrale 6701, secondo anno.</p></div></div>
     <div class="grid2">
-      <div class="card ringbox">
+      <div class="card hi ringbox">
         <div class="ring"><svg viewBox="0 0 180 180" id="ring"></svg><div><b id="ectsN">0</b><span id="ectsGoal">di 30 ECTS</span></div></div>
         <div>
           <h3 id="ectsH"></h3>
@@ -659,7 +700,7 @@ nav svg{width:22px;height:22px}
 
   <section class="view" id="v-inglese">
     <div class="vh"><div><h2>Ripasso</h2><p class="sub" id="learnTxt"></p></div></div>
-    <section class="card flash">
+    <section class="card hi flash">
       <button class="fc" type="button" id="fc"></button>
       <div class="fnav"><span class="cnt" id="fcCount"></span><span class="btns" style="margin:0"><button class="btn alt" type="button" id="fcAgain">Ancora</button><button class="btn" type="button" id="fcKnow">La so</button></span></div>
     </section>
@@ -700,19 +741,20 @@ Matteo De Vincenti</pre>
   </section>
 
   <section class="view" id="v-vilnius">
-    <div class="vh"><div><h2>Il tuo Erasmus in numeri</h2></div><button class="btn alt" type="button" id="copyNums">Copia riepilogo</button></div>
+    <div class="scroll setnav sticky" aria-label="Parti di Vilnius"><a href="#vn-num" data-jump="vn-num">Numeri</a><a href="#vn-casa" data-jump="vn-casa">Casa</a><a href="#vn-near" data-jump="vn-near">Attorno</a><a href="#vn-map" data-jump="vn-map">Mappa</a><a href="#vn-diario" data-jump="vn-diario">Diario</a><a href="#vn-posti" data-jump="vn-posti">Posti</a><a href="#vn-parole" data-jump="vn-parole">Parole</a><a href="#vn-weekend" data-jump="vn-weekend">Weekend</a><a href="#vn-info" data-jump="vn-info">Da sapere</a></div>
+    <div class="vh anc" id="vn-num"><div><h2>Il tuo Erasmus in numeri</h2></div><button class="btn alt" type="button" id="copyNums">Copia riepilogo</button></div>
     <div class="card"><div class="nums" id="nums" style="margin-top:0"></div></div>
     <div class="grid2 mt">
-      <section class="card"><h3>Casa e spostamenti</h3><div id="homeBox"></div><p class="lbl">Andare a lezione</p><div id="commute"></div></section>
-      <section class="card"><h3>Attorno a casa</h3><div id="near"></div></section>
+      <section class="card anc" id="vn-casa"><h3>Casa e spostamenti</h3><div id="homeBox"></div><p class="lbl">Andare a lezione</p><div id="commute"></div></section>
+      <section class="card anc" id="vn-near"><h3>Attorno a casa</h3><div id="near"></div></section>
     </div>
-    <section class="card mt">
+    <section class="card mt anc" id="vn-map">
       <div class="ph-h"><h3>Mappa</h3><span class="legend" style="margin:0"><span><i class="dot" style="background:#ff4f9a"></i>Da vedere</span><span><i class="dot" style="background:#46d394"></i>Visto</span><span><i class="dot" style="background:#ff7a1a"></i>Diario</span></span></div>
       <div class="mapbox" id="map"><p class="sub" style="padding:16px">La mappa si carica quando sei online.</p></div>
       <p class="sub">Mappa © OpenStreetMap. Le pagine di diario compaiono se aggiungi la posizione o scegli uno dei posti.</p>
     </section>
     <div class="grid2 mt">
-      <section class="card">
+      <section class="card anc" id="vn-diario">
         <div class="ph-h"><h3>Diario</h3><button class="btn alt" type="button" id="pdfBtn">Diario in PDF</button></div>
         <form class="dform" id="dform">
           <input id="d-d" type="date" aria-label="Data">
@@ -725,16 +767,16 @@ Matteo De Vincenti</pre>
         </form>
         <div id="diary"></div>
       </section>
-      <section class="card">
+      <section class="card anc" id="vn-posti">
         <h3>Posti</h3>
         <div id="places"></div>
         <p class="lbl">Il tuo album</p>
         <div class="stk" id="album"></div>
       </section>
     </div>
-    <div class="vh mt"><div><h2>Parole</h2><p class="sub">Le trovi anche nel Ripasso.</p></div></div>
+    <div class="vh mt anc" id="vn-parole"><div><h2>Parole</h2><p class="sub">Le trovi anche nel Ripasso.</p></div></div>
     <div class="phr" id="ltCards"></div>
-    <div class="vh mt"><div><h2>Weekend fuori</h2><p class="sub">Tempi indicativi, da verificare prima di partire.</p></div></div>
+    <div class="vh mt anc" id="vn-weekend"><div><h2>Weekend fuori</h2><p class="sub">Tempi indicativi, da verificare prima di partire.</p></div></div>
     <div class="wk">
       <article><h4>Trakai</h4><p class="how">Circa 30 km, mezz'ora abbondante di treno</p><p>Il castello in mattoni rossi sull'isola del lago Galvė.</p></article>
       <article><h4>Kernavė</h4><p class="how">Circa 35 km, comodo in auto</p><p>L'antica capitale, con le colline fortificate patrimonio UNESCO.</p></article>
@@ -743,7 +785,7 @@ Matteo De Vincenti</pre>
       <article><h4>Tallinn</h4><p class="how">Circa 600 km, bus notturno o volo</p><p>La città vecchia medievale meglio conservata del Baltico.</p></article>
       <article><h4>Nida</h4><p class="how">4 o 5 ore tra bus e traghetto</p><p>Le dune della penisola di Curlandia: da fare tra maggio e giugno.</p></article>
     </div>
-    <div class="card mt">
+    <div class="card mt anc" id="vn-info">
       <h3>Da sapere</h3>
       <div class="facts">
         <div class="fact"><b>+1 h</b>rispetto all'Italia</div>
@@ -755,7 +797,7 @@ Matteo De Vincenti</pre>
   </section>
   <section class="view" id="v-impostazioni">
     <div class="vh"><div><h2>Impostazioni</h2><p class="sub">Profilo, account, contatti, documenti, promemoria, aspetto e dati.</p></div></div>
-    <div class="scroll setnav" aria-label="Sezioni delle impostazioni"><a href="#s-profilo" data-jump="s-profilo">Profilo</a><a href="#s-account" data-jump="s-account">Account</a><a href="#s-contatti" data-jump="s-contatti">Contatti</a><a href="#s-documenti" data-jump="s-documenti">Documenti</a><a href="#s-calendario" data-jump="s-calendario">Calendario</a><a href="#s-promemoria" data-jump="s-promemoria">Promemoria</a><a href="#s-aspetto" data-jump="s-aspetto">Aspetto</a><a href="#s-ripasso" data-jump="s-ripasso">Ripasso</a><a href="#s-dati" data-jump="s-dati">Dati</a><a href="#s-app" data-jump="s-app">App</a></div>
+    <div class="scroll setnav sticky" aria-label="Sezioni delle impostazioni"><a href="#s-profilo" data-jump="s-profilo">Profilo</a><a href="#s-account" data-jump="s-account">Account</a><a href="#s-contatti" data-jump="s-contatti">Contatti</a><a href="#s-documenti" data-jump="s-documenti">Documenti</a><a href="#s-calendario" data-jump="s-calendario">Calendario</a><a href="#s-promemoria" data-jump="s-promemoria">Promemoria</a><a href="#s-aspetto" data-jump="s-aspetto">Aspetto</a><a href="#s-ripasso" data-jump="s-ripasso">Ripasso</a><a href="#s-dati" data-jump="s-dati">Dati</a><a href="#s-app" data-jump="s-app">App</a></div>
     <div class="cols">
       <section class="card set" id="s-profilo">
         <h3>Profilo</h3>
@@ -853,7 +895,7 @@ Matteo De Vincenti</pre>
 <button id="lb" type="button" aria-label="Chiudi immagine"><img id="lbImg" alt=""></button>
 <button id="fab" type="button" aria-label="Aggiungi spesa o diario"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
 <div id="quick" hidden>
-  <div class="qsheet card" role="dialog" aria-modal="true" aria-label="Aggiunta rapida">
+  <div class="qsheet card hi" role="dialog" aria-modal="true" aria-label="Aggiunta rapida">
     <div class="ph-h"><span class="seg"><button type="button" data-qt="spesa">Spesa</button><button type="button" data-qt="diario">Diario</button></span><button class="x" type="button" id="qX" aria-label="Chiudi">×</button></div>
     <form id="q-spesa" class="qform">
       <label for="q-v" class="qamt"><input id="q-v" type="text" inputmode="decimal" placeholder="0,00" autocomplete="off"><span>€</span></label>
