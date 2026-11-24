@@ -465,6 +465,36 @@ nav a.on{background:var(--sec)!important}
 #v-inglese .empty{--eimg:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M14 22h72v44H44l-16 14V66H14z' fill='%23ff7a1a' stroke='%2322140a' stroke-width='5' stroke-linejoin='round'/%3E%3Ccircle cx='34' cy='44' r='5' fill='%2322140a'/%3E%3Ccircle cx='50' cy='44' r='5' fill='%2322140a'/%3E%3Ccircle cx='66' cy='44' r='5' fill='%2322140a'/%3E%3C/svg%3E")}
 #v-vilnius .empty{--eimg:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 6v14' stroke='%2322140a' stroke-width='4'/%3E%3Cpath d='M50 7l18 6-18 6' fill='%23ff4f9a' stroke='%2322140a' stroke-width='3' stroke-linejoin='round'/%3E%3Cpath d='M30 30h8v-8h8v8h8v-8h8v8h8v58H30z' fill='%23ff7a1a' stroke='%2322140a' stroke-width='5' stroke-linejoin='round'/%3E%3Cpath d='M44 88V70a6 6 0 0 1 12 0v18M38 46h8M54 46h8M38 58h24' fill='none' stroke='%2322140a' stroke-width='4'/%3E%3Cpath d='M8 92h84' stroke='%230f6b45' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E")}
 #v-impostazioni .empty{--eimg:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M12 28a6 6 0 0 1 6-6h22l8 9h34a6 6 0 0 1 6 6v41a6 6 0 0 1-6 6H18a6 6 0 0 1-6-6z' fill='%2346d394' stroke='%2322140a' stroke-width='5' stroke-linejoin='round'/%3E%3Cpath d='M12 42h76' stroke='%2322140a' stroke-width='5'/%3E%3Ccircle cx='70' cy='62' r='9' fill='%23ffc21a' stroke='%2322140a' stroke-width='4'/%3E%3C/svg%3E")}
+.btn.sm{min-height:40px;padding:6px 14px;font-size:14px;box-shadow:2px 2px 0 var(--sh)}
+.hrow{display:grid;grid-template-columns:40px minmax(0,1fr) auto;gap:10px;align-items:center;padding:10px 0;border-top:1.5px solid var(--line)}
+.hrow:first-child{border-top:0}
+.hrow small{display:block;color:var(--mute);font-size:14px}
+.hpin{width:40px;height:40px;border-radius:50%;background:var(--sec);border:2.5px solid var(--ink);display:grid;place-items:center;color:#22140a}
+.hpin svg{width:22px;height:22px}
+.ways{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.way{background:var(--soft);border-radius:16px;padding:12px}
+.way b{display:block;font-size:14px;color:var(--mute)}
+.way span{display:block;font-weight:800;font-size:17px}
+.way small{display:block;font-size:14px;margin-top:2px}
+.itin{border:2px solid var(--edge);border-radius:16px;padding:10px 12px;margin-top:10px}
+.itop{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.itop>b{font-family:Shrikhand,serif;font-weight:400;font-size:26px}
+.ilegs{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:6px;font-size:14px}
+.lg{background:var(--soft);border-radius:10px;padding:3px 8px}
+.lg.w{background:none;color:var(--mute);padding:3px 0}
+.ar{color:var(--mute)}
+.live{font-style:normal;font-size:12px;font-weight:800;background:var(--green);color:var(--bg);border-radius:99px;padding:1px 7px;vertical-align:middle}
+.attr a{color:inherit}
+.tv{color:var(--green)!important;font-weight:600}
+.nrow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:center;padding:9px 0;border-top:1.5px solid var(--line)}
+.nrow small{display:block;color:var(--mute);font-size:14px}
+.gor:empty{display:none}
+.gor{padding:0 0 10px}
+.prow .btn.sm{margin-top:6px}
+.mhome{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:#ffc21a;border:2.5px solid #22140a;color:#22140a;box-shadow:2px 2px 0 #22140a}
+.mhome.uni{background:#ff7eb3}
+.mhome svg{width:18px;height:18px}
+@media(max-width:400px){.ways{grid-template-columns:1fr}}
 .empty{border:2px dashed var(--edge);border-radius:18px;padding:18px;text-align:center;color:var(--mute);margin:12px 0 0}
 .note{color:var(--mute);font-size:14px;margin:18px 0 0}
 #lb{position:fixed;inset:0;background:rgba(10,6,2,.88);display:none;place-items:center;z-index:30;padding:20px;border:0;width:100%;cursor:zoom-out}
@@ -672,6 +702,10 @@ Matteo De Vincenti</pre>
   <section class="view" id="v-vilnius">
     <div class="vh"><div><h2>Il tuo Erasmus in numeri</h2></div><button class="btn alt" type="button" id="copyNums">Copia riepilogo</button></div>
     <div class="card"><div class="nums" id="nums" style="margin-top:0"></div></div>
+    <div class="grid2 mt">
+      <section class="card"><h3>Casa e spostamenti</h3><div id="homeBox"></div><p class="lbl">Andare a lezione</p><div id="commute"></div></section>
+      <section class="card"><h3>Attorno a casa</h3><div id="near"></div></section>
+    </div>
     <section class="card mt">
       <div class="ph-h"><h3>Mappa</h3><span class="legend" style="margin:0"><span><i class="dot" style="background:#ff4f9a"></i>Da vedere</span><span><i class="dot" style="background:#46d394"></i>Visto</span><span><i class="dot" style="background:#ff7a1a"></i>Diario</span></span></div>
       <div class="mapbox" id="map"><p class="sub" style="padding:16px">La mappa si carica quando sei online.</p></div>
