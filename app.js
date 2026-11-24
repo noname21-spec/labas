@@ -23,7 +23,7 @@ const ENG=[
 ];
 const HOUSE='Miniappartamento: contratto, caparra e consegna delle chiavi';
 const BAGT=[['valigia','Giaccone imbottito per temperature sotto zero','',0],['valigia','Berretto, sciarpa e guanti','',0],['valigia','Scarponcini impermeabili con suola antiscivolo','',0],['valigia','Intimo termico e calze di lana','',0],['valigia','Adattatore per prese tipo F (le spine italiane grandi non entrano)','',0],['valigia','Crema idratante e burrocacao','',0],['valigia','Documenti e Learning Agreement nel bagaglio a mano','',0],['valigia','Pesare la valigia prima di partire','2027-01-31',0]];
-const VER='1.2.2';
+const VER='1.2.3';
 const SETD=()=>({name:'Matteo',uni:'European Humanities University',goal:30,theme:'auto',text:'n',motion:true,intro:true,start:'oggi',leads:[3,1,0],en:true,lt:true,onb:false});
 const mkTask=([ph,t,due,d])=>({id:uid(),ph,t,due,done:!!d});
 const DEF=()=>{
@@ -176,9 +176,12 @@ function ring(){const GL=G();
  $('#ectsT').textContent=`Obiettivo del semestre: ${GL}. Superati ${D} ECTS su ${P}`+(ge?`, media ponderata ${av.toLocaleString('it-IT',{maximumFractionDigits:1})}, circa ${av30.toLocaleString('it-IT',{maximumFractionDigits:1})}/30.`:'.');
  S.courses.forEach(c=>{const e=document.getElementById('cv-'+c.id);if(e){const v=c.s&&+c.g>=1&&+c.g<=10?+c.g:null;e.textContent=v===null?'':v>=5?`≈ ${to30(v)}/30`:'non sufficiente'}});
 }
+function courseSelect(){const sel=$('#s-c');if(!sel)return;const prev=sel.value,names=[...new Set(S.courses.map(c=>(c.n||'').trim()).filter(Boolean))];
+ sel.innerHTML=(names.length?names.map(n=>`<option value="${esc(n)}">${esc(n)}</option>`).join(''):'<option value="" disabled>Aggiungi prima i corsi qui sopra</option>')+'<option value="__new">Altro corso…</option>';
+ sel.value=names.includes(prev)||prev==='__new'?prev:(names[0]||'__new');$('#s-xl').hidden=sel.value!=='__new'}
 function courses(){
  $('#cRows').innerHTML=S.courses.map(c=>`<div class="crow row"><input class="cn" id="cn-${c.id}" value="${esc(c.n)}" data-cname="${c.id}" aria-label="Nome del corso"><button class="x" type="button" data-cdel="${c.id}" aria-label="Elimina ${esc(c.n)}">×</button><label class="ects"><input id="ce-${c.id}" type="number" min="0" max="30" inputmode="numeric" value="${+c.e||0}" data-cects="${c.id}" aria-label="ECTS">ECTS</label><button class="st${c.s?' ok':''}" type="button" data-cst="${c.id}" aria-pressed="${c.s}">${c.s?'Superato':'Da sostenere'}</button><span class="gw"><input class="gr" id="cg-${c.id}" type="number" min="1" max="10" inputmode="numeric" placeholder="Voto" value="${esc(c.g)}" data-cgr="${c.id}" aria-label="Voto"${c.s?'':' disabled'}><span class="conv" id="cv-${c.id}"></span></span></div>`).join('')||'<p class="empty">Nessun corso: aggiungi quelli del Learning Agreement.</p>';
- $('#clist').innerHTML=S.courses.map(c=>`<option value="${esc(c.n)}">`).join('');
+ courseSelect();
  ring();
 }
 function sched(){
@@ -279,7 +282,7 @@ document.addEventListener('submit',async e=>{e.preventDefault();const f=e.target
  else if(f.dataset.add){const [n,a]=f.querySelectorAll('input'),k=f.dataset.add;if(!n.value.trim())return;S[k].push({id:uid(),n:n.value.trim(),v:Math.max(0,+a.value||0)});commit(budget);$(k==='inc'?'#ai-n':'#ae-n').focus()}
  else if(f.id==='lform'){const v=+$('#l-v').value,d=$('#l-d').value;if(!(v>0)||!d){toast('Inserisci data e importo');return}S.log.push({id:uid(),c:$('#l-c').value,d,n:$('#l-n').value.trim()||'Spesa',v});mon=d.slice(0,7);$('#l-n').value='';$('#l-v').value='';commit(logView);toast('Spesa registrata')}
  else if(f.id==='cform'){const n=$('#ac-n').value.trim();if(!n)return;S.courses.push({id:uid(),n,e:Math.max(0,+$('#ac-e').value||0),s:false,g:''});commit(courses);$('#ac-n').value='';$('#ac-e').value='';$('#ac-n').focus()}
- else if(f.id==='sform'){const c=$('#s-c').value.trim(),a=$('#s-a').value,b=$('#s-b').value;if(!c||!a){toast('Inserisci corso e orario');return}S.sched.push({id:uid(),d:+$('#s-d').value,a,b,c,r:$('#s-r').value.trim()});$('#s-c').value='';$('#s-r').value='';commit(sched);toast('Lezione aggiunta')}
+ else if(f.id==='sform'){const sv=$('#s-c').value,c=(sv==='__new'?$('#s-x').value:sv).trim(),a=$('#s-a').value,b=$('#s-b').value;if(!c||!a){toast('Inserisci corso e orario');return}S.sched.push({id:uid(),d:+$('#s-d').value,a,b,c,r:$('#s-r').value.trim()});$('#s-x').value='';$('#s-r').value='';commit(sched);toast('Lezione aggiunta')}
  else if(f.id==='ctform'){const n=$('#ct-n').value.trim(),r=$('#ct-r').value.trim();if(!n&&!r){toast('Scrivi almeno nome o ruolo');return}S.contacts.push({id:uid(),n,r,e:$('#ct-e').value.trim(),p:$('#ct-p').value.trim()});['#ct-n','#ct-r','#ct-e','#ct-p'].forEach(s=>$(s).value='');commit(contacts);toast('Contatto salvato')}
  else if(f.id==='docform'){const file=$('#doc-f').files[0],n=$('#doc-n').value.trim()||(file&&file.name)||'Documento';if(!file){toast('Scegli una foto o un PDF');return}
   const btn=f.querySelector('.btn:not(.fileb)');btn.disabled=true;btn.textContent='Salvo…';
@@ -293,7 +296,7 @@ document.addEventListener('submit',async e=>{e.preventDefault();const f=e.target
 });
 document.addEventListener('input',e=>{const t=e.target,d=t.dataset;
  if(d.money){const x=[...S.inc,...S.exp].find(x=>x.id===d.money);if(x){x.v=Math.max(0,+t.value||0);save();budgetSum();logView();hero()}}
- else if(d.cname){const c=S.courses.find(x=>x.id===d.cname);if(c){c.n=t.value;save()}}
+ else if(d.cname){const c=S.courses.find(x=>x.id===d.cname);if(c){const old=c.n;c.n=t.value;let ch=false;S.sched.forEach(l=>{if(l.c===old&&old){l.c=t.value;ch=true}});save();courseSelect();if(ch)sched()}}
  else if(d.cects){const c=S.courses.find(x=>x.id===d.cects);if(c){c.e=Math.max(0,+t.value||0);save();ring();hero()}}
  else if(d.cgr){const c=S.courses.find(x=>x.id===d.cgr);if(c){c.g=t.value;save();ring();nums()}}
  else if(d.bag){S.bag[d.bag]=t.value;save();bagView()}
@@ -307,6 +310,7 @@ document.addEventListener('change',async e=>{const t=e.target,d=t.dataset;
  else if(d.flag){S.set[d.flag]=t.checked;save();applySettings();if(d.flag==='en'||d.flag==='lt')buildDeck()}
  else if(d.lead!==undefined){const n=+d.lead;S.set.leads=t.checked?[...new Set([...S.set.leads,n])].sort((a,b)=>b-a):S.set.leads.filter(x=>x!==n);save();notifUI()}
  else if(t.id==='month'&&t.value){mon=t.value;logView()}
+ else if(t.id==='s-c'){$('#s-xl').hidden=t.value!=='__new';if(t.value==='__new')$('#s-x').focus()}
  else if(t.id==='doc-f'){$('#doc-fl').textContent=t.files[0]?t.files[0].name.slice(0,24):'Scegli file'}
  else if(t.id==='imp'&&t.files[0]){try{await restore(t.files[0])}catch(err){toast('Questo file non è un backup di Labas')}t.value=''}
 });

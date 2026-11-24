@@ -324,6 +324,11 @@ nav a.on svg{animation:hop .45s cubic-bezier(.2,.9,.3,1.6)}
 @media(max-width:400px){.ofields{grid-template-columns:1fr}.ogrid{grid-template-columns:1fr 1fr}}
 :root.calm *,:root.calm *::before,:root.calm *::after{animation:none!important;transition:none!important}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+.sgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:12px 0 16px}
+.sgrid label{display:grid;gap:4px;font-weight:800;font-size:14px}
+.sgrid .wide{grid-column:1/-1}
+.sgrid input,.sgrid select,.ofields input{width:100%;font-weight:400}
+@media(min-width:760px){.sgrid{grid-template-columns:2fr 1fr 1fr 1fr 1fr}.sgrid .wide{grid-column:auto}#s-xl:not([hidden]){grid-column:1/-1;order:-1}}
 .empty{border:2px dashed var(--edge);border-radius:18px;padding:18px;text-align:center;color:var(--mute);margin:12px 0 0}
 .note{color:var(--mute);font-size:14px;margin:18px 0 0}
 #lb{position:fixed;inset:0;background:rgba(10,6,2,.88);display:none;place-items:center;z-index:30;padding:20px;border:0;width:100%;cursor:zoom-out}
@@ -444,11 +449,17 @@ nav svg{width:22px;height:22px}
     <p class="note">In Lituania i voti vanno da 1 a 10 e si supera con 5. I trentesimi sono una stima lineare (5 = 18, 10 = 30): la conversione ufficiale la decide il tuo corso di studio a Bologna.</p>
     <div class="vh mt"><div><h2>Orario</h2><p class="sub">La tua settimana all'EHU.</p></div></div>
     <div class="week" id="week"></div>
-    <form class="addrow card mt" id="sform">
-      <select id="s-d" aria-label="Giorno"><option value="0">Lunedì</option><option value="1">Martedì</option><option value="2">Mercoledì</option><option value="3">Giovedì</option><option value="4">Venerdì</option></select>
-      <input id="s-a" type="time" value="10:00" aria-label="Inizio"><input id="s-b" type="time" value="11:30" aria-label="Fine">
-      <input id="s-c" list="clist" placeholder="Corso" aria-label="Corso"><input id="s-r" placeholder="Aula" aria-label="Aula" class="n">
-      <datalist id="clist"></datalist><button class="btn">Aggiungi lezione</button>
+    <form class="card mt" id="sform">
+      <h3>Aggiungi una lezione</h3>
+      <div class="sgrid">
+        <label class="wide" for="s-c">Corso<select id="s-c"></select></label>
+        <label class="wide" for="s-x" id="s-xl" hidden>Nome del corso<input id="s-x" placeholder="Es. Seminario di ricerca"></label>
+        <label for="s-d">Giorno<select id="s-d"><option value="0">Lunedì</option><option value="1">Martedì</option><option value="2">Mercoledì</option><option value="3">Giovedì</option><option value="4">Venerdì</option></select></label>
+        <label for="s-r">Aula<input id="s-r" placeholder="Es. Aula 302"></label>
+        <label for="s-a">Dalle<input id="s-a" type="time" value="10:00"></label>
+        <label for="s-b">Alle<input id="s-b" type="time" value="11:30"></label>
+      </div>
+      <button class="btn">Aggiungi lezione</button>
     </form>
   </section>
 
