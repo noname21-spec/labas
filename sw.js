@@ -1,17 +1,16 @@
 /* Labas: app offline e promemoria delle scadenze */
-const C='labas-v11';
+const C='labas-v12';
 const F=['./','index.html','app.js','manifest.webmanifest','icon-96.png','icon-192.png','icon-512.png','icon-maskable-512.png','apple-touch-icon.png','lib/supabase.js','lib/shrikhand-latin.woff2','lib/shrikhand-latin-ext.woff2','lib/dmsans-latin.woff2','lib/dmsans-latin-ext.woff2','lib/leaflet.js','lib/leaflet.css','lib/jspdf.umd.min.js','lib/images/marker-icon.png','lib/images/layers.png'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(C).then(c=>c.addAll(F.map(u=>new Request(u,{cache:'reload'})))).catch(()=>{}));self.skipWaiting()});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(n=>/^labas-/.test(n)&&n!==C).map(n=>caches.delete(n)))).then(()=>self.clients.claim()))});
 self.addEventListener('fetch',e=>{
  if(e.request.method!=='GET')return;
  const u=new URL(e.request.url);if(u.origin!==location.origin)return;
- /* prima la rete, così l'app resta aggiornata; senza segnale (o dopo 3 secondi) la copia salvata */
+ /* subito la copia salvata (apertura istantanea anche con poca rete), intanto scarica la versione nuova per la prossima volta */
  e.respondWith(caches.match(e.request,{ignoreSearch:true}).then(m=>{
   const net=fetch(new Request(e.request,{cache:'no-cache'})).then(r=>{if(r.ok){const cp=r.clone();caches.open(C).then(c=>c.put(e.request,cp)).catch(()=>{})}return r});
-  e.waitUntil(net.catch(()=>{}));
-  if(!m)return net.catch(()=>caches.match('./'));
-  return Promise.race([net.catch(()=>m),new Promise(res=>setTimeout(()=>res(m),3000))]);
+  if(m){e.waitUntil(net.catch(()=>{}));return m}
+  return net.catch(()=>caches.match('./'));
  }));
 });
 function db(){return new Promise((ok,ko)=>{const r=indexedDB.open('labas',1);r.onupgradeneeded=()=>{const d=r.result;if(!d.objectStoreNames.contains('files'))d.createObjectStore('files');if(!d.objectStoreNames.contains('meta'))d.createObjectStore('meta')};r.onsuccess=()=>ok(r.result);r.onerror=()=>ko(r.error)})}
