@@ -1,0 +1,24 @@
+{
+  "name": "Labas · Erasmus a Vilnius",
+  "short_name": "Labas",
+  "description": "Checklist, budget, corsi, lingue e diario per l'Erasmus a Vilnius.",
+  "lang": "it",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#fff3d1",
+  "theme_color": "#ffc21a",
+  "categories": ["education", "travel", "productivity"],
+  "icons": [
+    {"src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any"},
+    {"src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any"},
+    {"src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  ],
+  "shortcuts": [
+    {"name": "Registra una spesa", "short_name": "Spesa", "url": "./#soldi", "icons": [{"src": "icon-96.png", "sizes": "96x96"}]},
+    {"name": "Diario", "short_name": "Diario", "url": "./#vilnius", "icons": [{"src": "icon-96.png", "sizes": "96x96"}]},
+    {"name": "Ripasso", "short_name": "Ripasso", "url": "./#inglese", "icons": [{"src": "icon-96.png", "sizes": "96x96"}]}
+  ]
+}
