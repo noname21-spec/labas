@@ -10,6 +10,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Labas">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
+<script>try{var _s=JSON.parse(localStorage.getItem("labas-erasmus-v2")||"{}").set||{};document.documentElement.dataset.style=_s.style||"flower";if(_s.theme&&_s.theme!=="auto")document.documentElement.dataset.theme=_s.theme}catch(e){}</script>
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" href="icon-96.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -20,6 +21,10 @@
 @font-face{font-family:Shrikhand;font-style:normal;font-weight:400;font-display:swap;src:url(lib/shrikhand-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
 @font-face{font-family:"DM Sans";font-style:normal;font-weight:100 1000;font-display:swap;src:url(lib/dmsans-latin.woff2) format("woff2-variations");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:"DM Sans";font-style:normal;font-weight:100 1000;font-display:swap;src:url(lib/dmsans-latin-ext.woff2) format("woff2-variations");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:Corben;font-style:normal;font-weight:700;font-display:swap;src:url(lib/corben-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:Corben;font-style:normal;font-weight:700;font-display:swap;src:url(lib/corben-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1E00-1E9F,U+20A0-20AB,U+20AD-20C0,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:Caveat;font-style:normal;font-weight:600;font-display:swap;src:url(lib/caveat-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:Caveat;font-style:normal;font-weight:600;font-display:swap;src:url(lib/caveat-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1E00-1E9F,U+20A0-20AB,U+20AD-20C0,U+2C60-2C7F,U+A720-A7FF}
 /* VOICE everyday app, loud and happy, flower power made modern and calmer for daily use
    IDEA a 1970s sticker sheet printed in the colours of the Lithuanian flag
    PICTURE a giant spinning daisy holding the countdown (home only), a small daisy elsewhere
@@ -185,7 +190,7 @@ pre.tpl{white-space:pre-wrap;font:15px/1.55 "DM Sans",sans-serif;background:var(
 .pc:nth-child(4n+1){background:var(--pink);rotate:-1.2deg}
 .pc:nth-child(4n+2){background:var(--orange);rotate:1deg}
 .pc:nth-child(4n+3){background:var(--yel);rotate:-.6deg}
-.pc:nth-child(4n){background:#46d394;rotate:1.3deg}
+.pc:nth-child(4n){background:var(--mint);rotate:1.3deg}
 .pc b{display:block;font-family:Shrikhand,serif;font-weight:400;font-size:24px;line-height:1.1}
 .pc span{display:block;font-weight:800}
 .pc small{font-size:13px}
@@ -196,7 +201,7 @@ pre.tpl{white-space:pre-wrap;font:15px/1.55 "DM Sans",sans-serif;background:var(
 .stk span:nth-child(4n+1){background:var(--pink)}
 .stk span:nth-child(4n+2){background:var(--orange)}
 .stk span:nth-child(4n+3){background:var(--yel)}
-.stk span:nth-child(4n){background:#46d394}
+.stk span:nth-child(4n){background:var(--mint)}
 .nums{display:grid;grid-template-columns:repeat(auto-fit,minmax(9em,1fr));gap:14px;margin-top:14px}
 .num{background:var(--soft);border-radius:18px;padding:12px 14px}
 .num b{display:block;font-family:Shrikhand,serif;font-weight:400;font-size:clamp(32px,6vw,46px);line-height:1;white-space:nowrap}
@@ -282,7 +287,7 @@ nav a.on svg{animation:hop .45s cubic-bezier(.2,.9,.3,1.6)}
 .gear svg{transition:transform .5s cubic-bezier(.2,.9,.3,1.3)}
 .gear.on svg{transform:rotate(90deg)}
 .gear:active,.chip:active{transform:translate(3px,3px);box-shadow:none}
-#splash{position:fixed;inset:0;z-index:200;background:#ffc21a;display:grid;place-content:center;justify-items:center;gap:4px;transition:opacity .4s,transform .45s;cursor:pointer;overflow:hidden}
+#splash{position:fixed;inset:0;z-index:200;background:var(--yel);display:grid;place-content:center;justify-items:center;gap:4px;transition:opacity .4s,transform .45s;cursor:pointer;overflow:hidden}
 #splash.out{opacity:0;transform:scale(1.18);pointer-events:none}
 .sp-daisy{width:min(58vw,240px);height:auto;overflow:visible}
 .sp-g{transform-box:view-box;transform-origin:100px 100px;animation:spin 9s linear .8s infinite}
@@ -313,7 +318,7 @@ nav a.on svg{animation:hop .45s cubic-bezier(.2,.9,.3,1.6)}
 .ogrid div:nth-child(4n+1){background:var(--pink)}
 .ogrid div:nth-child(4n+2){background:var(--orange)}
 .ogrid div:nth-child(4n+3){background:#fff3d1}
-.ogrid div:nth-child(4n){background:#46d394}
+.ogrid div:nth-child(4n){background:var(--mint)}
 .ogrid div:nth-child(2){animation-delay:.06s}.ogrid div:nth-child(3){animation-delay:.12s}.ogrid div:nth-child(4){animation-delay:.18s}.ogrid div:nth-child(5){animation-delay:.24s}.ogrid div:nth-child(6){animation-delay:.3s}
 .ogrid b{display:block;font-family:Shrikhand,serif;font-weight:400;font-size:20px}
 .onb-nav{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
@@ -537,7 +542,7 @@ nav a:active svg{transform:scale(.85)}
 .rtimes{display:flex;justify-content:space-between;font-size:13px;color:var(--mute);font-weight:700}
 .rtxt{font-size:14px;margin-top:4px}
 /* versione scura colorata: superfici tinte dal colore della sezione */
-body{--card:light-dark(#fffaf0,color-mix(in srgb,var(--sec) 11%,#050505));--soft:light-dark(#ffe7a3,color-mix(in srgb,var(--sec) 22%,#0a0a0a));--edge:light-dark(color-mix(in srgb,#22140a 38%,transparent),color-mix(in srgb,var(--sec) 50%,transparent));--line:light-dark(color-mix(in srgb,#22140a 16%,transparent),color-mix(in srgb,var(--sec) 24%,transparent));--acc:light-dark(var(--ink),var(--sec));--glow:light-dark(transparent,color-mix(in srgb,var(--sec) 38%,transparent))}
+body{--card:light-dark(var(--cardL),color-mix(in srgb,var(--sec) 11%,#050505));--soft:light-dark(var(--softL),color-mix(in srgb,var(--sec) 22%,#0a0a0a));--edge:light-dark(color-mix(in srgb,var(--inkL) 38%,transparent),color-mix(in srgb,var(--sec) 50%,transparent));--line:light-dark(color-mix(in srgb,var(--inkL) 16%,transparent),color-mix(in srgb,var(--sec) 24%,transparent));--acc:light-dark(var(--ink),var(--sec));--glow:light-dark(transparent,color-mix(in srgb,var(--sec) 38%,transparent))}
 .card.hi{border-color:light-dark(var(--ink),var(--sec));box-shadow:4px 4px 0 var(--sh),0 0 26px var(--glow)}
 h2,.lbl,.tcell b,.way span,.num b,.itop>b,.ring b,.wrclock,.up b,.exr b.n,.fact b,.wk h4{color:var(--acc)}
 .big.pos{color:light-dark(var(--green),#5dff9e)}
@@ -560,6 +565,48 @@ h2,.lbl,.tcell b,.way span,.num b,.itop>b,.ring b,.wrclock,.up b,.exr b.n,.fact 
 @media (hover:none) and (pointer:coarse){.sw-row>.x,.sw-row .x[data-ldel],.sw-row .x[data-bdel],.sw-row .x[data-sdel],.sw-row .x[data-ctdel],.sw-row .x[data-rdel],.sw-row .x[data-del]{display:none}.task.sw-row{grid-template-columns:44px minmax(0,1fr)}.lrow.sw-row{grid-template-columns:3.4em minmax(0,1fr) auto}.brow.sw-row{grid-template-columns:16px minmax(0,1fr) 116px}.les.sw-row{grid-template-columns:auto minmax(0,1fr)}.ct.sw-row{grid-template-columns:minmax(0,1fr)}.rrow.sw-row{grid-template-columns:16px minmax(0,1fr) auto}}
 #toast{border-radius:20px;line-height:1.3;width:max-content;max-width:min(calc(100% - 24px),460px);font-size:15px}
 #toast span{padding:6px 0}
+/* ===== anni '70: stili, poster, raggi, lava, Polaroid, Corben ===== */
+:root{--inkL:#22140a;--cardL:#fffaf0;--softL:#ffe7a3;--bgL:#fff3d1;--mint:#46d394}
+:root[data-style=sunset]{--pink:#d9541e;--orange:#e8a317;--yel:#f2c14e;--mint:#a9c34c;--green:light-dark(#5f7a22,#a9c34c);--red:light-dark(#b3261e,#ff7a6b);--bgL:#f6e7c8;--cardL:#fcf3e0;--softL:#efd6a2;--inkL:#3a2212}
+:root[data-style=psy]{--pink:#ff2fa8;--orange:#ff8a00;--yel:#ffe600;--mint:#00e0b0;--green:light-dark(#00876c,#00e0b0);--bgL:#fbefff;--cardL:#fffaff;--softL:#f0d9ff;--inkL:#2a0f3a}
+:root{--bg:light-dark(var(--bgL),#000);--ink:light-dark(var(--inkL),#fff2dc)}
+:root[data-style=sunset] body{--sec:#e8a317}
+:root[data-style=sunset] body[data-view=soldi]{--sec:#9aae3c}
+:root[data-style=sunset] body[data-view=studio]{--sec:#e0622b}
+:root[data-style=sunset] body[data-view=inglese]{--sec:#d48a2e}
+:root[data-style=sunset] body[data-view=vilnius]{--sec:#4f9f97}
+:root[data-style=sunset] body[data-view=impostazioni]{--sec:#c49a6c}
+:root[data-style=psy] body{--sec:#b46bff}
+:root[data-style=psy] body[data-view=soldi]{--sec:#00d4a8}
+:root[data-style=psy] body[data-view=studio]{--sec:#ff2fa8}
+:root[data-style=psy] body[data-view=inglese]{--sec:#ff8a00}
+:root[data-style=psy] body[data-view=vilnius]{--sec:#3ec3ff}
+:root[data-style=psy] body[data-view=impostazioni]{--sec:#ffe600}
+h2{text-shadow:2px 2px 0 var(--orange),4px 4px 0 var(--pink),6px 6px 0 light-dark(var(--inkL),color-mix(in srgb,var(--sec) 35%,#000));letter-spacing:.005em;margin-bottom:4px}
+#hello{text-shadow:3px 3px 0 var(--orange),6px 6px 0 var(--pink)}
+.hero.compact #hello{text-shadow:2px 2px 0 var(--orange),4px 4px 0 var(--pink)}
+.big,.tcell b,.num b,.wrclock,.itop>b,.ring b,.up b,.exr b.n,.qamt input,.qamt span,.count b,.fact b,.btn,.chip,.cnt,.mcol em{font-family:Corben,"Cooper Black",Georgia,serif;font-weight:700;letter-spacing:-.01em}
+.btn{font-size:15px}
+.big{font-size:clamp(46px,9vw,80px)}
+.rays{position:absolute;inset:-48%;border-radius:50%;background:repeating-conic-gradient(var(--rayc) 0 6deg,transparent 6deg 15deg);-webkit-mask:radial-gradient(circle,#000 20%,transparent 68%);mask:radial-gradient(circle,#000 20%,transparent 68%);animation:spin 90s linear infinite;pointer-events:none;z-index:0}
+body{--rayc:light-dark(color-mix(in srgb,#fff 50%,transparent),color-mix(in srgb,var(--sec) 32%,transparent))}
+.daisy svg{z-index:1}
+.count{z-index:2}
+.lava{position:absolute;top:0;bottom:0;right:0;width:min(52%,540px);pointer-events:none;overflow:hidden;z-index:0}
+.lava i{position:absolute;bottom:-40%;left:var(--l);width:var(--s);height:var(--s);border-radius:50%;border:2.5px solid #22140a;background:radial-gradient(circle at 34% 30%,color-mix(in srgb,var(--c) 55%,#fff) 0,var(--c) 52%,color-mix(in srgb,var(--c) 78%,#000) 100%);box-shadow:0 0 28px light-dark(transparent,var(--c));opacity:.92;animation:lava var(--t) ease-in-out var(--dl) infinite alternate}
+@keyframes lava{0%{transform:translateY(0) scale(.85);border-radius:42% 58% 63% 37%/45% 40% 60% 55%}50%{border-radius:58% 42% 38% 62%/55% 60% 40% 45%}100%{transform:translateY(-330%) scale(1.12);border-radius:45% 55% 52% 48%/62% 38% 62% 38%}}
+.hero.compact .lava{display:none}
+.hgrid{z-index:2}
+@media(max-width:600px){.lava{width:42%}}
+.pola{background:#fffdf6;padding:10px 10px 0;margin:6px 6px 4px;border:1px solid #e9dcbc;box-shadow:3px 4px 0 rgba(0,0,0,.14),0 8px 18px rgba(0,0,0,.14);transform:rotate(var(--r,-1.5deg));max-width:520px;transition:transform .3s}
+.pola:active{transform:rotate(0) scale(1.01)}
+.pola img{width:100%;max-height:360px;object-fit:cover;display:block;border:0!important;border-radius:2px!important}
+.pola figcaption{font-family:Caveat,"Bradley Hand",cursive;font-weight:600;font-size:26px;line-height:1.1;color:#2b2420;text-align:center;padding:8px 4px 12px}
+.stylepick{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:8px}
+.stylepick button{border:2px solid var(--edge);border-radius:16px;background:var(--card);padding:10px 8px;cursor:pointer;display:grid;gap:8px;justify-items:center;font-weight:800;font-size:13px;color:var(--ink)}
+.stylepick button.on{border:2.5px solid var(--ink);box-shadow:3px 3px 0 var(--sh)}
+.stylepick span{display:flex;gap:3px}
+.stylepick i{width:16px;height:16px;border-radius:50%;border:1.5px solid #22140a}
 .empty{border:2px dashed var(--edge);border-radius:18px;padding:18px;text-align:center;color:var(--mute);margin:12px 0 0}
 .note{color:var(--mute);font-size:14px;margin:18px 0 0}
 #lb{position:fixed;inset:0;background:rgba(10,6,2,.88);display:none;place-items:center;z-index:30;padding:20px;border:0;width:100%;cursor:zoom-out}
@@ -578,13 +625,13 @@ nav svg{width:22px;height:22px}
 </head>
 <body>
 <div id="splash" aria-hidden="true">
-  <svg class="sp-daisy" viewBox="0 0 200 200"><g class="sp-g"><g id="spPetals"></g><g class="sp-c"><circle cx="100" cy="100" r="58" fill="#ffc21a" stroke="#22140a" stroke-width="3.5"/><circle cx="100" cy="100" r="50" fill="none" stroke="#22140a" stroke-width="2" stroke-dasharray="2 7" stroke-linecap="round"/></g><g class="sp-face"><path d="M80 104 q20 20 40 0" fill="none" stroke="#22140a" stroke-width="5" stroke-linecap="round"/><circle cx="85" cy="88" r="5.5" fill="#22140a"/><circle cx="115" cy="88" r="5.5" fill="#22140a"/></g></g></svg>
+  <svg class="sp-daisy" viewBox="0 0 200 200"><g class="sp-g"><g id="spPetals"></g><g class="sp-c"><circle cx="100" cy="100" r="58" style="fill:var(--yel)" stroke="#22140a" stroke-width="3.5"/><circle cx="100" cy="100" r="50" fill="none" stroke="#22140a" stroke-width="2" stroke-dasharray="2 7" stroke-linecap="round"/></g><g class="sp-face"><path d="M80 104 q20 20 40 0" fill="none" stroke="#22140a" stroke-width="5" stroke-linecap="round"/><circle cx="85" cy="88" r="5.5" fill="#22140a"/><circle cx="115" cy="88" r="5.5" fill="#22140a"/></g></g></svg>
   <b class="sp-t">Labas</b>
-  <svg class="sp-wave" viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0 10 Q150 -6 300 10 T600 10 T900 10 T1200 10 V60 H0Z" fill="#ff4f9a"/><path d="M0 26 Q150 10 300 26 T600 26 T900 26 T1200 26 V60 H0Z" fill="#ff7a1a"/><path d="M0 42 Q150 26 300 42 T600 42 T900 42 T1200 42 V60 H0Z" fill="#0f6b45"/></svg>
+  <svg class="sp-wave" viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0 10 Q150 -6 300 10 T600 10 T900 10 T1200 10 V60 H0Z" style="fill:var(--pink)"/><path d="M0 26 Q150 10 300 26 T600 26 T900 26 T1200 26 V60 H0Z" style="fill:var(--orange)"/><path d="M0 42 Q150 26 300 42 T600 42 T900 42 T1200 42 V60 H0Z" fill="#0f6b45"/></svg>
 </div>
 <div id="onb" role="dialog" aria-modal="true" aria-labelledby="onbT" hidden>
   <div class="onb-in">
-    <div class="onb-art"><svg viewBox="0 0 200 200" id="onbDaisy"><g id="onbPetals"></g><circle cx="100" cy="100" r="58" fill="#ffc21a" stroke="#22140a" stroke-width="3.5"/><circle cx="100" cy="100" r="50" fill="none" stroke="#22140a" stroke-width="2" stroke-dasharray="2 7" stroke-linecap="round"/><path d="M80 104 q20 20 40 0" fill="none" stroke="#22140a" stroke-width="5" stroke-linecap="round"/><circle cx="85" cy="88" r="5.5" fill="#22140a"/><circle cx="115" cy="88" r="5.5" fill="#22140a"/></svg></div>
+    <div class="onb-art"><svg viewBox="0 0 200 200" id="onbDaisy"><g id="onbPetals"></g><circle cx="100" cy="100" r="58" style="fill:var(--yel)" stroke="#22140a" stroke-width="3.5"/><circle cx="100" cy="100" r="50" fill="none" stroke="#22140a" stroke-width="2" stroke-dasharray="2 7" stroke-linecap="round"/><path d="M80 104 q20 20 40 0" fill="none" stroke="#22140a" stroke-width="5" stroke-linecap="round"/><circle cx="85" cy="88" r="5.5" fill="#22140a"/><circle cx="115" cy="88" r="5.5" fill="#22140a"/></svg></div>
     <div class="card hi onb-card">
       <div class="step"><h2 id="onbT">Labas!</h2><p>In lituano vuol dire «ciao». Labas ti accompagna nell'Erasmus a Vilnius, dalla firma del Learning Agreement fino al rientro a Bologna.</p></div>
       <div class="step"><h2>Partiamo da te</h2>
@@ -599,6 +646,7 @@ nav svg{width:22px;height:22px}
 </div>
 <header class="hero" id="hero">
   <svg id="bgfl" aria-hidden="true"></svg>
+  <div class="lava" aria-hidden="true"><i style="--s:74px;--l:6%;--c:var(--pink);--t:19s;--dl:-3s"></i><i style="--s:112px;--l:38%;--c:var(--orange);--t:24s;--dl:-11s"></i><i style="--s:56px;--l:74%;--c:var(--mint);--t:17s;--dl:-6s"></i><i style="--s:88px;--l:58%;--c:var(--pink);--t:27s;--dl:-18s"></i><i style="--s:62px;--l:22%;--c:var(--yel);--t:21s;--dl:-14s"></i></div>
   <div class="wrap hgrid">
     <div class="htxt">
       <h1 id="hello">Labas, Matteo!</h1>
@@ -606,17 +654,17 @@ nav svg{width:22px;height:22px}
       <p class="lead" id="lead"></p>
       <div class="chips" id="chips"></div>
     </div>
-    <div class="daisy" role="img" id="daisy">
+    <div class="daisy" role="img" id="daisy"><div class="rays" aria-hidden="true"></div>
       <svg viewBox="0 0 200 200" aria-hidden="true">
         <g class="petals" id="petals"></g>
-        <circle cx="100" cy="100" r="58" fill="#ffc21a" stroke="#22140a" stroke-width="3.5"/>
+        <circle cx="100" cy="100" r="58" style="fill:var(--yel)" stroke="#22140a" stroke-width="3.5"/>
         <circle cx="100" cy="100" r="50" fill="none" stroke="#22140a" stroke-width="2" stroke-dasharray="2 7" stroke-linecap="round"/>
       </svg>
       <div class="count"><b id="cd">0</b><span id="cdl"></span></div>
     </div>
 <div class="hacts"><button class="gear" type="button" id="srchBtn" aria-label="Cerca"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg></button><a class="gear" href="#impostazioni" id="gear" aria-label="Impostazioni"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 0 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 0 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 0 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 0 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></a></div>
   </div>
-  <svg class="wave" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true"><g class="wv"><path d="M0 8 Q150 -8 300 8 T600 8 T900 8 T1200 8 T1500 8 T1800 8 V60 H0Z" fill="#ff4f9a"/><path d="M0 20 Q150 4 300 20 T600 20 T900 20 T1200 20 T1500 20 T1800 20 V60 H0Z" fill="#ff7a1a"/><path d="M0 32 Q150 16 300 32 T600 32 T900 32 T1200 32 T1500 32 T1800 32 V60 H0Z" fill="var(--green)"/><path d="M0 44 Q150 28 300 44 T600 44 T900 44 T1200 44 T1500 44 T1800 44 V60 H0Z" fill="var(--bg)"/></g></svg>
+  <svg class="wave" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true"><g class="wv"><path d="M0 8 Q150 -8 300 8 T600 8 T900 8 T1200 8 T1500 8 T1800 8 V60 H0Z" style="fill:var(--pink)"/><path d="M0 20 Q150 4 300 20 T600 20 T900 20 T1200 20 T1500 20 T1800 20 V60 H0Z" style="fill:var(--orange)"/><path d="M0 32 Q150 16 300 32 T600 32 T900 32 T1200 32 T1500 32 T1800 32 V60 H0Z" fill="var(--green)"/><path d="M0 44 Q150 28 300 44 T600 44 T900 44 T1200 44 T1500 44 T1800 44 V60 H0Z" fill="var(--bg)"/></g></svg>
 </header>
 
 <main class="wrap" id="main">
@@ -773,7 +821,7 @@ Matteo De Vincenti</pre>
       <section class="card anc" id="vn-near"><h3>Attorno a casa</h3><div id="near"></div></section>
     </div>
     <section class="card mt anc" id="vn-map">
-      <div class="ph-h"><h3>Mappa</h3><span class="legend" style="margin:0"><span><i class="dot" style="background:#ff4f9a"></i>Da vedere</span><span><i class="dot" style="background:#46d394"></i>Visto</span><span><i class="dot" style="background:#ff7a1a"></i>Diario</span></span></div>
+      <div class="ph-h"><h3>Mappa</h3><span class="legend" style="margin:0"><span><i class="dot" style="background:#ff4f9a"></i>Da vedere</span><span><i class="dot" style="background:var(--mint)"></i>Visto</span><span><i class="dot" style="background:#ff7a1a"></i>Diario</span></span></div>
       <div class="mapbox" id="map"><p class="sub" style="padding:16px">La mappa si carica quando sei online.</p></div>
       <p class="sub">Mappa © OpenStreetMap. Le pagine di diario compaiono se aggiungi la posizione o scegli uno dei posti.</p>
     </section>
@@ -876,6 +924,8 @@ Matteo De Vincenti</pre>
       </section>
       <section class="card set" id="s-aspetto">
         <h3>Aspetto</h3>
+        <p class="lbl" style="margin-top:6px">Stile</p>
+        <div class="stylepick" id="stylepick"><button type="button" data-stylev="flower"><span><i style="background:#ff4f9a"></i><i style="background:#ff7a1a"></i><i style="background:#ffc21a"></i><i style="background:#46d394"></i></span>Flower power</button><button type="button" data-stylev="sunset"><span><i style="background:#d9541e"></i><i style="background:#e8a317"></i><i style="background:#a9c34c"></i><i style="background:#3a2212"></i></span>Tramonto '70</button><button type="button" data-stylev="psy"><span><i style="background:#ff2fa8"></i><i style="background:#b46bff"></i><i style="background:#00e0b0"></i><i style="background:#ffe600"></i></span>Psichedelico</button></div>
         <div class="srow"><span>Tema</span><span class="seg" data-seg="theme"><button type="button" data-v="auto">Auto</button><button type="button" data-v="light">Chiaro</button><button type="button" data-v="dark">Scuro</button></span></div>
         <div class="srow"><span>Testo</span><span class="seg" data-seg="text"><button type="button" data-v="n">Normale</button><button type="button" data-v="l">Grande</button></span></div>
         <label class="srow" for="set-motion"><span>Animazioni<small>La margherita che gira e le transizioni</small></span><input type="checkbox" role="switch" class="sw" id="set-motion" data-flag="motion"></label>
