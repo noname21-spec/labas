@@ -23,7 +23,7 @@ const ENG=[
 ];
 const HOUSE='Miniappartamento: contratto, caparra e consegna delle chiavi';
 const BAGT=[['valigia','Giaccone imbottito per temperature sotto zero','',0],['valigia','Berretto, sciarpa e guanti','',0],['valigia','Scarponcini impermeabili con suola antiscivolo','',0],['valigia','Intimo termico e calze di lana','',0],['valigia','Adattatore per prese tipo F (le spine italiane grandi non entrano)','',0],['valigia','Crema idratante e burrocacao','',0],['valigia','Documenti e Learning Agreement nel bagaglio a mano','',0],['valigia','Pesare la valigia prima di partire','2027-01-31',0]];
-const VER='2.0.0';
+const VER='2.1.0';
 const SETD=()=>({name:'Matteo',uni:'European Humanities University',goal:30,theme:'auto',text:'n',motion:true,intro:true,start:'oggi',leads:[3,1,0],en:true,lt:true,onb:false,pin:null,push:false,cal:null,style:'flower'});
 const mkTask=([ph,t,due,d])=>({id:uid(),ph,t,due,done:!!d});
 const DEF=()=>{
@@ -823,7 +823,7 @@ function markRows(){if(!coarse)return;document.querySelectorAll(SWROW).forEach(r
 new MutationObserver(()=>{clearTimeout(markRows.t);markRows.t=setTimeout(markRows,30)}).observe(document.getElementById('main'),{childList:true,subtree:true});
 let tg=null;
 document.addEventListener('touchstart',e=>{if(e.touches.length!==1)return;const t=e.touches[0],el=e.target;
- if(el.closest('input,textarea,select,.setnav,.scroll,.mapbox,.leaflet-container,#quick,#srch,#onb,.fc,.mchart,nav'))return(tg=null);
+ if(el.closest('input,textarea,select,.setnav,.scroll,.mapbox,.leaflet-container,#quick,#srch,#onb,.fc,.mchart,nav,.dock'))return(tg=null);
  const row=el.closest('.sw-row');tg={x:t.clientX,y:t.clientY,t:Date.now(),row,dir:0,dx:0}},{passive:true});
 document.addEventListener('touchmove',e=>{if(!tg)return;const t=e.touches[0],dx=t.clientX-tg.x,dy=t.clientY-tg.y;
  if(!tg.dir){if(Math.abs(dx)>12&&Math.abs(dx)>Math.abs(dy)*1.4)tg.dir='h';else if(Math.abs(dy)>12){tg.dir='v';return}}

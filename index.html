@@ -647,10 +647,6 @@ body{--rayc:light-dark(color-mix(in srgb,#fff 50%,transparent),color-mix(in srgb
 .mini i,.trk i,.stackbar i{background-image:repeating-linear-gradient(-45deg,rgba(255,255,255,.32) 0 6px,transparent 6px 12px);background-size:34px 34px;animation:stripes 1.6s linear infinite}
 .mini i{background-color:transparent;background-image:repeating-linear-gradient(-45deg,var(--pink) 0 8px,var(--orange) 8px 16px,var(--yel) 16px 24px,var(--mint) 24px 32px);background-size:45.25px 45.25px}
 @keyframes stripes{to{background-position:34px 0}}
-nav{display:grid!important;grid-template-columns:1.5fr 1.5fr 70px 1fr 1fr 1fr;align-items:center;border:3px solid transparent!important;background:linear-gradient(var(--card),var(--card)) padding-box,linear-gradient(90deg,var(--pink) 0 25%,var(--orange) 25% 50%,var(--yel) 50% 75%,var(--mint) 75%) border-box!important;overflow:visible}
-.navplus{justify-self:center;width:62px;height:62px;margin-top:-30px;border-radius:50%;border:3px solid var(--ink);background:var(--sec);color:#22140a;display:grid;place-items:center;box-shadow:3px 3px 0 var(--sh),0 0 18px var(--glow);cursor:pointer;transition:transform .2s}
-.navplus svg{width:28px;height:28px}
-.navplus:active{transform:translate(2px,2px) scale(.94)}
 #fab{display:none!important}
 body #toast{bottom:calc(98px + env(safe-area-inset-bottom,0px))}
 .setnav a,.setnav button{border-radius:12px!important;border:2px solid var(--edge);transition:background .25s,border-color .25s,transform .2s}
@@ -663,6 +659,19 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--sec);box
 .fl>span{position:absolute;left:12px;top:-9px;font-size:12px;font-weight:800;line-height:1.2;background:var(--card);padding:0 6px;border-radius:6px;color:var(--mute);opacity:0;transform:translateY(6px);transition:opacity .2s,transform .2s;pointer-events:none;white-space:nowrap;max-width:calc(100% - 20px);overflow:hidden;text-overflow:ellipsis}
 .fl:focus-within>span,.fl.has>span{opacity:1;transform:none}
 .fl:focus-within>span{color:var(--acc)}
+/* ===== 2.1 capsula adesivo arcobaleno ===== */
+.dock{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(14px + env(safe-area-inset-bottom,0px));display:flex;align-items:center;gap:10px;z-index:10;max-width:calc(100% - 14px)}
+.dock nav{position:static!important;transform:none!important;width:auto!important;display:flex!important;gap:2px;padding:4px!important;border:4px solid transparent!important;border-radius:999px!important;background:linear-gradient(var(--card),var(--card)) padding-box,linear-gradient(90deg,var(--pink) 0 25%,var(--orange) 25% 50%,var(--yel) 50% 75%,var(--mint) 75%) border-box!important;box-shadow:4px 4px 0 light-dark(#22140a,var(--pink))!important;min-width:0}
+.dock nav a{flex:none!important;flex-direction:row!important;gap:0!important;min-height:46px!important;min-width:46px;padding:0 11px!important;font-family:Corben,serif;font-weight:700!important;font-size:13.5px!important;color:var(--ink);transition:background .3s,box-shadow .3s,padding .3s}
+.dock nav a span{display:inline-block;max-width:0;opacity:0;overflow:hidden;white-space:nowrap;transition:max-width .35s cubic-bezier(.3,1.3,.5,1),opacity .25s,margin .3s}
+.dock nav a.on{background:var(--sec)!important;color:#22140a!important;box-shadow:inset 0 0 0 2.5px #22140a;padding:0 13px 0 10px!important}
+.dock nav a.on span{max-width:90px;opacity:1;margin-left:6px}
+.dock nav svg{width:23px;height:23px;flex:none}
+.navplus{flex:none;width:54px;height:54px;border-radius:50%;border:3px solid var(--ink);background:var(--pink);color:#22140a;display:grid;place-items:center;box-shadow:4px 4px 0 light-dark(#22140a,var(--yel));cursor:pointer;transition:transform .2s,box-shadow .2s;padding:0}
+.navplus svg{width:28px;height:28px}
+.navplus:active,.dock nav a:active{transform:translate(2px,2px)}
+.navplus:active{box-shadow:2px 2px 0 light-dark(#22140a,var(--yel))}
+@media(max-width:369px){.dock{gap:7px}.dock nav a{min-width:42px;padding:0 9px!important}.dock nav a.on span{max-width:0;opacity:0;margin:0}.navplus{width:50px;height:50px}}
 .empty{border:2px dashed var(--edge);border-radius:18px;padding:18px;text-align:center;color:var(--mute);margin:12px 0 0}
 .note{color:var(--mute);font-size:14px;margin:18px 0 0}
 #lb{position:fixed;inset:0;background:rgba(10,6,2,.88);display:none;place-items:center;z-index:30;padding:20px;border:0;width:100%;cursor:zoom-out}
@@ -1048,14 +1057,16 @@ Matteo De Vincenti</pre>
 </div>
 <div id="toast" role="status"><span id="tmsg"></span><button type="button" id="tundo">Annulla</button></div>
 
+<div class="dock">
 <nav aria-label="Sezioni">
-  <a href="#oggi" id="n-oggi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="3"/><path d="M12 9a3 3 0 1 1 0-6 3 3 0 0 1 0 6M12 15a3 3 0 1 1 0 6 3 3 0 0 1 0-6M9 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0M15 12a3 3 0 1 1 6 0 3 3 0 0 1-6 0"/></svg>Oggi</a>
-  <a href="#soldi" id="n-soldi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5a4 4 0 1 0 0 7M7 11h6M7 13.5h6"/></svg>Soldi</a>
-  <button type="button" id="navPlus" class="navplus" aria-label="Aggiungi spesa o diario"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
-  <a href="#studio" id="n-studio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M4 5.5C7 4 9.5 4 12 6c2.5-2 5-2 8-.5V19c-3-1.5-5.5-1.5-8 .5-2.5-2-5-2-8-.5z"/><path d="M12 6v13.5"/></svg>Studio</a>
-  <a href="#inglese" id="n-inglese"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M4 5h16v11H10l-4 3.5V16H4z"/><path d="M8 9.5h8M8 12.5h5" stroke-linecap="round"/></svg>Lingue</a>
-  <a href="#vilnius" id="n-vilnius"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Vilnius</a>
+  <a href="#oggi" id="n-oggi" aria-label="Oggi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="3"/><path d="M12 9a3 3 0 1 1 0-6 3 3 0 0 1 0 6M12 15a3 3 0 1 1 0 6 3 3 0 0 1 0-6M9 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0M15 12a3 3 0 1 1 6 0 3 3 0 0 1-6 0"/></svg><span>Oggi</span></a>
+  <a href="#soldi" id="n-soldi" aria-label="Soldi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5a4 4 0 1 0 0 7M7 11h6M7 13.5h6"/></svg><span>Soldi</span></a>
+  <a href="#studio" id="n-studio" aria-label="Studio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M4 5.5C7 4 9.5 4 12 6c2.5-2 5-2 8-.5V19c-3-1.5-5.5-1.5-8 .5-2.5-2-5-2-8-.5z"/><path d="M12 6v13.5"/></svg><span>Studio</span></a>
+  <a href="#inglese" id="n-inglese" aria-label="Lingue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M4 5h16v11H10l-4 3.5V16H4z"/><path d="M8 9.5h8M8 12.5h5" stroke-linecap="round"/></svg><span>Lingue</span></a>
+  <a href="#vilnius" id="n-vilnius" aria-label="Vilnius"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span>Vilnius</span></a>
 </nav>
+<button type="button" id="navPlus" class="navplus" aria-label="Aggiungi spesa o diario"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+</div>
 
 <script src="lib/supabase.js" defer></script>
 <script src="app.js" defer></script>
