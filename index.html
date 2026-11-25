@@ -738,30 +738,6 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--sec);box
 :root[data-style=disco] #dzr,:root[data-style=ambra] #dzr{display:none}
 .stylepick button small{display:block;font-weight:600;font-size:11.5px;color:var(--mute);margin-top:-4px}
 .stylepick .auto i{background:conic-gradient(var(--pink) 0 25%,var(--orange) 0 50%,var(--yel) 0 75%,var(--mint) 0)}
-/* ===== 2.3 lava lamp ===== */
-.lamp{position:absolute;z-index:0;display:none;pointer-events:none}
-.hero:not(.compact) .lamp.ready{display:block}
-.lglass{position:absolute;inset:0;clip-path:polygon(32% 10%,68% 10%,84% 45%,88% 60%,84% 72.5%,74% 79%,26% 79%,16% 72.5%,12% 60%,16% 45%);background:light-dark(color-mix(in srgb,var(--sec) 30%,#fffaf0),color-mix(in srgb,var(--sec) 16%,#050505));pointer-events:auto;touch-action:manipulation;cursor:pointer}
-.lgoo{position:absolute;inset:0;filter:url(#waxf)}
-:root.dk .lgoo{filter:url(#waxf) drop-shadow(0 0 10px var(--pink))}
-.lgoo i{position:absolute;display:block;border-radius:50%;background:var(--pink)}
-.lgoo .pool{left:0;right:0;top:74%;height:12%;border-radius:40%}
-.lgoo .ceil{left:20%;right:20%;top:7%;height:5%;border-radius:40%}
-.lgoo .wb{left:var(--x);top:var(--y);width:var(--s);height:var(--s);animation:wax var(--d) ease-in-out var(--dl) infinite alternate}
-@keyframes wax{0%{transform:translateY(0) scale(.92,1.05)}45%{transform:translateY(calc(var(--rise)*-.5)) scale(1.08,.94)}100%{transform:translateY(calc(var(--rise)*-1)) scale(.95,1.06)}}
-.lgoo .fb{left:var(--x);top:var(--y);width:var(--s);height:var(--s);animation:drift var(--d) ease-in-out infinite alternate;transition:scale .35s cubic-bezier(.3,1.6,.5,1)}
-.lgoo .fb.new{scale:.2}
-.lgoo .fb.pop{scale:0}
-@keyframes drift{to{transform:translateY(var(--dy)) scale(1.08,.94)}}
-.lframe{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
-.lgl{fill:none;stroke:light-dark(#22140a,var(--sec));stroke-width:3;stroke-linejoin:round;vector-effect:non-scaling-stroke}
-.lmet{fill:light-dark(#22140a,#1b1b1b);stroke:light-dark(#22140a,var(--sec));stroke-width:3;stroke-linejoin:round;vector-effect:non-scaling-stroke}
-.lband{stroke:var(--yel);stroke-width:4;vector-effect:non-scaling-stroke}
-.lhl{fill:rgba(255,255,255,.5)}
-:root.dk .lhl{fill:rgba(255,255,255,.14)}
-.hgrid{pointer-events:none}.hgrid *{pointer-events:auto}
-.hgrid .rays,.hgrid .count,.hgrid .chips{pointer-events:none!important}.hgrid .chips>*{pointer-events:auto!important}
-:root.calm .lgoo i{animation:none!important}
 .empty{border:2px dashed var(--edge);border-radius:18px;padding:18px;text-align:center;color:var(--mute);margin:12px 0 0}
 .note{color:var(--mute);font-size:14px;margin:18px 0 0}
 #lb{position:fixed;inset:0;background:rgba(10,6,2,.88);display:none;place-items:center;z-index:30;padding:20px;border:0;width:100%;cursor:zoom-out}
@@ -802,11 +778,7 @@ nav svg{width:22px;height:22px}
 <header class="hero" id="hero">
   <svg id="bgfl" aria-hidden="true"></svg>
   <div class="sky" aria-hidden="true"></div><div class="wxfx" id="wxfx" aria-hidden="true"></div>
-  <div class="lamp" id="lamp" aria-hidden="true">
-    <svg width="0" height="0" style="position:absolute"><filter id="waxf" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur in="SourceGraphic" stdDeviation="6" result="b"/><feColorMatrix in="b" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 22 -9" result="g"/><feMorphology in="g" operator="dilate" radius="2" result="d"/><feFlood flood-color="#22140a"/><feComposite in2="d" operator="in" result="o"/><feMerge><feMergeNode in="o"/><feMergeNode in="g"/></feMerge></filter></svg>
-    <div class="lglass" id="lglass"><div class="lgoo" id="lgoo"><i class="pool"></i><i class="ceil"></i></div></div>
-    <svg class="lframe" viewBox="0 0 100 200" preserveAspectRatio="none"><path class="lhl" d="M30 26 L22 92 L19 120 L24 118 L27 92 L35 26Z"/><polygon class="lgl" points="32,20 68,20 84,90 88,120 84,145 74,158 26,158 16,145 12,120 16,90"/><path class="lmet" d="M38 3 H62 L68 20 H32 Z"/><path class="lmet" d="M26 158 H74 L96 198 H4 Z"/><path class="lband" d="M15 178 H85"/></svg>
-  </div>
+  <div class="lava" aria-hidden="true"><i style="--s:74px;--l:6%;--c:var(--pink);--t:19s;--dl:-3s"></i><i style="--s:112px;--l:38%;--c:var(--orange);--t:24s;--dl:-11s"></i><i style="--s:56px;--l:74%;--c:var(--mint);--t:17s;--dl:-6s"></i><i style="--s:88px;--l:58%;--c:var(--pink);--t:27s;--dl:-18s"></i><i style="--s:62px;--l:22%;--c:var(--yel);--t:21s;--dl:-14s"></i></div>
   <div class="wrap hgrid">
     <div class="htxt">
       <h1 id="hello">Labas, Matteo!</h1>
