@@ -17,8 +17,8 @@
     {"src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
   ],
   "shortcuts": [
-    {"name": "Registra una spesa", "short_name": "Spesa", "url": "./#soldi", "icons": [{"src": "icon-96.png", "sizes": "96x96"}]},
-    {"name": "Diario", "short_name": "Diario", "url": "./#vilnius", "icons": [{"src": "icon-96.png", "sizes": "96x96"}]},
+    {"name": "Registra una spesa", "short_name": "Spesa", "url": "./?add=spesa#soldi", "icons": [{"src": "icon-96.png", "sizes": "96x96"}]},
+    {"name": "Scrivi nel diario", "short_name": "Diario", "url": "./?add=diario#vilnius", "icons": [{"src": "icon-96.png", "sizes": "96x96"}]},
     {"name": "Ripasso", "short_name": "Ripasso", "url": "./#inglese", "icons": [{"src": "icon-96.png", "sizes": "96x96"}]}
   ]
 }

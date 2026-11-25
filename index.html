@@ -738,6 +738,87 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--sec);box
 :root[data-style=disco] #dzr,:root[data-style=ambra] #dzr{display:none}
 .stylepick button small{display:block;font-weight:600;font-size:11.5px;color:var(--mute);margin-top:-4px}
 .stylepick .auto i{background:conic-gradient(var(--pink) 0 25%,var(--orange) 0 50%,var(--yel) 0 75%,var(--mint) 0)}
+/* ===== 2.5 ===== */
+.shrow{display:grid;grid-template-columns:auto minmax(0,1fr) auto auto;gap:10px;align-items:center;padding:9px 0;border-bottom:1px dashed var(--line)}
+.shrow:last-child{border-bottom:0}
+.shrow .tick span{width:26px;height:26px}
+.shrow.ok .it{text-decoration:line-through;opacity:.55}
+.shrow .it b{display:block;font-family:Corben,serif;font-size:17px;line-height:1.2;color:var(--acc)}
+.shrow .it small{display:block;color:var(--mute);font-weight:600}
+.shrow .q{font-family:Corben,serif;font-weight:700;margin-right:4px}
+.shrow .nolt{font-family:inherit!important;font-size:13px!important;color:var(--mute)!important;font-weight:600}
+.shopact{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.shopact:empty{display:none}
+#shopShow{position:fixed;inset:0;z-index:120;background:var(--sec);color:#22140a;overflow:auto;padding:max(18px,env(safe-area-inset-top)) 18px 40px}
+.ssw{max-width:560px;margin:0 auto}
+.sst{font-family:Shrikhand,serif;font-size:30px}
+.ssub{font-weight:700;margin:2px 0 14px}
+#shopShow .x{background:#fffaf0;color:#22140a}
+.bigi{display:flex;align-items:baseline;gap:12px;width:100%;text-align:left;background:#fffaf0;border:3px solid #22140a;border-radius:20px;padding:14px 16px;margin:0 0 12px;box-shadow:4px 4px 0 #22140a;color:#22140a;font:inherit;cursor:pointer;transition:transform .2s,opacity .3s}
+.bigi b{font-family:Corben,serif;font-size:30px;line-height:1.1;flex:1}
+.bigi small{font-weight:700;font-size:14px;opacity:.7}
+.bigi.ok{opacity:.4;transform:scale(.97)}.bigi.ok b{text-decoration:line-through}
+.wk7{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin:10px -2px 0;padding:2px 2px 4px}
+.wk7::-webkit-scrollbar{display:none}
+.wk7:empty{display:none}
+.wd{flex:none;min-width:62px;text-align:center;background:var(--soft);border:1px solid var(--line);border-radius:16px;padding:7px 6px}
+.wd small{display:block;font-weight:800;font-size:12px;text-transform:capitalize;color:var(--mute)}
+.wd svg{width:30px;height:30px;display:block;margin:2px auto}
+.wd b{font-family:Corben,serif;font-size:15px}
+.wd span{display:block;font-size:12px;color:var(--mute);font-weight:700}
+.wd i{display:block;font-style:normal;font-size:11.5px;font-weight:800;color:#2f8fd8}
+.wd.today{border:2px solid var(--ink);background:var(--sec);color:#22140a}.wd.today small,.wd.today span{color:#22140a}
+.tband.nodata .tb-w b,.tband.nodata .tb-s{display:none}
+.tband.nodata{grid-template-columns:auto minmax(0,1fr) auto}
+.wxretry{font:inherit;font-weight:800;font-size:13px;border:2px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink);padding:5px 12px;cursor:pointer}
+.attb{display:inline-flex;gap:6px;margin-top:6px}
+.attb button{font:inherit;font-weight:800;font-size:13px;border:2px solid var(--ink);border-radius:999px;padding:5px 12px;cursor:pointer;color:#22140a}
+.attb .p{background:var(--mint)}.attb .a{background:var(--pink)}
+.atodo{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center;padding:9px 0;border-bottom:1px dashed var(--line)}
+.atodo small{display:block;color:var(--mute);font-weight:600}
+.asum{padding:10px 0;border-bottom:1px dashed var(--line)}.asum:last-child{border-bottom:0}
+.asum .h{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.asum .h b{font-weight:800}
+.asum label{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--mute)}
+.asum label input{width:64px;min-height:36px;padding:4px 8px}
+.abar{display:flex;height:12px;border-radius:999px;overflow:hidden;border:2px solid var(--ink);margin:8px 0 4px;background:var(--soft)}
+.abar i{display:block;height:100%}.abar .p{background:var(--mint)}.abar .a{background:var(--pink)}
+.asum p{margin:0;font-size:13.5px;font-weight:700}.asum p.warn{color:var(--red)}
+.fest{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:12px;align-items:center;padding:10px 0;border-bottom:1px dashed var(--line)}
+.fest:last-child{border-bottom:0}
+.fest .dd{width:52px;text-align:center;border:2.5px solid var(--ink);border-radius:14px;background:var(--card);overflow:hidden;line-height:1.1}
+.fest .dd small{display:block;background:var(--pink);color:#22140a;font-weight:800;font-size:11px;padding:2px 0;text-transform:uppercase}
+.fest .dd b{display:block;font-family:Corben,serif;font-size:20px;padding:3px 0}
+.fest.ev .dd small{background:var(--mint)}
+.fest span small{display:block;color:var(--mute);font-weight:600}
+.fest .cd{font-weight:800;font-size:13px;color:var(--acc);white-space:nowrap}
+.numbtns{display:flex;gap:8px;flex-wrap:wrap}
+#story{position:fixed;inset:0;z-index:130;background:#22140a;color:#22140a;overflow:hidden;touch-action:manipulation}
+.stbars{position:absolute;top:max(12px,env(safe-area-inset-top));left:14px;right:60px;display:flex;gap:5px;z-index:3}
+.stbars i{flex:1;height:5px;border-radius:9px;background:rgba(255,255,255,.4);overflow:hidden}
+.stbars i b{display:block;height:100%;width:0;background:#fff}
+.stbars i.done b{width:100%}
+.stbars i.run b{animation:stbar var(--t,5.5s) linear forwards}
+@keyframes stbar{to{width:100%}}
+.stx{position:absolute;top:max(4px,calc(env(safe-area-inset-top) - 6px));right:12px;z-index:4;background:#fffaf0!important;color:#22140a!important}
+.stnav{position:absolute;inset:0;display:grid;grid-template-columns:1fr 2fr;z-index:2}
+.stnav button{background:none;border:0;cursor:pointer}
+.stslide{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:80px 28px 60px;background:var(--bgc,#ffc21a);background-image:var(--grain);background-blend-mode:multiply;animation:stin .5s cubic-bezier(.2,.9,.3,1.2)}
+@keyframes stin{from{opacity:0;transform:scale(1.06)}}
+.stslide .k{font-weight:800;font-size:18px;letter-spacing:.02em;margin:0 0 6px}
+.stslide .big{font-family:Shrikhand,serif;font-size:clamp(64px,22vw,140px);line-height:1;margin:0;text-shadow:4px 4px 0 var(--sh2,#fffaf0)}
+.stslide h2{font-family:Shrikhand,serif;font-size:clamp(34px,10vw,58px);line-height:1.05;margin:0 0 10px;text-shadow:3px 3px 0 var(--sh2,#fffaf0)}
+.stslide p{font-size:19px;font-weight:700;line-height:1.35;margin:10px 0 0;max-width:30ch}
+.stslide .chips2{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.stslide .chips2 span{background:#fffaf0;border:2.5px solid #22140a;border-radius:999px;padding:6px 14px;font-weight:800;box-shadow:3px 3px 0 #22140a}
+.stslide .stdaisy{position:absolute;right:-50px;bottom:-50px;width:230px;height:230px;opacity:.9;animation:spin 24s linear infinite}
+.stslide .stacts{position:relative;z-index:5;display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.stslide .stacts .btn{background:#fffaf0!important;color:#22140a!important;border-color:#22140a!important}
+.eart{display:block;width:84px;height:84px;margin:0 auto 10px;animation:float 3.2s ease-in-out infinite}
+.eart svg{width:100%;height:100%;overflow:visible}
+.empty.has-art::before{display:none}
+.hwipe{position:absolute;inset:0;z-index:0;pointer-events:none;background:var(--sec);clip-path:circle(0 at var(--wx) 100%);transition:clip-path .55s cubic-bezier(.3,.8,.3,1)}
+.hwipe.go{clip-path:circle(160% at var(--wx) 100%)}
 .empty{border:2px dashed var(--edge);border-radius:18px;padding:18px;text-align:center;color:var(--mute);margin:12px 0 0}
 .note{color:var(--mute);font-size:14px;margin:18px 0 0}
 #lb{position:fixed;inset:0;background:rgba(10,6,2,.88);display:none;place-items:center;z-index:30;padding:20px;border:0;width:100%;cursor:zoom-out}
@@ -808,6 +889,7 @@ nav svg{width:22px;height:22px}
         <div class="tb-m"><span id="wDesc"><i class="skel" style="width:8em"></i></span><small>A Vilnius sono le <b id="vClock">--:--</b><span id="vDate" hidden></span></small></div>
         <div class="tb-s"><small>tramonto</small><b id="wSun"><i class="skel" style="width:2.4em;height:.8em"></i></b><span id="wDay" hidden></span></div>
       </div>
+      <div class="wk7" id="wk7" aria-label="Previsioni dei prossimi giorni"></div>
       <div class="tnext" id="tNext"></div>
     </section>
     <div class="vh">
@@ -848,6 +930,13 @@ nav svg{width:22px;height:22px}
         <div id="logRows" style="margin-top:10px"></div>
       </div>
     </div>
+    <section class="card mt" id="shopCard">
+      <div class="ph-h"><h3>Lista della spesa</h3><button class="btn alt" type="button" id="shopShowBtn">Mostra in negozio</button></div>
+      <p class="sub">Scrivi in italiano: accanto compare il nome in lituano, da mostrare o da leggere al banco.</p>
+      <form class="addrow" id="shopForm"><input id="sh-n" placeholder="Cosa ti serve? Es. 2 latte" aria-label="Cosa comprare" autocomplete="off" enterkeyhint="done"><button class="btn">Aggiungi</button></form>
+      <div id="shopRows"></div>
+      <div class="shopact" id="shopAct"></div>
+    </section>
     <div class="grid2 mt">
       <div class="card">
         <h3>Spese fisse</h3>
@@ -889,6 +978,7 @@ nav svg{width:22px;height:22px}
     <p class="note">In Lituania i voti vanno da 1 a 10 e si supera con 5. I trentesimi sono una stima lineare (5 = 18, 10 = 30): la conversione ufficiale la decide il tuo corso di studio a Bologna.</p>
     <div class="vh mt"><div><h2>Orario</h2><p class="sub">La tua settimana all'EHU.</p></div></div>
     <div class="week" id="week"></div>
+    <section class="card mt" id="attCard"><div class="ph-h"><h3>Presenze</h3><span class="pill" id="attPct"></span></div><p class="sub">Segna se eri a lezione: tengo il conto delle assenze di ogni corso. Il limite lo trovi nel syllabus o lo chiedi al docente.</p><div id="attTodo"></div><div id="attSum"></div></section>
     <form class="card mt" id="sform">
       <h3>Aggiungi una lezione</h3>
       <div class="sgrid">
@@ -946,8 +1036,8 @@ Matteo De Vincenti</pre>
   </section>
 
   <section class="view" id="v-vilnius">
-    <div class="scroll setnav sticky" aria-label="Parti di Vilnius"><a href="#vn-num" data-jump="vn-num">Numeri</a><a href="#vn-casa" data-jump="vn-casa">Casa</a><a href="#vn-near" data-jump="vn-near">Attorno</a><a href="#vn-map" data-jump="vn-map">Mappa</a><a href="#vn-diario" data-jump="vn-diario">Diario</a><a href="#vn-posti" data-jump="vn-posti">Posti</a><a href="#vn-parole" data-jump="vn-parole">Parole</a><a href="#vn-weekend" data-jump="vn-weekend">Weekend</a><a href="#vn-info" data-jump="vn-info">Da sapere</a></div>
-    <div class="vh anc" id="vn-num"><div><h2>Il tuo Erasmus in numeri</h2></div><button class="btn alt" type="button" id="copyNums">Copia riepilogo</button></div>
+    <div class="scroll setnav sticky" aria-label="Parti di Vilnius"><a href="#vn-num" data-jump="vn-num">Numeri</a><a href="#vn-casa" data-jump="vn-casa">Casa</a><a href="#vn-near" data-jump="vn-near">Attorno</a><a href="#vn-map" data-jump="vn-map">Mappa</a><a href="#vn-diario" data-jump="vn-diario">Diario</a><a href="#vn-posti" data-jump="vn-posti">Posti</a><a href="#vn-parole" data-jump="vn-parole">Parole</a><a href="#vn-weekend" data-jump="vn-weekend">Weekend</a><a href="#vn-feste" data-jump="vn-feste">Feste</a><a href="#vn-info" data-jump="vn-info">Da sapere</a></div>
+    <div class="vh anc" id="vn-num"><div><h2>Il tuo Erasmus in numeri</h2></div><span class="numbtns"><button class="btn" type="button" id="storyBtn">Guarda la storia</button><button class="btn alt" type="button" id="copyNums">Copia riepilogo</button></span></div>
     <div class="card"><div class="nums" id="nums" style="margin-top:0"></div></div>
     <div class="grid2 mt">
       <section class="card anc" id="vn-casa"><h3>Casa e spostamenti</h3><div id="homeBox"></div><p class="lbl">Andare a lezione</p><div id="commute"></div></section>
@@ -990,6 +1080,7 @@ Matteo De Vincenti</pre>
       <article><h4>Tallinn</h4><p class="how">Circa 600 km, bus notturno o volo</p><p>La città vecchia medievale meglio conservata del Baltico.</p></article>
       <article><h4>Nida</h4><p class="how">4 o 5 ore tra bus e traghetto</p><p>Le dune della penisola di Curlandia: da fare tra maggio e giugno.</p></article>
     </div>
+    <section class="card mt anc" id="vn-feste"><h3>Feste e chiusure in Lituania</h3><p class="sub">Nei giorni festivi uffici, banche e università sono chiusi; i negozi possono avere orari ridotti, meglio controllare prima. Il giorno prima ti avviso.</p><div id="fests"></div></section>
     <div class="card mt anc" id="vn-info">
       <h3>Da sapere</h3>
       <div class="facts">
@@ -1122,6 +1213,8 @@ Matteo De Vincenti</pre>
     <div id="srch-r"></div>
   </div>
 </div>
+<div id="shopShow" hidden role="dialog" aria-modal="true" aria-label="Lista della spesa in lituano"><div class="ssw"><div class="ph-h"><b class="sst">Pirkinių sąrašas</b><button class="x" type="button" id="shopShowX" aria-label="Chiudi">×</button></div><p class="ssub">Tocca una voce quando l'hai presa.</p><div id="shopBig"></div></div></div>
+<div id="story" hidden role="dialog" aria-modal="true" aria-label="Il tuo Erasmus in una storia"><div class="stbars" id="stBars"></div><button class="x stx" type="button" id="storyX" aria-label="Chiudi">×</button><div class="stslide" id="stSlide"></div><div class="stnav"><button type="button" id="stPrev" aria-label="Indietro"></button><button type="button" id="stNext" aria-label="Avanti"></button></div></div>
 <div id="toast" role="status"><span id="tmsg"></span><button type="button" id="tundo">Annulla</button></div>
 
 <div class="dock">
