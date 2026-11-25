@@ -23,7 +23,7 @@ const ENG=[
 ];
 const HOUSE='Miniappartamento: contratto, caparra e consegna delle chiavi';
 const BAGT=[['valigia','Giaccone imbottito per temperature sotto zero','',0],['valigia','Berretto, sciarpa e guanti','',0],['valigia','Scarponcini impermeabili con suola antiscivolo','',0],['valigia','Intimo termico e calze di lana','',0],['valigia','Adattatore per prese tipo F (le spine italiane grandi non entrano)','',0],['valigia','Crema idratante e burrocacao','',0],['valigia','Documenti e Learning Agreement nel bagaglio a mano','',0],['valigia','Pesare la valigia prima di partire','2027-01-31',0]];
-const VER='2.1.0';
+const VER='2.2.0';
 const SETD=()=>({name:'Matteo',uni:'European Humanities University',goal:30,theme:'auto',text:'n',motion:true,intro:true,start:'oggi',leads:[3,1,0],en:true,lt:true,onb:false,pin:null,push:false,cal:null,style:'flower'});
 const mkTask=([ph,t,due,d])=>({id:uid(),ph,t,due,done:!!d});
 const DEF=()=>{
@@ -246,9 +246,15 @@ function route(){const h=location.hash.slice(1),v=VIEWS.includes(h)?h:(VIEWS.inc
  if(v==='vilnius')setTimeout(()=>document.querySelectorAll('#nums b[data-n]').forEach(b=>{const n=+b.dataset.n;countTo(b,n,x=>b.dataset.f==='eur'?eur(Math.round(x)):String(Math.round(x)),900)}),120);const vw=$('#v-'+v);vw.classList.add('enter');setTimeout(()=>vw.classList.remove('enter'),1100);let i=0;$('#v-'+v).querySelectorAll('.card,.day,.wk article,.pc,.num').forEach(el=>el.style.setProperty('--i',Math.min(i++,12)));if(v==='studio'){const rg=$('#ring');rg.classList.add('anim');setTimeout(()=>rg.classList.remove('anim'),1100)}if(v==='impostazioni')storageInfo();if(v==='vilnius'){setTimeout(initMap,80);commuteView()}if(v==='studio')lessonTravel();if(v==='oggi'){weather();todayCard()}}
  $('#hero').classList.toggle('compact',v!=='oggi');
  const top=$('#main').offsetTop-12;if(window.scrollY>top)window.scrollTo(0,0);}
-function petals(){let o='';for(let i=0;i<14;i++)o+=`<ellipse class="pt" cx="100" cy="40" rx="17" ry="38" style="fill:var(--poff)" stroke="#22140a" stroke-width="3.5" transform="rotate(${(i*360/14).toFixed(2)} 100 100)"/>`;$('#petals').innerHTML=o}
+function petals(){const st=document.documentElement.dataset.style;let o='';for(let i=0;i<14;i++){const t=`transform="rotate(${(i*360/14).toFixed(2)} 100 100)"`;
+ if(st==='inverno'){const d='M100 8V56M100 21L90 11M100 21L110 11M100 35L92 28M100 35L108 28';o+=`<g class="pt" ${t} style="color:var(--poff)"><path d="${d}" fill="none" stroke="#22140a" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/><path d="${d}" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></g>`}
+ else if(st==='disco')o+=`<polygon class="pt" points="100,0 113,40 100,64 87,40" style="fill:var(--poff)" stroke="#22140a" stroke-width="3.5" stroke-linejoin="round" ${t}/>`;
+ else if(st==='pop')o+=`<polygon class="pt" points="100,-2 118,60 82,60" style="fill:var(--poff)" stroke="#22140a" stroke-width="3.5" stroke-linejoin="round" ${t}/>`;
+ else if(st==='ambra')o+=`<path class="pt" d="M100 6C119 24 121 49 100 64C79 49 81 24 100 6Z" style="fill:var(--poff)" stroke="#22140a" stroke-width="3.5" ${t}/>`;
+ else o+=`<ellipse class="pt" cx="100" cy="40" rx="17" ry="38" style="fill:var(--poff)" stroke="#22140a" stroke-width="3.5" ${t}/>`}
+ $('#petals').innerHTML=o}
 function petalProg(){const L=S.tasks,dn=L.filter(x=>x.done).length,k=stay().st==='after'?14:Math.round(14*(L.length?dn/L.length:0));
- document.querySelectorAll('#petals .pt').forEach((e,i)=>{e.style.fill=i<k?(i%2?'var(--orange)':'var(--pink)'):'var(--poff)'});const d=$('#daisy');if(d)d.title=`La margherita sboccia con la checklist: ${k} petali su 14`}
+ document.querySelectorAll('#petals .pt').forEach((e,i)=>{const c=i<k?(document.documentElement.dataset.style==='tiedye'?['var(--pink)','var(--orange)','var(--yel)','var(--mint)'][i%4]:(i%2?'var(--orange)':'var(--pink)')):'var(--poff)';e.style.fill=c;e.style.color=c});const d=$('#daisy');if(d)d.title=`La margherita sboccia con la checklist: ${k} petali su 14`}
 const isDark=()=>S.set.theme==='dark'||(S.set.theme!=='light'&&matchMedia('(prefers-color-scheme: dark)').matches);
 function themeMeta(){const m=document.querySelector('meta[name=theme-color]');if(!m)return;m.setAttribute('content',isDark()?'#000000':(getComputedStyle(document.body).getPropertyValue('--sec').trim()||'#ffc21a'))}
 function countTo(el,to,f,dur){if(!el||calm()||!isFinite(to))return;const t0=performance.now(),D=dur||750;const step=n=>{const k=Math.min(1,(n-t0)/D),e=1-(1-k)**3;el.textContent=f(to*e);if(k<1)requestAnimationFrame(step);else el.textContent=f(to)};requestAnimationFrame(step)}
@@ -369,7 +375,13 @@ const FLW=c=>`<svg viewBox="-40 -40 80 80" width="22" height="22">${[0,72,144,21
 function burst(x,y,n){try{navigator.vibrate&&navigator.vibrate(n>15?[12,40,18]:14)}catch(e){}if(calm())return;const cs=pal();for(let i=0;i<n;i++){const a=Math.PI*2*i/n+Math.random()*.6,d=50+Math.random()*70,e=document.createElement('span');e.className='bst';e.innerHTML=FLW(cs[i%4]);e.style.setProperty('--x0',x+'px');e.style.setProperty('--y0',y+'px');e.style.setProperty('--x1',(x+Math.cos(a)*d).toFixed(0)+'px');e.style.setProperty('--y1',(y+Math.sin(a)*d-20).toFixed(0)+'px');e.style.setProperty('--r',(Math.random()*360-180).toFixed(0)+'deg');document.body.appendChild(e);setTimeout(()=>e.remove(),850)}}
 const LEADS=[[7,'7 giorni prima'],[3,'3 giorni prima'],[1,'il giorno prima'],[0,'il giorno stesso']];
 function leadsText(){const L=LEADS.filter(([n])=>S.set.leads.includes(n)).map(x=>x[1]);if(!L.length)return'Nessun momento scelto: seleziona almeno un avviso qui sotto.';return`Ti avviso ${L.length>1?L.slice(0,-1).join(', ')+' e '+L[L.length-1]:L[0]} di ogni scadenza della checklist.`}
-function applySettings(){const r=document.documentElement,st=S.set;if(st.theme==='auto')delete r.dataset.theme;else r.dataset.theme=st.theme;r.classList.toggle('big',st.text==='l');r.classList.toggle('calm',st.motion===false);r.dataset.style=st.style||'flower';r.classList.toggle('dk',S.set.theme==='dark'||(S.set.theme!=='light'&&matchMedia('(prefers-color-scheme: dark)').matches));
+const STYLES={flower:'Flower power',sunset:"Tramonto '70",psy:'Psichedelico',disco:'Disco',avocado:'Avocado e senape',trispalve:'Trispalvė',ambra:'Ambra baltica',inverno:'Inverno a Vilnius',pop:'Pop art',sorbetto:'Sorbetto',tiedye:'Tie-dye'};
+function effStyle(){const s=S.set.style||'flower';if(s!=='auto')return STYLES[s]?s:'flower';let w=null;try{w=(JSON.parse(localStorage.getItem('labas-wx'))||{}).w}catch(e){}
+ const code=w&&w.current?+w.current.weather_code:null,t=w&&w.current?+w.current.temperature_2m:null;
+ if(code!==null&&([71,73,75,77,85,86].includes(code)||t<=-3))return 'inverno';if(code!==null&&code<=1&&t>=18)return 'ambra';
+ const m=+new Intl.DateTimeFormat('en',{timeZone:'Europe/Vilnius',month:'numeric'}).format(new Date())-1;return m===11||m<=1?'inverno':m<=4?'flower':m<=7?'ambra':'avocado'}
+function styleSync(){const e=effStyle(),r=document.documentElement;if(r.dataset.style===e)return;applySettings();petals();petalProg();themeMeta();flowers();if(typeof MAP!=='undefined'&&MAP)mapMarkers()}
+function applySettings(){const r=document.documentElement,st=S.set;if(st.theme==='auto')delete r.dataset.theme;else r.dataset.theme=st.theme;r.classList.toggle('big',st.text==='l');r.classList.toggle('calm',st.motion===false);r.dataset.style=effStyle();try{localStorage.setItem('labas-style-eff',r.dataset.style)}catch(e){}const an=$('#autoNow');if(an)an.textContent=st.style==='auto'?'ora: '+STYLES[r.dataset.style]:'segue meteo e stagione';r.classList.toggle('dk',S.set.theme==='dark'||(S.set.theme!=='light'&&matchMedia('(prefers-color-scheme: dark)').matches));
  $('#hello').textContent=st.name&&st.name.trim()?`Labas, ${st.name.trim()}!`:'Labas!';
  const dark=st.theme==='dark'||(st.theme==='auto'&&matchMedia('(prefers-color-scheme: dark)').matches);themeMeta();flowers()}
 function settingsUI(){const st=S.set;
@@ -434,7 +446,7 @@ function clockTick(){const e=$('#vClock');if(!e)return;e.textContent=new Intl.Da
  const ds=new Intl.DateTimeFormat('it-IT',{timeZone:VTZ,weekday:'long',day:'numeric',month:'long'}).format(new Date());$('#vDate').textContent=ds+', un\'ora avanti';}
 function wxRender(w){if(!w||!w.current)return;const [l,i]=wxInfo(+w.current.weather_code);$('#wIcon').innerHTML=`<svg viewBox="0 0 48 48" aria-hidden="true">${WICO[i]}</svg>`;
  $('#wTemp').textContent=Math.round(w.current.temperature_2m)+'°';$('#wDesc').textContent=`${l}, min ${Math.round(w.daily.temperature_2m_min[0])}° max ${Math.round(w.daily.temperature_2m_max[0])}°`;
- const ss=(w.daily.sunset&&w.daily.sunset[0]||'').slice(11,16),sr=(w.daily.sunrise&&w.daily.sunrise[0]||'').slice(11,16);$('#wSun').textContent=ss||'--:--';$('#wDay').textContent=sr?`alba alle ${sr}`:'';if(typeof heroSky==='function')setTimeout(heroSky,0)}
+ const ss=(w.daily.sunset&&w.daily.sunset[0]||'').slice(11,16),sr=(w.daily.sunrise&&w.daily.sunrise[0]||'').slice(11,16);$('#wSun').textContent=ss||'--:--';$('#wDay').textContent=sr?`alba alle ${sr}`:'';if(typeof heroSky==='function')setTimeout(heroSky,0);if(S.set.style==='auto')setTimeout(styleSync,0)}
 async function weather(force){let c=null;try{c=JSON.parse(localStorage.getItem('labas-wx'))}catch(e){}if(c&&c.w)wxRender(c.w);
  if(!force&&c&&Date.now()-c.t<30*60e3)return;if(!navigator.onLine){if(!c){$('#wDesc').textContent='Meteo non disponibile offline';$('#wTemp').textContent='--°';$('#wSun').textContent='--:--'}return}
  try{const r=await fetch('https://api.open-meteo.com/v1/forecast?latitude=54.6872&longitude=25.2797&current=temperature_2m,weather_code&daily=temperature_2m_max,temperature_2m_min,sunrise,sunset&timezone=Europe%2FVilnius&forecast_days=1');if(!r.ok)throw 0;const w=await r.json();wxRender(w);try{localStorage.setItem('labas-wx',JSON.stringify({t:Date.now(),w}))}catch(e){}}
@@ -836,7 +848,7 @@ document.addEventListener('touchend',()=>{if(!tg)return;const g=tg;tg=null;
  const j=g.dx<0?i+1:i-1;if(j<0||j>=NAVV.length)return;swDir=g.dx<0?1:-1;location.hash='#'+NAVV[j]},{passive:true});
 document.addEventListener('touchcancel',()=>{if(tg&&tg.row){tg.row.classList.remove('swiping');tg.row.style.transform=''}tg=null},{passive:true});
 function swipeHint(){if(!coarse)return;try{if(localStorage.getItem('labas-swhint'))return;localStorage.setItem('labas-swhint','1')}catch(e){return}setTimeout(()=>toast('Suggerimento: scorri una riga verso sinistra per eliminarla, e lo schermo di lato per cambiare sezione'),4000)}
-document.addEventListener('click',e=>{const b=e.target.closest('[data-stylev]');if(!b)return;S.set.style=b.dataset.stylev;save();settingsUI();setTimeout(()=>{themeMeta();flowers();if(MAP)mapMarkers()},50);const r=b.getBoundingClientRect();burst(r.left+r.width/2,r.top+r.height/2,12)});
+document.addEventListener('click',e=>{const b=e.target.closest('[data-stylev]');if(!b)return;S.set.style=b.dataset.stylev;save();settingsUI();petals();petalProg();setTimeout(()=>{themeMeta();flowers();if(MAP)mapMarkers()},50);const r=b.getBoundingClientRect();burst(r.left+r.width/2,r.top+r.height/2,12)});
 /* ===== 2.0: testata che segue meteo e ora di Vilnius ===== */
 let skyKey='';
 function heroSky(){const hero=$('#hero');if(!hero)return;let w=null;try{w=(JSON.parse(localStorage.getItem('labas-wx'))||{}).w}catch(e){}

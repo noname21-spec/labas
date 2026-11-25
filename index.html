@@ -10,7 +10,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Labas">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<script>try{var _s=JSON.parse(localStorage.getItem("labas-erasmus-v2")||"{}").set||{};document.documentElement.dataset.style=_s.style||"flower";if(_s.theme&&_s.theme!=="auto")document.documentElement.dataset.theme=_s.theme}catch(e){}</script>
+<script>try{var _s=JSON.parse(localStorage.getItem("labas-erasmus-v2")||"{}").set||{};var _st=_s.style||"flower";if(_st==="auto")_st=localStorage.getItem("labas-style-eff")||"flower";document.documentElement.dataset.style=_st;if(_s.theme&&_s.theme!=="auto")document.documentElement.dataset.theme=_s.theme}catch(e){}</script>
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" href="icon-96.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -672,6 +672,72 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--sec);box
 .navplus:active,.dock nav a:active{transform:translate(2px,2px)}
 .navplus:active{box-shadow:2px 2px 0 light-dark(#22140a,var(--yel))}
 @media(max-width:369px){.dock{gap:7px}.dock nav a{min-width:42px;padding:0 9px!important}.dock nav a.on span{max-width:0;opacity:0;margin:0}.navplus{width:50px;height:50px}}
+/* ===== 2.2 temi ===== */
+:root[data-style=disco]{--pink:#ff3ea5;--orange:#b98cff;--yel:#ffd84d;--mint:#5ce1e6;--green:light-dark(#0f7d82,#5ce1e6);--bgL:#efe6ff;--cardL:#fbf8ff;--softL:#e0d2ff;--inkL:#1d1233;--heroS:#a98bff}
+:root[data-style=disco] body{--sec:#a98bff}
+:root[data-style=disco] body[data-view=soldi]{--sec:#5ce1e6}
+:root[data-style=disco] body[data-view=studio]{--sec:#ff6fbf}
+:root[data-style=disco] body[data-view=inglese]{--sec:#ffd84d}
+:root[data-style=disco] body[data-view=vilnius]{--sec:#c9c9e0}
+:root[data-style=disco] body[data-view=impostazioni]{--sec:#d9c8ff}
+:root[data-style=avocado]{--pink:light-dark(#c8642a,#e98a4f);--orange:#e2b33c;--yel:#e8c547;--mint:light-dark(#8a9a3b,#b5c65a);--green:light-dark(#5b6b1f,#a9b94e);--red:light-dark(#a3301b,#ff7a5c);--bgL:#f3ecd2;--cardL:#fbf6e4;--softL:#e6dcb4;--inkL:#2e2414;--heroS:#d6b13a}
+:root[data-style=avocado] body{--sec:#d6b13a}
+:root[data-style=avocado] body[data-view=soldi]{--sec:#9fb048}
+:root[data-style=avocado] body[data-view=studio]{--sec:#dc7d42}
+:root[data-style=avocado] body[data-view=inglese]{--sec:#e8be5e}
+:root[data-style=avocado] body[data-view=vilnius]{--sec:#b9a77c}
+:root[data-style=avocado] body[data-view=impostazioni]{--sec:#cdbd8f}
+:root[data-style=trispalve]{--pink:light-dark(#c1272d,#ff5a60);--orange:#f08a24;--yel:#fdb913;--mint:#2e9e6b;--green:light-dark(#006a44,#3cc489);--bgL:#fff6dc;--cardL:#fffdf4;--softL:#ffe9a8;--inkL:#1c1a10;--heroS:#fdb913}
+:root[data-style=trispalve] body{--sec:#fdb913}
+:root[data-style=trispalve] body[data-view=soldi]{--sec:#3cbf83}
+:root[data-style=trispalve] body[data-view=studio]{--sec:#e8545a}
+:root[data-style=trispalve] body[data-view=inglese]{--sec:#f5a142}
+:root[data-style=trispalve] body[data-view=vilnius]{--sec:#ffd34d}
+:root[data-style=trispalve] body[data-view=impostazioni]{--sec:#f1c27d}
+:root[data-style=ambra]{--pink:#b8560f;--orange:#f2b134;--yel:#f7c548;--mint:#6fb3bd;--green:light-dark(#2c6e91,#8fc3c9);--bgL:#fdf1df;--cardL:#fffaf2;--softL:#f6dcb4;--inkL:#2a1708;--heroS:#f0a23a}
+:root[data-style=ambra] body{--sec:#f0a23a}
+:root[data-style=ambra] body[data-view=soldi]{--sec:#8fc3c9}
+:root[data-style=ambra] body[data-view=studio]{--sec:#e0843a}
+:root[data-style=ambra] body[data-view=inglese]{--sec:#f7c548}
+:root[data-style=ambra] body[data-view=vilnius]{--sec:#78b0cc}
+:root[data-style=ambra] body[data-view=impostazioni]{--sec:#e3c3a0}
+:root[data-style=inverno]{--pink:#ff8fb8;--orange:#9b8cff;--yel:#ffe08a;--mint:#4fc3b8;--green:light-dark(#1f7f86,#6fd8cc);--bgL:#eaf4fb;--cardL:#fbfdff;--softL:#d4e9f7;--inkL:#14233a;--heroS:#9fd3f0}
+:root[data-style=inverno] body{--sec:#9fd3f0}
+:root[data-style=inverno] body[data-view=soldi]{--sec:#7fdccf}
+:root[data-style=inverno] body[data-view=studio]{--sec:#ffa9c8}
+:root[data-style=inverno] body[data-view=inglese]{--sec:#b9b0ff}
+:root[data-style=inverno] body[data-view=vilnius]{--sec:#c4e2f5}
+:root[data-style=inverno] body[data-view=impostazioni]{--sec:#d9d4ff}
+:root[data-style=pop]{--pink:light-dark(#e4002b,#ff4060);--orange:light-dark(#0057b8,#4d9bff);--yel:#ffd400;--mint:#00a650;--green:light-dark(#007a3a,#33c878);--red:light-dark(#c4001f,#ff5a6e);--bgL:#fffbe6;--cardL:#ffffff;--softL:#fff1a6;--inkL:#111111;--heroS:#ffd400}
+:root[data-style=pop] body{--sec:#ffd400}
+:root[data-style=pop] body[data-view=soldi]{--sec:#2fc06b}
+:root[data-style=pop] body[data-view=studio]{--sec:#ff4a5e}
+:root[data-style=pop] body[data-view=inglese]{--sec:#ff8c1a}
+:root[data-style=pop] body[data-view=vilnius]{--sec:#4d9bff}
+:root[data-style=pop] body[data-view=impostazioni]{--sec:#ffe866}
+:root[data-style=sorbetto]{--pink:#ff9eb5;--orange:#ffb07a;--yel:#ffe48f;--mint:#9fe3c4;--green:light-dark(#3c8f6e,#9fe3c4);--bgL:#fff4ef;--cardL:#fffdfb;--softL:#ffe3d6;--inkL:#3a2a2e;--heroS:#ffc8a8}
+:root[data-style=sorbetto] body{--sec:#ffc8a8}
+:root[data-style=sorbetto] body[data-view=soldi]{--sec:#a8e6cc}
+:root[data-style=sorbetto] body[data-view=studio]{--sec:#ffb3c6}
+:root[data-style=sorbetto] body[data-view=inglese]{--sec:#ffd29a}
+:root[data-style=sorbetto] body[data-view=vilnius]{--sec:#b9dcf2}
+:root[data-style=sorbetto] body[data-view=impostazioni]{--sec:#d8c8f0}
+:root[data-style=tiedye]{--pink:#ff5fa2;--orange:#ffb000;--yel:#ffe14d;--mint:#00c2a8;--green:light-dark(#00806f,#00c2a8);--bgL:#fff0fb;--cardL:#fffaff;--softL:#ffd9f2;--inkL:#23102a;--heroS:#ff8ac0}
+:root[data-style=tiedye] body{--sec:#ff8ac0}
+:root[data-style=tiedye] body[data-view=soldi]{--sec:#33d1b9}
+:root[data-style=tiedye] body[data-view=studio]{--sec:#a594ff}
+:root[data-style=tiedye] body[data-view=inglese]{--sec:#ffc233}
+:root[data-style=tiedye] body[data-view=vilnius]{--sec:#5fb8ff}
+:root[data-style=tiedye] body[data-view=impostazioni]{--sec:#ff9f7a}
+:root[data-style=pop]:not(.dk) .hero{background-image:radial-gradient(circle,rgba(17,17,17,.16) 1.7px,transparent 2.2px),var(--grain);background-size:11px 11px,auto}
+:root[data-style=tiedye]:not(.dk) .hero{background-image:var(--grain),repeating-conic-gradient(from 0deg at 80% 42%,rgba(255,95,162,.55) 0 15deg,rgba(255,176,0,.5) 15deg 30deg,rgba(255,225,77,.5) 30deg 45deg,rgba(0,194,168,.45) 45deg 60deg,rgba(106,92,255,.4) 60deg 75deg);background-blend-mode:multiply,normal}
+:root[data-style=disco] #dzc{fill:url(#mirror)!important}
+:root[data-style=ambra] #dzc{fill:url(#amberg)!important}
+:root[data-style=pop] #dzc{fill:url(#popdots)!important}
+:root[data-style=inverno] #dzc{fill:#f4fbff!important}
+:root[data-style=disco] #dzr,:root[data-style=ambra] #dzr{display:none}
+.stylepick button small{display:block;font-weight:600;font-size:11.5px;color:var(--mute);margin-top:-4px}
+.stylepick .auto i{background:conic-gradient(var(--pink) 0 25%,var(--orange) 0 50%,var(--yel) 0 75%,var(--mint) 0)}
 .empty{border:2px dashed var(--edge);border-radius:18px;padding:18px;text-align:center;color:var(--mute);margin:12px 0 0}
 .note{color:var(--mute);font-size:14px;margin:18px 0 0}
 #lb{position:fixed;inset:0;background:rgba(10,6,2,.88);display:none;place-items:center;z-index:30;padding:20px;border:0;width:100%;cursor:zoom-out}
@@ -722,9 +788,10 @@ nav svg{width:22px;height:22px}
     </div>
     <div class="daisy" role="img" id="daisy"><div class="rays" aria-hidden="true"></div>
       <svg viewBox="0 0 200 200" aria-hidden="true">
+        <defs><pattern id="mirror" width="16" height="16" patternUnits="userSpaceOnUse" patternTransform="rotate(12)"><rect width="16" height="16" fill="#cfd0e2"/><rect width="8" height="8" fill="#f6f6fd"/><rect x="8" y="8" width="8" height="8" fill="#aeb0cb"/><path d="M0 0H16V16" fill="none" stroke="#7d7f9e" stroke-width="1.2"/></pattern><radialGradient id="amberg" cx="36%" cy="30%" r="75%"><stop offset="0" stop-color="#ffe3a3"/><stop offset=".45" stop-color="#f5a52e"/><stop offset="1" stop-color="#b2560c"/></radialGradient><pattern id="popdots" width="11" height="11" patternUnits="userSpaceOnUse"><rect width="11" height="11" fill="#ffd400"/><circle cx="5.5" cy="5.5" r="2.3" fill="#ffb000"/></pattern></defs>
         <g class="petals" id="petals"></g>
-        <circle cx="100" cy="100" r="58" style="fill:var(--yel)" stroke="#22140a" stroke-width="3.5"/>
-        <circle cx="100" cy="100" r="50" fill="none" stroke="#22140a" stroke-width="2" stroke-dasharray="2 7" stroke-linecap="round"/>
+        <circle id="dzc" cx="100" cy="100" r="58" style="fill:var(--yel)" stroke="#22140a" stroke-width="3.5"/>
+        <circle id="dzr" cx="100" cy="100" r="50" fill="none" stroke="#22140a" stroke-width="2" stroke-dasharray="2 7" stroke-linecap="round"/>
       </svg>
       <div class="count"><b id="cd">0</b><span id="cdl"></span></div>
     </div>
@@ -991,7 +1058,7 @@ Matteo De Vincenti</pre>
       <section class="card set" id="s-aspetto">
         <h3>Aspetto</h3>
         <p class="lbl" style="margin-top:6px">Stile</p>
-        <div class="stylepick" id="stylepick"><button type="button" data-stylev="flower"><span><i style="background:#ff4f9a"></i><i style="background:#ff7a1a"></i><i style="background:#ffc21a"></i><i style="background:#46d394"></i></span>Flower power</button><button type="button" data-stylev="sunset"><span><i style="background:#d9541e"></i><i style="background:#e8a317"></i><i style="background:#a9c34c"></i><i style="background:#3a2212"></i></span>Tramonto '70</button><button type="button" data-stylev="psy"><span><i style="background:#ff2fa8"></i><i style="background:#b46bff"></i><i style="background:#00e0b0"></i><i style="background:#ffe600"></i></span>Psichedelico</button></div>
+        <div class="stylepick" id="stylepick"><button type="button" data-stylev="flower"><span><i style="background:#ff4f9a"></i><i style="background:#ff7a1a"></i><i style="background:#ffc21a"></i><i style="background:#46d394"></i></span>Flower power</button><button type="button" data-stylev="sunset"><span><i style="background:#d9541e"></i><i style="background:#e8a317"></i><i style="background:#a9c34c"></i><i style="background:#3a2212"></i></span>Tramonto '70</button><button type="button" data-stylev="psy"><span><i style="background:#ff2fa8"></i><i style="background:#b46bff"></i><i style="background:#00e0b0"></i><i style="background:#ffe600"></i></span>Psichedelico</button><button type="button" data-stylev="disco"><span><i style="background:#ff3ea5"></i><i style="background:#a98bff"></i><i style="background:#c9c9e0"></i><i style="background:#5ce1e6"></i></span>Disco</button><button type="button" data-stylev="avocado"><span><i style="background:#8a9a3b"></i><i style="background:#d6b13a"></i><i style="background:#c8642a"></i><i style="background:#6b4a2b"></i></span>Avocado e senape</button><button type="button" data-stylev="trispalve"><span><i style="background:#fdb913"></i><i style="background:#006a44"></i><i style="background:#c1272d"></i><i style="background:#f08a24"></i></span>Trispalvė</button><button type="button" data-stylev="ambra"><span><i style="background:#b8560f"></i><i style="background:#f0a23a"></i><i style="background:#f7c548"></i><i style="background:#2c6e91"></i></span>Ambra baltica</button><button type="button" data-stylev="inverno"><span><i style="background:#9fd3f0"></i><i style="background:#ff8fb8"></i><i style="background:#9b8cff"></i><i style="background:#4fc3b8"></i></span>Inverno a Vilnius</button><button type="button" data-stylev="pop"><span><i style="background:#e4002b"></i><i style="background:#0057b8"></i><i style="background:#ffd400"></i><i style="background:#00a650"></i></span>Pop art</button><button type="button" data-stylev="sorbetto"><span><i style="background:#ff9eb5"></i><i style="background:#ffb07a"></i><i style="background:#ffe48f"></i><i style="background:#9fe3c4"></i></span>Sorbetto</button><button type="button" data-stylev="tiedye"><span><i style="background:#ff5fa2"></i><i style="background:#ffb000"></i><i style="background:#00c2a8"></i><i style="background:#6a5cff"></i></span>Tie-dye</button><button type="button" data-stylev="auto" class="auto"><span><i></i><i></i><i></i><i></i></span>Automatico<small id="autoNow"></small></button></div>
         <div class="srow"><span>Tema</span><span class="seg" data-seg="theme"><button type="button" data-v="auto">Auto</button><button type="button" data-v="light">Chiaro</button><button type="button" data-v="dark">Scuro</button></span></div>
         <div class="srow"><span>Testo</span><span class="seg" data-seg="text"><button type="button" data-v="n">Normale</button><button type="button" data-v="l">Grande</button></span></div>
         <label class="srow" for="set-motion"><span>Animazioni<small>La margherita che gira e le transizioni</small></span><input type="checkbox" role="switch" class="sw" id="set-motion" data-flag="motion"></label>
