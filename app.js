@@ -23,7 +23,7 @@ const ENG=[
 ];
 const HOUSE='Miniappartamento: contratto, caparra e consegna delle chiavi';
 const BAGT=[['valigia','Giaccone imbottito per temperature sotto zero','',0],['valigia','Berretto, sciarpa e guanti','',0],['valigia','Scarponcini impermeabili con suola antiscivolo','',0],['valigia','Intimo termico e calze di lana','',0],['valigia','Adattatore per prese tipo F (le spine italiane grandi non entrano)','',0],['valigia','Crema idratante e burrocacao','',0],['valigia','Documenti e Learning Agreement nel bagaglio a mano','',0],['valigia','Pesare la valigia prima di partire','2027-01-31',0]];
-const VER='2.6.0';
+const VER='2.6.1';
 const SETD=()=>({name:'Matteo',uni:'European Humanities University',goal:30,theme:'auto',text:'n',motion:true,intro:true,start:'oggi',leads:[3,1,0],en:true,lt:true,onb:false,pin:null,push:false,cal:null,style:'flower'});
 const mkTask=([ph,t,due,d])=>({id:uid(),ph,t,due,done:!!d});
 const DEF=()=>{
@@ -241,7 +241,7 @@ const snapDel=(fn,f)=>{const p=JSON.stringify(S);fn();if(f)dropFile(f);toast('El
 const VIEWS=['oggi','soldi','studio','inglese','vilnius','impostazioni'];let curV='';
 function route(){const h=location.hash.slice(1),v=VIEWS.includes(h)?h:(VIEWS.includes(S.set.start)?S.set.start:'oggi');
  VIEWS.forEach(x=>{$('#v-'+x).classList.toggle('on',x===v);const n=document.getElementById('n-'+x);if(n)n.classList.toggle('on',x===v)});$('#gear').classList.toggle('on',v==='impostazioni');document.body.dataset.view=v;
- if(v!==curV){const prevV=curV;curV=v;const vw0=$('#v-'+v);vw0.classList.remove('sl','sr');if(swDir){void vw0.offsetWidth;vw0.classList.add(swDir>0?'sl':'sr');setTimeout(()=>vw0.classList.remove('sl','sr'),300);swDir=0}setTimeout(themeMeta,0);if(prevV){heroWipe(v);const dz=$('#daisy');if(dz){dz.classList.remove('whirl');void dz.offsetWidth;dz.classList.add('whirl');setTimeout(()=>dz.classList.remove('whirl'),750)}}
+ if(v!==curV){const prevV=curV;curV=v;const vw0=$('#v-'+v);vw0.classList.remove('sl','sr');if(swDir){void vw0.offsetWidth;vw0.classList.add(swDir>0?'sl':'sr');setTimeout(()=>vw0.classList.remove('sl','sr'),300);swDir=0}setTimeout(themeMeta,0);
  if(v==='soldi'){const B=sum(S.inc)-sum(S.exp);countTo($('#bal'),B,x=>(x>=0?'+':'−')+eur(Math.round(Math.abs(x))))}
  if(v==='studio'){const P=S.courses.reduce((t,c)=>t+(+c.e||0),0);countTo($('#ectsN'),P,x=>String(Math.round(x)))}
  if(v==='vilnius')setTimeout(()=>document.querySelectorAll('#nums b[data-n]').forEach(b=>{const n=+b.dataset.n;countTo(b,n,x=>b.dataset.f==='eur'?eur(Math.round(x)):String(Math.round(x)),600)}),0);const vw=$('#v-'+v);vw.classList.add('enter');setTimeout(()=>vw.classList.remove('enter'),700);let i=0;const vh=innerHeight;$('#v-'+v).querySelectorAll('.card,.day,.wk article,.pc,.num').forEach(el=>{const on=el.getBoundingClientRect().top<vh;el.classList.toggle('nofx',!on);el.style.setProperty('--i',on?Math.min(i++,6):0)});if(v==='studio'){const rg=$('#ring');rg.classList.add('anim');setTimeout(()=>rg.classList.remove('anim'),1100)}if(v==='impostazioni')storageInfo();if(v==='vilnius'){setTimeout(initMap,80);commuteView()}if(v==='studio'){lessonTravel();attView()}if(v==='vilnius')festView();if(v==='oggi'){weather();todayCard()}}
