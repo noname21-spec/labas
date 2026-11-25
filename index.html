@@ -819,6 +819,19 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--sec);box
 .empty.has-art::before{display:none}
 .hwipe{position:absolute;inset:0;z-index:0;pointer-events:none;background:var(--sec);clip-path:circle(0 at var(--wx) 100%);transition:clip-path .55s cubic-bezier(.3,.8,.3,1)}
 .hwipe.go{clip-path:circle(160% at var(--wx) 100%)}
+/* ===== 2.6 passaggi più rapidi ===== */
+@keyframes rise2{from{opacity:0;transform:translateY(8px)}}
+@keyframes pop2{from{opacity:0;transform:translateY(12px)}}
+.view.on{animation:rise2 .22s cubic-bezier(.2,.8,.2,1)}
+.view.enter :is(.card,.day,.wk article,.num,.pc){animation:pop2 .32s cubic-bezier(.2,.9,.3,1.12) backwards;animation-delay:calc(var(--i,0)*35ms)}
+.view.enter .nofx{animation:none!important}
+.view.on.sl{animation:slideL .25s cubic-bezier(.2,.8,.2,1)}
+.view.on.sr{animation:slideR .25s cubic-bezier(.2,.8,.2,1)}
+.hero,#hello{transition:none!important}
+.daisy{transition:none}
+.hwipe{transition:clip-path .38s cubic-bezier(.3,.8,.3,1)}
+.ogrid div{animation-duration:.3s}
+.ogrid div:nth-child(2){animation-delay:.03s}.ogrid div:nth-child(3){animation-delay:.06s}.ogrid div:nth-child(4){animation-delay:.09s}.ogrid div:nth-child(5){animation-delay:.12s}.ogrid div:nth-child(6){animation-delay:.15s}
 .empty{border:2px dashed var(--edge);border-radius:18px;padding:18px;text-align:center;color:var(--mute);margin:12px 0 0}
 .note{color:var(--mute);font-size:14px;margin:18px 0 0}
 #lb{position:fixed;inset:0;background:rgba(10,6,2,.88);display:none;place-items:center;z-index:30;padding:20px;border:0;width:100%;cursor:zoom-out}
