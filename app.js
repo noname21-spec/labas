@@ -23,7 +23,7 @@ const ENG=[
 ];
 const HOUSE='Miniappartamento: contratto, caparra e consegna delle chiavi';
 const BAGT=[['valigia','Giaccone imbottito per temperature sotto zero','',0],['valigia','Berretto, sciarpa e guanti','',0],['valigia','Scarponcini impermeabili con suola antiscivolo','',0],['valigia','Intimo termico e calze di lana','',0],['valigia','Adattatore per prese tipo F (le spine italiane grandi non entrano)','',0],['valigia','Crema idratante e burrocacao','',0],['valigia','Documenti e Learning Agreement nel bagaglio a mano','',0],['valigia','Pesare la valigia prima di partire','2027-01-31',0]];
-const VER='2.6.1';
+const VER='2.6.2';
 const SETD=()=>({name:'Matteo',uni:'European Humanities University',goal:30,theme:'auto',text:'n',motion:true,intro:true,start:'oggi',leads:[3,1,0],en:true,lt:true,onb:false,pin:null,push:false,cal:null,style:'flower'});
 const mkTask=([ph,t,due,d])=>({id:uid(),ph,t,due,done:!!d});
 const DEF=()=>{
@@ -246,7 +246,7 @@ function route(){const h=location.hash.slice(1),v=VIEWS.includes(h)?h:(VIEWS.inc
  if(v==='studio'){const P=S.courses.reduce((t,c)=>t+(+c.e||0),0);countTo($('#ectsN'),P,x=>String(Math.round(x)))}
  if(v==='vilnius')setTimeout(()=>document.querySelectorAll('#nums b[data-n]').forEach(b=>{const n=+b.dataset.n;countTo(b,n,x=>b.dataset.f==='eur'?eur(Math.round(x)):String(Math.round(x)),600)}),0);const vw=$('#v-'+v);vw.classList.add('enter');setTimeout(()=>vw.classList.remove('enter'),700);let i=0;const vh=innerHeight;$('#v-'+v).querySelectorAll('.card,.day,.wk article,.pc,.num').forEach(el=>{const on=el.getBoundingClientRect().top<vh;el.classList.toggle('nofx',!on);el.style.setProperty('--i',on?Math.min(i++,6):0)});if(v==='studio'){const rg=$('#ring');rg.classList.add('anim');setTimeout(()=>rg.classList.remove('anim'),1100)}if(v==='impostazioni')storageInfo();if(v==='vilnius'){setTimeout(initMap,80);commuteView()}if(v==='studio'){lessonTravel();attView()}if(v==='vilnius')festView();if(v==='oggi'){weather();todayCard()}}
  $('#hero').classList.toggle('compact',v!=='oggi');
- const top=$('#main').offsetTop-12;if(window.scrollY>top)window.scrollTo(0,0);}
+ const top=$('#main').offsetTop-12,SC=$('#scroller');if(SC&&SC.scrollTop>top)SC.scrollTo(0,0);}
 function petals(){const st=document.documentElement.dataset.style;let o='';for(let i=0;i<14;i++){const t=`transform="rotate(${(i*360/14).toFixed(2)} 100 100)"`;
  if(st==='inverno'){const d='M100 8V56M100 21L90 11M100 21L110 11M100 35L92 28M100 35L108 28';o+=`<g class="pt" ${t} style="color:var(--poff)"><path d="${d}" fill="none" stroke="#22140a" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/><path d="${d}" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></g>`}
  else if(st==='disco')o+=`<polygon class="pt" points="100,0 113,40 100,64 87,40" style="fill:var(--poff)" stroke="#22140a" stroke-width="3.5" stroke-linejoin="round" ${t}/>`;
@@ -980,6 +980,10 @@ new MutationObserver(recs=>{let main=false,any=false;for(const r of recs){for(co
 (()=>{const q=new URLSearchParams(location.search).get('add');if(q!=='spesa'&&q!=='diario')return;try{history.replaceState(null,'',location.pathname+location.hash)}catch(e){}
  const go=()=>{const sp=$('#splash'),onb=$('#onb');if((sp&&sp.isConnected&&!sp.classList.contains('out'))||(onb&&!onb.hidden)){setTimeout(go,250);return}quickOpen();quickTab(q)};setTimeout(go,300)})();
 
+/* 2.6.2: barra nascosta mentre scrivi, così non balla sopra la tastiera */
+const isTyping=el=>el&&(el.tagName==='TEXTAREA'||el.tagName==='SELECT'||(el.tagName==='INPUT'&&!/^(checkbox|radio|button|submit|range|color|file)$/.test(el.type)));
+document.addEventListener('focusin',e=>{if(isTyping(e.target))document.body.classList.add('typing')});
+document.addEventListener('focusout',()=>setTimeout(()=>{if(!isTyping(document.activeElement))document.body.classList.remove('typing')},120));
 window.addEventListener('online',()=>{if(USER){pull();drain()}});
 document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&USER)pull()});
 try{if(window.supabase&&window.supabase.createClient)SB=window.supabase.createClient(SB_URL,SB_KEY,{auth:{flowType:'pkce',detectSessionInUrl:true,persistSession:true,autoRefreshToken:true,storageKey:'labas-auth'}})}catch(e){SB=null}

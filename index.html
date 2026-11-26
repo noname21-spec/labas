@@ -832,6 +832,12 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--sec);box
 .hwipe{transition:clip-path .38s cubic-bezier(.3,.8,.3,1)}
 .ogrid div{animation-duration:.3s}
 .ogrid div:nth-child(2){animation-delay:.03s}.ogrid div:nth-child(3){animation-delay:.06s}.ogrid div:nth-child(4){animation-delay:.09s}.ogrid div:nth-child(5){animation-delay:.12s}.ogrid div:nth-child(6){animation-delay:.15s}
+/* ===== 2.6.2: la pagina scorre in un contenitore, così la barra in basso resta al suo posto (bug di iOS 26 con position:fixed) ===== */
+html,body{height:100%;overflow:hidden}
+body{padding-bottom:0!important}
+#scroller{position:fixed;inset:0;overflow-y:auto;overflow-x:clip;-webkit-overflow-scrolling:touch;overscroll-behavior-y:contain;padding-bottom:calc(110px + env(safe-area-inset-bottom,0px))}
+.dock{transition:opacity .2s,translate .2s}
+body.typing .dock{opacity:0;translate:0 30px;pointer-events:none}
 .empty{border:2px dashed var(--edge);border-radius:18px;padding:18px;text-align:center;color:var(--mute);margin:12px 0 0}
 .note{color:var(--mute);font-size:14px;margin:18px 0 0}
 #lb{position:fixed;inset:0;background:rgba(10,6,2,.88);display:none;place-items:center;z-index:30;padding:20px;border:0;width:100%;cursor:zoom-out}
@@ -869,6 +875,7 @@ nav svg{width:22px;height:22px}
     <div class="onb-nav"><button class="linkb" type="button" id="obSkip">Salta</button><span class="dots" id="obDots"></span><span class="btns" style="margin:0"><button class="btn alt" type="button" id="obBack" hidden>Indietro</button><button class="btn" type="button" id="obNext">Avanti</button></span></div>
   </div>
 </div>
+<div id="scroller">
 <header class="hero" id="hero">
   <svg id="bgfl" aria-hidden="true"></svg>
   <div class="sky" aria-hidden="true"></div><div class="wxfx" id="wxfx" aria-hidden="true"></div>
@@ -1202,6 +1209,7 @@ Matteo De Vincenti</pre>
     </div>
   </section>
 </main>
+</div>
 
 <button id="lb" type="button" aria-label="Chiudi immagine"><img id="lbImg" alt=""></button>
 <button id="fab" type="button" aria-label="Aggiungi spesa o diario"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
